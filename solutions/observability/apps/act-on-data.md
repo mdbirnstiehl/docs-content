@@ -8,7 +8,7 @@ mapped_urls:
 navigation_title: "Act on data"
 ---
 
-# Act on application data [apm-act-on-data]
+# Act on application data
 
 
 In addition to exploring visualizations in the Applications UI in {{kib}}, you can make your application data more actionable with:
