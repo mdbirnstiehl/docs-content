@@ -2,6 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/synthetics-analyze.html
   - https://www.elastic.co/guide/en/serverless/current/observability-synthetics-analyze.html
+
+navigation_title: "Analyze monitor data"
 ---
 
 # Analyze data from synthetic monitors
@@ -23,7 +25,7 @@ When you use a single monitor configuration to create monitors in multiple locat
 
 
 :::{image} ../../../images/observability-synthetics-monitor-page.png
-:alt: {{synthetics-app}} in {kib}
+:alt: Synthetics UI
 :class: screenshot
 :::
 
@@ -145,7 +147,7 @@ Scroll down to dig into the steps in this journey run. Click the ![Arrow right i
 
 This is particularly useful to compare the metrics for a failed step to the last time it completed successfully when trying to diagnose the reason it failed.
 
-![Step list on a page detailing one run of a browser monitor in the {{synthetics-app}}](../../../images/observability-synthetics-analyze-one-run-compare-steps.png "")
+![Step list on a page detailing one run of a browser monitor in the Synthetics UI](../../../images/observability-synthetics-analyze-one-run-compare-steps.png "")
 
 Drill down to see even more details for an individual step by clicking the performance breakdown icon (![Performance breakdown icon](../../../images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](../../../solutions/observability/apps/analyze-data-from-synthetic-monitors.md#synthetics-analyze-one-step).
 
