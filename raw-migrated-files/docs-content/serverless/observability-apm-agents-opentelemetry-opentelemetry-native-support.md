@@ -121,7 +121,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 
 
 
-You are now ready to collect traces and [metrics](../../../solutions/observability/apps/collect-metrics.md) before [verifying metrics](../../../solutions/observability/apps/collect-metrics.md#open-telemetry-verify-metrics) and [visualizing metrics](../../../solutions/observability/apps/collect-metrics.md#open-telemetry-visualize).
+You are now ready to collect traces and [metrics](../../../solutions/observability/apps/collect-metrics.md) before [verifying metrics](../../../solutions/observability/apps/collect-metrics.md#apm-open-telemetry-verify-metrics) and [visualizing metrics](../../../solutions/observability/apps/collect-metrics.md#apm-open-telemetry-visualize).
 
 
 ## Proxy requests to Elastic [observability-apm-agents-opentelemetry-opentelemetry-native-support-proxy-requests-to-elastic]
