@@ -8,7 +8,6 @@ mapped_urls:
 
 Synthetic tests support the configuration of dynamic parameters that can be used in Synthetics projects. In addition, the Synthetics agent, which is built on top of Playwright, supports configuring browser and context options that are available in Playwright-specific methods, for example, `ignoreHTTPSErrors`, `extraHTTPHeaders`, and `viewport`.
 
-$$$synthetics-config-file$$$
 Create a `synthetics.config.js` or `synthetics.config.ts` file in the root of the Synthetics project and specify the options. For example:
 
 ::::{tab-set}
