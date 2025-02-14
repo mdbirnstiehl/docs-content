@@ -13,7 +13,7 @@ Create a `synthetics.config.js` or `synthetics.config.ts` file in the root of th
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Kibana 9.0 and later
+:::{tab-item} Elastic Stack v9
 :sync: stack
 ```ts
 import type { SyntheticsConfig } from '@elastic/synthetics';
