@@ -137,7 +137,7 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 `--auth <string>`
 :   API key used for [{{kib}} authentication](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). You can also set the API key via the `SYNTHETICS_API_KEY` environment variable.
 
-    If you are pushing to a [{{private-location}}](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md#private-locations), you must use an API key generated in 8.4 or higher.
+    If you are pushing to a [{{private-location}}](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md), you must use an API key generated in 8.4 or higher.
 
     To create an API key, you must be logged into {{kib}} as a user with the privileges described in [Writer role](../../../solutions/observability/apps/writer-role.md).
 
