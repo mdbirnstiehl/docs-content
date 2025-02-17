@@ -19,11 +19,9 @@ This is one of [two approaches](../../../solutions/observability/apps/get-starte
 
 ## Prerequisites [synthetics-get-started-ui-prerequisites]
 
-### Serverless projects
-For serverless Observability projects, you must be signed in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
+For **serverless Observability projects**, you must be signed in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 
-### Elastic Stack deployments
-For Elastic Stack deployments, you must be signed into {{kib}} as a user with at least [synthetics write permissions](../../../solutions/observability/apps/writer-role.md), and Monitor Management must be enabled by an administrator as described in [Setup role](../../../solutions/observability/apps/setup-role.md).
+For **Elastic Stack deployments**, you must be signed into {{kib}} as a user with at least [synthetics write permissions](../../../solutions/observability/apps/writer-role.md), and Monitor Management must be enabled by an administrator as described in [Setup role](../../../solutions/observability/apps/setup-role.md).
 
 You should decide where you want to run the monitors before getting started. You can run monitors on one or both of the following:
 
