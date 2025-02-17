@@ -102,7 +102,7 @@ This will create a template Node.js project that includes the synthetics agent, 
 npx @elastic/synthetics init <name-of-project>
 ```
 
-Read more about what’s included in a template project in [Create a project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md#synthetics-get-started-project-init).
+Read more about what’s included in a template project in [Create a project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md).
 
 
 ## `@elastic/synthetics push` [elastic-synthetics-push-command]
