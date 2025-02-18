@@ -8,8 +8,8 @@ This is one of several approaches you can use to integrate Elastic with OpenTele
 
 Elastic natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure can be sent directly to Elastic.
 
-* Send data to Elastic from an upstream [OpenTelemetry Collector](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md#observability-apm-agents-opentelemetry-opentelemetry-native-support-send-data-from-an-upstream-opentelemetry-collector)
-* Send data to Elastic from an upstream [OpenTelemetry language SDK](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md#observability-apm-agents-opentelemetry-opentelemetry-native-support-send-data-from-an-upstream-opentelemetry-sdk)
+* Send data to Elastic from an upstream [OpenTelemetry Collector](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
+* Send data to Elastic from an upstream [OpenTelemetry language SDK](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
 
 
 ## Send data from an upstream OpenTelemetry Collector [observability-apm-agents-opentelemetry-opentelemetry-native-support-send-data-from-an-upstream-opentelemetry-collector]
