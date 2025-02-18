@@ -4,11 +4,23 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-ui-overview.html
 ---
 
-# Overviews
+---
+navigation_title: "Overviews"
+---
 
-% What needs to be done: Align serverless/stateful
+# High-level overviews of application data [apm-ui]
 
-% Use migrated content from existing pages that map to this page:
 
-% - [ ] ./raw-migrated-files/observability-docs/observability/apm-ui.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-ui-overview.md
+For a quick, high-level overview of the health and performance of your application, start with:
+
+* [Services](../../../solutions/observability/apps/services.md)
+* [Traces](../../../solutions/observability/apps/traces-2.md)
+* [Dependencies](../../../solutions/observability/apps/dependencies.md)
+* [Service Map](../../../solutions/observability/apps/service-map.md)
+
+% Stateful for mobile service?
+
+View an individual service:
+
+* [Service overview](../../../solutions/observability/apps/service-overview.md)
+* [Mobile service overview](../../../solutions/observability/apps/mobile-service-overview.md)
