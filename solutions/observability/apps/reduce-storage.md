@@ -100,25 +100,3 @@ POST /.ds-*-apm*/_update_by_query?expand_wildcards=all
 ::::{tip}
 Remember to also change the service name in the [{{apm-agent}} configuration](https://www.elastic.co/guide/en/apm/agent/index.html).
 ::::
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/apm-reduce-apm-storage.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-reduce-your-data-usage.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$observability-apm-reduce-stacktrace$$$
-
-$$$apm-reduce-sample-rate$$$
-
-$$$apm-reduce-stacktrace$$$
-
-$$$apm-delete-data-in-kibana$$$
-
-$$$apm-delete-data-query$$$
-
-$$$apm-delete-data-with-ilm$$$
