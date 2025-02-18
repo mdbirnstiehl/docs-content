@@ -2,9 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/apm-ui.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-ui-overview.html
----
 
----
 navigation_title: "Overviews"
 ---
 
