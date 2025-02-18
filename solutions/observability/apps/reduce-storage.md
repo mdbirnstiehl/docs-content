@@ -16,14 +16,14 @@ Distributed tracing can generate a substantial amount of data. More data can mea
 See [Transaction sampling](../../../solutions/observability/apps/transaction-sampling.md) to learn more.
 
 
-## Enable span compression [_enable_span_compression]
+## Enable span compression [enable_span_compression]
 
 In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span-- retaining important information but reducing processing and storage overhead.
 
 See [Span compression](/solutions/observability/apps/spans.md#apm-spans-span-compression) to learn more.
 
 
-## Reduce collected stack trace information [apm-reduce-stacktrace]
+## Reduce collected stack trace information [observability-apm-reduce-stacktrace]
 
 Elastic APM agents collect `stacktrace` information under certain circumstances. This can be very helpful in identifying issues in your code, but it also comes with an overhead at collection time and increases your storage usage.
 
@@ -31,7 +31,7 @@ Stack trace collection settings are managed in each APM agent. You can enable an
 
 % Stateful only after this?
 
-## Delete data [_delete_data]
+## Delete data [delete_data]
 
 You might want to only keep data for a defined time period. This might mean deleting old documents periodically, deleting data collected for specific services or customers, or deleting specific indices.
 
