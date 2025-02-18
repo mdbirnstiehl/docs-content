@@ -222,7 +222,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 `OTEL_EXPORTER_OTLP_HEADERS`
 :   Authorization header that includes the Elastic APM API key: `"Authorization=ApiKey an_api_key"`. Note the required space between `ApiKey` and `an_api_key`.
 
-    For information on how to format an API key, refer to [Secure communication with APM agents](../../../solutions/observability/apps/use-apm-securely.md#observability-apm-keep-data-secure-secure-communication-with-apm-agents).
+    For information on how to format an API key, refer to [Secure communication with APM agents](../../../solutions/observability/apps/use-apm-securely.md).
 
     ::::{note}
     If you are using a version of the Python OpenTelemetry agent *before* 1.27.0, the content of the header *must* be URL-encoded. You can use the Python standard library’s `urllib.parse.quote` function to encode the content of the header.
