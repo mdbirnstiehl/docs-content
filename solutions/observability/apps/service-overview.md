@@ -15,7 +15,6 @@ Selecting a non-mobile [**service**](../../../solutions/observability/apps/servi
 * Latency, throughput, and errors over time
 * Service dependencies
 
-
 ## Time series and expected bounds comparison [service-time-comparison]
 
 For insight into the health of your services, you can compare how a service performs relative to a previous time frame or to the expected bounds from the corresponding {{anomaly-job}}. For example, has latency been slowly increasing over time, did the service experience a sudden spike, is the throughput similar to what the {{ml}} job expects — enabling a comparison can provide the answer.
