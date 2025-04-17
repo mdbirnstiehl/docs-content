@@ -775,7 +775,7 @@ To add the apm-server repository for APT:
     sudo apt-get install apt-transport-https
     ```
 
-1. Save the repository definition to `/etc/apt/sources.list.d/elastic-8.x.list`:
+1. Save the repository definition to `/etc/apt/sources.list.d/elastic-9.0.0.list`:
 
     ```shell
     echo "deb https://artifacts.elastic.co/packages/9.0.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-9.0.0-prerelease.list
@@ -816,7 +816,7 @@ To add the apm-server repository for YUM:
 1. Create a file with a .repo extension (for example, elastic.repo) in your /etc/yum.repos.d/ directory and add the following lines:
 
     ```shell
-    [elastic-8.x]
+    [elastic-9.0.0]
     name=Elastic repository for 9.0.0 packages
     baseurl=https://artifacts.elastic.co/packages/9.0.0/yum
     gpgcheck=1
