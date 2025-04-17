@@ -778,7 +778,7 @@ To add the apm-server repository for APT:
 1. Save the repository definition to `/etc/apt/sources.list.d/elastic-8.x.list`:
 
     ```shell
-    echo "deb https://artifacts.elastic.co/packages/{major-version}-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-{major-version}-prerelease.list
+    echo "deb https://artifacts.elastic.co/packages/9.0.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-9.0.0-prerelease.list
     ```
 
     :::{warning}
@@ -817,8 +817,8 @@ To add the apm-server repository for YUM:
 
     ```shell
     [elastic-8.x]
-    name=Elastic repository for 8.x packages
-    baseurl=https://artifacts.elastic.co/packages/8.x/yum
+    name=Elastic repository for 9.0.0 packages
+    baseurl=https://artifacts.elastic.co/packages/9.0.0/yum
     gpgcheck=1
     gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
     enabled=1
@@ -854,26 +854,26 @@ Obtaining APM Server for Docker is as simple as issuing a `docker pull` command 
 1. Pull the Docker image:
 
     ```shell
-    docker pull docker.elastic.co/apm/apm-server:8.17.5
+    docker pull docker.elastic.co/apm/apm-server:9.0.0
     ```
 
     Alternately, you can use the hardened [Wolfi](https://wolfi.dev/) image:
 
     ```shell
-    docker pull docker.elastic.co/apm/apm-server-wolfi:8.17.5
+    docker pull docker.elastic.co/apm/apm-server-wolfi:9.0.0
     ```
 
 1. Verify the Docker image:
 
     ```shell
     wget https://artifacts.elastic.co/cosign.pub
-    cosign verify --key cosign.pub docker.elastic.co/apm/apm-server:8.17.5
+    cosign verify --key cosign.pub docker.elastic.co/apm/apm-server:9.0.0
     ```
 
     The `cosign` command prints the check results and the signature payload in JSON format:
 
     ```shell
-    Verification for docker.elastic.co/apm/apm-server:8.17.5 --
+    Verification for docker.elastic.co/apm/apm-server:9.0.0 --
     The following checks were performed on each of these signatures:
       - The cosign claims were validated
       - Existence of the claims in the transparency log was verified offline
@@ -902,7 +902,7 @@ docker run -d \
   --name=apm-server \
   --user=apm-server \
   --volume="$(pwd)/apm-server.docker.yml:/usr/share/apm-server/apm-server.yml:ro" \
-  docker.elastic.co/apm/apm-server:9.0.0-beta1 \
+  docker.elastic.co/apm/apm-server:9.0.0 \
   --strict.perms=false -e \
   -E output.elasticsearch.hosts=["elasticsearch:9200"] <1> <2>
 ```
@@ -919,6 +919,6 @@ The `apm-server.docker.yml` downloaded earlier should be customized for your env
 It’s possible to embed your APM Server configuration in a custom image. Here is an example Dockerfile to achieve this:
 
 ```dockerfile
-FROM docker.elastic.co/apm/apm-server:9.0.0-beta1
+FROM docker.elastic.co/apm/apm-server:9.0.0
 COPY --chmod=0644 --chown=1000:1000 apm-server.yml /usr/share/apm-server/apm-server.yml
 ```
