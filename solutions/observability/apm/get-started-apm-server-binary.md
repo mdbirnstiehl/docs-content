@@ -761,11 +761,83 @@ to sign all our packages. It is available from [https://pgp.mit.edu](https://pgp
 
 ### APT [_apt]
 
-Version 9.0.0-beta1 of apm-server has not yet been released.
+To add the apm-server repository for APT:
+
+1. Download and install the Public Signing Key:
+
+    ```shell
+    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+    ```
+
+1. You may need to install the `apt-transport-https` package on Debian before proceeding:
+
+    ```shell
+    sudo apt-get install apt-transport-https
+    ```
+
+1. Save the repository definition to `/etc/apt/sources.list.d/elastic-8.x.list`:
+
+    ```shell
+    echo "deb https://artifacts.elastic.co/packages/9.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-{major-version}-prerelease.list
+    ```
+
+    :::{warning}
+    To add the Elastic repository, make sure that you use the `echo` method shown in the example. Do not use `add-apt-repository` because it will add a `deb-src` entry, but we do not provide a source package.
+
+    If you have added the `deb-src` entry by mistake, you will see an error like the following:
+
+    ```text
+    Unable to find expected entry 'main/source/Sources' in Release file (Wrong sources.list entry or malformed file)
+    ```
+    :::
+
+1. Run `apt-get update`, and the repository is ready for use. For example, you can install APM Server by running:
+
+    ```shell
+    sudo apt-get update && sudo apt-get install apm-server
+    ```
+
+1. To configure APM Server to start automatically during boot, run:
+
+    ```shell
+    sudo systemctl enable apm-server
+    ```
 
 ### YUM [_yum]
 
-Version 9.0.0-beta1 of apm-server has not yet been released.
+To add the apm-server repository for YUM:
+
+1. Download and install the public signing key:
+
+    ```shell
+    sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
+    ```
+
+1. Create a file with a .repo extension (for example, elastic.repo) in your /etc/yum.repos.d/ directory and add the following lines:
+
+    ```shell
+    [elastic-8.x]
+    name=Elastic repository for 8.x packages
+    baseurl=https://artifacts.elastic.co/packages/8.x/yum
+    gpgcheck=1
+    gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    enabled=1
+    autorefresh=1
+    type=rpm-md
+    ```
+
+    Your repository is ready to use. For example, you can install APM Server by running:
+
+    ```shell
+    sudo yum install apm-server
+    ```
+
+1. To configure APM Server to start automatically during boot, run:
+
+    ```shell
+    sudo systemctl enable apm-server
+    ```
+
 
 ## Run APM Server on Docker [apm-running-on-docker]
 
@@ -779,7 +851,34 @@ These images are free to use under the Elastic license. They contain open source
 
 Obtaining APM Server for Docker is as simple as issuing a `docker pull` command against the Elastic Docker registry and then, optionally, verifying the image.
 
-However, version 9.0.0-beta1 of APM Server has not yet been released, so no Docker image is currently available for this version.
+1. Pull the Docker image:
+
+    ```shell
+    docker pull docker.elastic.co/apm/apm-server:8.17.5
+    ```
+
+    Alternately, you can use the hardened [Wolfi](https://wolfi.dev/) image:
+
+    ```shell
+    docker pull docker.elastic.co/apm/apm-server-wolfi:8.17.5
+    ```
+
+1. Verify the Docker image:
+
+    ```shell
+    wget https://artifacts.elastic.co/cosign.pub
+    cosign verify --key cosign.pub docker.elastic.co/apm/apm-server:8.17.5
+    ```
+
+    The `cosign` command prints the check results and the signature payload in JSON format:
+
+    ```shell
+    Verification for docker.elastic.co/apm/apm-server:8.17.5 --
+    The following checks were performed on each of these signatures:
+      - The cosign claims were validated
+      - Existence of the claims in the transparency log was verified offline
+      - The signatures were verified against the specified public key
+    ```
 
 ### Configure APM Server on Docker [_configure_apm_server_on_docker]
 
