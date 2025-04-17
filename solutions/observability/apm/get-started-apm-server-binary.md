@@ -778,7 +778,7 @@ To add the apm-server repository for APT:
 1. Save the repository definition to `/etc/apt/sources.list.d/elastic-8.x.list`:
 
     ```shell
-    echo "deb https://artifacts.elastic.co/packages/9.0-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-{major-version}-prerelease.list
+    echo "deb https://artifacts.elastic.co/packages/{major-version}-prerelease/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-{major-version}-prerelease.list
     ```
 
     :::{warning}
