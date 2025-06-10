@@ -23,21 +23,21 @@ Refer to the [data stream](/manage-data/data-store/data-streams.md) docs for mor
 
 The `logs@lifecycle` ILM policy is preconfigured for common logging use cases. View or duplicate the policy at **Stack Management** → **Index Lifecycle Policies** or find `Index Lifecycle Policies` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-The logs ILM policy provides a good foundation for your logs data streams, but you may need to tailor it to fit your specific use case. Common modifications include:
+The logs ILM policy provides a foundation for your logs data streams, but you may need to tailor it to fit your situation. Common modifications include:
 
-- Adjust phase transitions.
+- Adjust hot, warm, and cold phase transitions.
 - Set retention durations for different phases.
 - Update rollover conditions.
 
 Refer to the **[Customize built-in policies tutorial](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)** for more on modifying the logs ILM policy.
 
-% might need some more common modifications or reasons why you might want to make these modifications.
+% I think we should go more into what modifications are of interest for logs users. What are some scenarios where users might want to adjust their phases or rollover conditions?
 
 ## Automate rollover based on log volume
 
-When continuously indexing timestamped documents, you'll want to periodically roll over to a new index to ensure that backing indices stay within optimal size and performance limits.
+When continuously indexing timestamped documents, you need to periodically roll over to a new index to ensure that backing indices stay within optimal size and performance limits.
 
-% any logs specific limits the user might want to set and why?
+% any logs specific limits or recommendations?
 
 Refer to the [Automate rollover tutorial](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) for more information.
 
