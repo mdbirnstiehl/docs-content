@@ -204,7 +204,7 @@ After creating the pipeline, complete the following steps:
 
 ### Add user-specific system prompts
 
-User-specific prompts customize how the AI assistant responds by appending personalized instructions to all of your system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
+User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
 
 A user-specific prompt only applies to the user that sets it.
 
