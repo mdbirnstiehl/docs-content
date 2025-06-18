@@ -198,14 +198,25 @@ User-specific prompts customize how the AI assistant responds by appending perso
 
 A user-specific prompt only applies to the user that sets it.
 
-% Do we have any other suggestions on how this could be useful for users?
-
 To edit the **User-specific System Prompt**:
 
 1. To open AI Assistant settings, find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **{{obs-ai-assistant}}**, click **Manage settings**.
 3. Switch to the **Knowledge base** tab.
 4. Select **Edit User-specific Prompt**.
+
+#### User-specific prompt example
+User-specific prompts are useful when configuring specific workflows. For example, if you want the assistant to respond in a consistent, readable format when asked about Kubernetes metadata, you might add the following **user-specific system prompt**:
+
+```
+<kubernetes_info>
+If asked about a Kubernetes pod, namespace, cluster, location, or owner, return the info in this format.  Use the field names to find the relevant information requested.  Don't mention the field names, just the results.
+- Pod: agent.name
+- Namespace: data_stream.namespace
+- Cluster Name: orchestrator.cluster.name
+- Owner: cloud.account.id
+</kubernetes_info>
+```
 
 ## Interact with the AI Assistant [obs-ai-interact]
 
