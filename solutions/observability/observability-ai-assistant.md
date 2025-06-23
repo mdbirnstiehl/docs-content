@@ -200,8 +200,7 @@ A user-specific prompt only applies to the user that sets it.
 
 To edit the **User-specific System Prompt**:
 
-1. To open AI Assistant settings, find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Under **{{obs-ai-assistant}}**, click **Manage settings**.
+1. Go to the **{{obs-ai-assistant}}** management page. You can find it in the **Management** menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Switch to the **Knowledge base** tab.
 4. Select **Edit User-specific Prompt**.
 
