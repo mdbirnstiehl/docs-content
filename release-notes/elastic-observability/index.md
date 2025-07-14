@@ -25,12 +25,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.0.4-fixes]
 
-* Fixes missing sparklines from dependency [#227211]({{kib-pull}}227211).
-* Available in stateful solution view if enabled [#226999]({{kib-pull}}226999).
-* Fixes response handling of get_apm_dependencies tool call [#226601]({{kib-pull}}226601).
-* Collapse *query tool calls [#226078]({{kib-pull}}226078).
-* Fixes Agent Explorer page [#225071]({{kib-pull}}225071).
-* Fixes broken EDOT JVM metrics dashboard when classic agent metrics are present [#224052]({{kib-pull}}224052).
+* Fixes missing sparklines in the Dependencies table in the APM UI [#227211]({{kib-pull}}227211).
+* Fixes legacy Uptime monitoring UI not showing when turned on [#226999]({{kib-pull}}226999).
+* Fixes response handling of `get_apm_dependencies` tool call [#226601]({{kib-pull}}226601).
+* Fixes query function calls when using Claude LLM [#226078]({{kib-pull}}226078).
+* Fixes Agent Explorer boundary errors  [#225071]({{kib-pull}}225071).
+* Fixes broken EDOT JVM metrics dashboard when classic APM agent metrics are present [#224052]({{kib-pull}}224052).
 
 ## 9.0.3 [elastic-observability-9.0.3-release-notes]
 
