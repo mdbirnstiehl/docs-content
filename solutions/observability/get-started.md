@@ -15,7 +15,7 @@ products:
 # Get started with Elastic {{observability}} [observability-get-started]
 
 ```{note}
-Use this guide to get started with the Observability Complete feature tier of {{obs-serverless}}. Refer to the [Logs Essentials getting started](/solutions/observability/get-started/logs-essentials.md) docs to get started with {{obs-serverless}} Logs Essentials. The [{{obs-serverless}} feature tiers](../observability-serverless-feature-tiers.md) page details the difference between tiers.
+Use this guide to get started with the Observability Complete feature tier of {{obs-serverless}}. Refer to the [Logs Essentials getting started](/solutions/observability/get-started/logs-essentials.md) docs to get started with {{obs-serverless}} Logs Essentials. The [{{obs-serverless}} feature tiers](/solutions/observability/observability-serverless-feature-tiers.md) page details the difference between tiers.
 ```
 
 New to Elastic {{observability}}? Discover more about our observability features and how to get started. The following instructions guides you through setting up your first Elastic {{observability}} deployment, collecting data from infrastructure and applications, and exploring your data.
