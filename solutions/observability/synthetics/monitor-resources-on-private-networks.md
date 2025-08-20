@@ -89,38 +89,6 @@ Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL 
 
 For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 
-:::{tab-set}
-:group: docker
-:::{tab-item} Latest
-:sync: latest
-
-```sh
-docker run \
-  --env FLEET_ENROLL=1 \
-  --env FLEET_URL={fleet_server_host_url} \
-  --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
-  --cap-add=NET_RAW \
-  --cap-add=SETUID \
-  --rm docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
-```
-:::
-
-:::{tab-item} Specific version
-:sync: specific
-
-```sh
-docker run \
-  --env FLEET_ENROLL=1 \
-  --env FLEET_URL={fleet_server_host_url} \
-  --env FLEET_ENROLLMENT_TOKEN={enrollment_token} \
-  --cap-add=NET_RAW \
-  --cap-add=SETUID \
-  --rm docker.elastic.co/elastic-agent/elastic-agent-complete:<SPECIFIC.VERSION.NUMBER>
-```
-You can download and install a specific version of the {{stack}} by replacing `<SPECIFIC.VERSION.NUMBER>` with the version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
-:::
-
-::::
 
 ```sh
 docker run \
