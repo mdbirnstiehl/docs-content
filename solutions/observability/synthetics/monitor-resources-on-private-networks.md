@@ -65,7 +65,7 @@ The `elastic-agent-complete` Docker image is the only way to have all available 
 
 To pull the Docker image run:
 
-:::{tab-set}
+::::{tab-set}
 :group: docker
 :::{tab-item} Latest
 :sync: latest
@@ -73,13 +73,16 @@ To pull the Docker image run:
 ```sh
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
+
 :::
 
 :::{tab-item} Specific version
 :sync: specific
+
 ```sh subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:<SPECIFIC.VERSION.NUMBER>
 ```
+
 You can download and install a specific version of the {{stack}} by replacing `<SPECIFIC.VERSION.NUMBER>` with the version number you want. For example, you can replace `<SPECIFIC.VERSION.NUMBER>` with {{version.stack.base}}.
 :::
 
