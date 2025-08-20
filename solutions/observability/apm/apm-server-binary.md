@@ -857,13 +857,13 @@ Obtaining APM Server for Docker is as simple as issuing a `docker pull` command 
 1. Pull the Docker image:
 
     ```shell
-    docker pull docker.elastic.co/apm/apm-server:{{version.stack}}
+    docker pull docker.elastic.co/apm/apm-server:9.0.0
     ```
 
     Alternately, you can use the hardened [Wolfi](https://wolfi.dev/) image:
 
     ```shell
-    docker pull docker.elastic.co/apm/apm-server-wolfi:{{version.stack}}
+    docker pull docker.elastic.co/apm/apm-server-wolfi:9.0.0
     ```
 
 1. Verify the Docker image:
