@@ -70,7 +70,7 @@ To pull the Docker image run:
 :::{tab-item} Latest
 :sync: latest
 
-```sh
+```shell subs=true
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:{{version.stack}}
 ```
 
@@ -93,7 +93,7 @@ Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL 
 For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 
 
-```sh
+```shell subs=true
 docker run \
   --env FLEET_ENROLL=1 \
   --env FLEET_URL={fleet_server_host_url} \
