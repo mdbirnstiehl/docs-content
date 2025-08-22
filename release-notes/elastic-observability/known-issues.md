@@ -22,7 +22,7 @@ Applies to: {{stack}}
 
 **Details**
 
-Users with Helm version 3.18.5 or later will experience the following error when using the [Kubernetes OpenTelemetry quickstart](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) onboarding flow:
+Users with Helm version 3.18.5 or later will see an error similar to the following when using the [Kubernetes OpenTelemetry quickstart](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) onboarding flow:
 
 ```
 Error: values don't meet the specifications of the schema(s) in the following chart(s):
@@ -34,7 +34,9 @@ opentelemetry-operator:
       - at '/properties/manager/properties/featureGates/examples': got string, want array
 ```
 
-For more information, check [Issue 1809](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/1809).
+For more information, check:
+* [Issue 232667](https://github.com/elastic/kibana/pull/232667)
+* [Issue 9535](https://github.com/elastic/elastic-agent/pull/9535)
 
 **Workaround**
 
