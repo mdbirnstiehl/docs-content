@@ -20,9 +20,9 @@ Known issues are significant defects or limitations that may impact your impleme
 :::{dropdown} Error when using the Kubernetes OpenTelemetry quickstart onboarding flow
 Applies to: {{stack}}
 
-**Impact**
+**Details**
 
-Users with Helm version 3.18.5 or later will experience the following error when using the [Kubernetes OpenTelemetry quickstart](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) onboarding flow.
+Users with Helm version 3.18.5 or later will experience the following error when using the [Kubernetes OpenTelemetry quickstart](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md) onboarding flow:
 
 ```
 Error: values don't meet the specifications of the schema(s) in the following chart(s):
