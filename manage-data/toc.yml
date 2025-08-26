@@ -99,9 +99,12 @@ toc:
       - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
+          - file: ingest/transform-enrich/ingest-lag.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md
+              - file: ingest/transform-enrich/readable-maintainable-ingest-pipelines.md
+              - file: ingest/transform-enrich/error-handling.md
           - file: ingest/transform-enrich/logstash-pipelines.md
           - file: ingest/transform-enrich/data-enrichment.md
             children:
