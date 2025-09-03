@@ -522,6 +522,7 @@ Anonymization has the following limitations:
 * **Performance (NER)**: Running an NER model can add latency depending on the request. To improve performance of the model, consider scaling up your ML nodes by adjusting deployment parameters: increase `number_of_allocations` for better throughput and `threads_per_allocation` for faster individual requests. For details, refer to [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment).
 * **Structured JSON**: The NER model we validated (`elastic/distilbert-base-uncased-finetuned-conll03-english`) is trained on natural English text and often misses entities inside JSON or other structured data. If thorough masking is required, prefer regex rules and craft them to account for JSON syntax.
 * **False negatives / positives**: No model or pattern is perfect. Model accuracy may vary depending on model and input.
+* **JSON malformation risk** {applies_to}`stack: removed 9.1.3`: Both NER inference and regex rules can potentially create malformed JSON when anonymizing JSON data such as function responses. This can occur by replacing text across character boundaries, which may break JSON structure causing the whole request to fail. If this occurs, you may need to adjust your regex pattern or disable the NER rule.
 
 
 ## Known issues [obs-ai-known-issues]
