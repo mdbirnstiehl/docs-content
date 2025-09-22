@@ -17,4 +17,4 @@ The **Editor** role or higher is required to create a failed docs rule using cus
 
 ::::
 
-Create a failed docs rule using the [custom threshold rule](../incident-management/create-custom-threshold-rule.md) to alert when the number of failed documents in your data stream reaches or exceeds a given value
+Create a failed docs rule using the [custom threshold rule](../incident-management/create-custom-threshold-rule.md) to alert when the number of failed documents in your data stream reaches or exceeds a given value.
