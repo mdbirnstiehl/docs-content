@@ -19,11 +19,16 @@ The **Editor** role or higher is required to create a failed docs rule using cus
 
 Create a failed docs rule using the [custom threshold rule](../incident-management/create-custom-threshold-rule.md) to alert when the number of failed documents in your data stream reaches or exceeds a given value.
 
+:::{image} /solutions/images/failed-docs-rule.png
+:alt: Create failed docs rule using the custom threshold rule type
+:screenshot:
+:::
+
 To create a failed docs rule:
 
 1. From the main menu, open the **Data Set Quality** page from **Management** → **Stack Management**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Find the data set you want to create a rule for in the table, and select **Open** from the **Actions** column.
-1. Select **Alerts** → **Create custom threshold rule**. If your space uses the the **Classic** solution view, you need to complete some extra steps after selecting **Alerts** before you continue. Refer to [](#observability-create-failed-docs-data-view).
+1. Select **Alerts** → **Create custom threshold rule**. If your space uses the the **Classic** solution view, you need to complete some extra steps after selecting **Alerts** before you continue. Refer to [Create a data view](#observability-create-failed-docs-data-view).
 1. Select **Add aggregation/field**.
 1. For your new aggregation, set **Aggregation type** to **Count** and **KQL Filter** to `_index : ".fs*"`.
 1. Select **Equation**, and set the equation to `(B / A) * 100`.
