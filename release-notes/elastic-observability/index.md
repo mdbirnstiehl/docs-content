@@ -26,7 +26,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-observability-9.1.5-fixes]
 
 * Removes incorrect `fleet.ssl` configuration [#236788]({{kib-pull}}236788).
-* Fixes malformed synthetics package policies [#236176]({{kib-pull}}236176)
+* Fixes malformed synthetics package policies [#236176]({{kib-pull}}236176).
 
 ## 9.1.4 [elastic-observability-9.1.4-release-notes]
 
