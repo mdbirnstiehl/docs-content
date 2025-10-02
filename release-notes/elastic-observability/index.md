@@ -27,6 +27,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Removes incorrect `fleet.ssl` configuration [#236788]({{kib-pull}}236788).
 * Fixes malformed synthetics package policies [#236176]({{kib-pull}}236176).
+* Reverts filter policy inputs [#236104]({{kib-pull}}236104).
+* Removes extra synthetics package policies [#235200]({{kib-pull}}235200).
 
 ## 9.1.4 [elastic-observability-9.1.4-release-notes]
 
