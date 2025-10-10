@@ -30,7 +30,7 @@ Select the appropriate tab for your setup, then follow the instructions to creat
 
 ::::{tab-set}
 
-:::{tab-item} Serverless and Observability view
+:::{tab-item} Serverless and Observability solution view
 1. From the main menu, open the **Data Set Quality** page from **Management** → **Stack Management**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Find the data set you want to create a rule for in the table, and select **Open** from the **Actions** column.
 1. Select **Alerts** → **Create custom threshold rule**.
