@@ -24,24 +24,27 @@ Create a failed docs rule using the [custom threshold rule](../incident-manageme
 :screenshot:
 :::
 
-To create a failed docs rule:
+When creating a failed docs rule, the process depends on your deployment type and your space's solution view. You can check your solution view by selecting the **Spaces** icon.
 
+Select the appropriate tab for your setup, then follow the instructions to create a failed docs rule:
+
+::::{tab-set}
+
+:::{tab-item} Serverless and Observability view
 1. From the main menu, open the **Data Set Quality** page from **Management** → **Stack Management**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Find the data set you want to create a rule for in the table, and select **Open** from the **Actions** column.
-1. Select **Alerts** → **Create custom threshold rule**. If your space uses the the **Classic** solution view, you need to complete some extra steps after selecting **Alerts** before you continue. Refer to [Create a data view](#observability-create-failed-docs-data-view).
+1. Select **Alerts** → **Create custom threshold rule**.
 1. Select **Add aggregation/field**.
 1. For your new aggregation, set **Aggregation type** to **Count** and **KQL Filter** to `_index : ".fs*"`.
 1. Select **Equation**, and set the equation to `(B / A) * 100`.
 1. Set **Is above** to `1.5`.
 1. Set the **Label** to `Failed docs`.
-1. Select **Next** to go to the **Details** menu.
-1. Set the **Rule name** to `Dataset quality` and add `failed_docs` to the **Tags**.
+1. Select **Next** to go to the **Details** step.
+1. Set the **Rule name** to `Data set quality` and add `failed_docs` to the **Tags**.
 1. Select **Create rule**.
+:::
 
-## Create a data view [observability-create-failed-docs-data-view]
-
-If your space uses the **Classic** solution view, you'll need to create a data view for your rule. After selecting **Alerts** in the previous section:
-
+:::{tab-item} Classic solution view
 1. Select **Manage rules and connectors**.
 1. Select **Create rule**, then **Custom threshold**.
 1. Select **Data view**, then **Create a data view**.
@@ -49,8 +52,17 @@ If your space uses the **Classic** solution view, you'll need to create a data v
 1. Name your data view.
 1. Add your index pattern with `::failures` appended. For example, `logs-synth.2-default,logs-synth.2-default::failures`.
 1. Select **Save data view to Kibana**.
+1. Select **Add aggregation/field**.
+1. For your new aggregation, set **Aggregation type** to **Count** and **KQL Filter** to `_index : ".fs*"`.
+1. Select **Equation**, and set the equation to `(B / A) * 100`.
+1. Set **Is above** to `1.5`.
+1. Set the **Label** to `Failed docs`.
+1. Select **Next** to go to the **Details** menu.
+1. Set the **Rule name** to `Data set quality` and add `failed_docs` to the **Tags**.
+1. Select **Create rule**.
+:::
 
-After saving your data view, follow the instructions in the previous section beginning with step 4 to finish creating your failed docs rule.
+::::
 
 ## Add actions [observability-create-failed-docs-alert-rule-add-actions]
 
