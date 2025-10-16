@@ -37,7 +37,7 @@ Select the appropriate tab for your setup, then follow the instructions to creat
 1. Select **Add aggregation/field**.
 1. For your new aggregation, set **Aggregation type** to **Count** and **KQL Filter** to `_index : ".fs*"`.
 1. Select **Equation**, and set the equation to `(B / A) * 100`.
-1. Set **Is above** to `1.5`.
+1. Set **Is above** to the desired threshold. For example, `1.5`.
 1. Set the **Label** to `Failed docs`.
 1. Select **Next** to go to the **Details** step.
 1. Set the **Rule name** to `Data set quality` and add `failed_docs` to the **Tags**.
@@ -50,12 +50,12 @@ Select the appropriate tab for your setup, then follow the instructions to creat
 1. Select **Data view**, then **Create a data view**.
 1. Find your data stream under **All sources**.
 1. Name your data view.
-1. Add your index pattern with `::failures` appended. For example, `logs-synth.2-default,logs-synth.2-default::failures`.
+1. Add your index pattern with `::failures` appended. For example, `logs-synth.2-default::data,logs-synth.2-default::failures`.
 1. Select **Save data view to Kibana**.
 1. Select **Add aggregation/field**.
 1. For your new aggregation, set **Aggregation type** to **Count** and **KQL Filter** to `_index : ".fs*"`.
 1. Select **Equation**, and set the equation to `(B / A) * 100`.
-1. Set **Is above** to `1.5`.
+1. Set **Is above** to the desired threshold. For example, `1.5`.
 1. Set the **Label** to `Failed docs`.
 1. Select **Next** to go to the **Details** menu.
 1. Set the **Rule name** to `Data set quality` and add `failed_docs` to the **Tags**.
