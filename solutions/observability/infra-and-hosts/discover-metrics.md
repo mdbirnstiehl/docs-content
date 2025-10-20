@@ -57,9 +57,10 @@ FROM metrics-index-1
 
 ## Metrics specific Discover options
 
-With your data loaded, you can use the metrics charts to:
+With your data loaded, use the metrics charts to:
 
 **Search for specific metrics**
+
 Use the search function to find and visualize specific metric data:
 
 :::{image} /solutions/images/explore-metrics-search.png
@@ -68,6 +69,7 @@ Use the search function to find and visualize specific metric data:
 :::
 
 **Break down metrics by dimension**
+
 Break down your metrics by dimension to find metrics containing those dimensions, and which values in those dimensions are contributing the most to each metric.
 
 :::{image} /solutions/images/explore-metrics-host-ip.png
@@ -76,6 +78,7 @@ Break down your metrics by dimension to find metrics containing those dimensions
 :::
 
 **Filter dimensions by a specific value**
+
 Select specific values to focus on within the dimension. You can select up to 10 values to filter your dimension by.
 
 :::{image} /solutions/images/explore-metrics-host-ip-values.png
@@ -84,4 +87,14 @@ Select specific values to focus on within the dimension. You can select up to 10
 :::
 
 **View metric charts in full screen**
+
 Select the {icon}`full_screen` to view the metric charts in full screen.
+
+### Actions
+
+* **Explore in Discover** ({icon}`app_discover`): Open Discover filtered to focus on that specific metric.
+* **Inspect** ({icon}`inspect`): Show details about the query request and response.
+* **View details** ({icon}`eye`): Get additional information about the metric.
+* **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
+* **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/cases.md).
+
