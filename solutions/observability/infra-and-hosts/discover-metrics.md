@@ -10,7 +10,7 @@ products:
 
 # Explore metrics data with Discover in Kibana
 
-**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features or default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates an grid of charts showing available metrics from your data. Use it to quickly search and filter metrics, break metrics down by dimension, access them using ES|QL, and add metrics to dashboards with a single click.
+**Discover** offers a dedicated experience for exploring metrics data. When **Discover** recognizes metrics data, it enables specific features and default behaviors to optimize your data exploration. Metrics-specific exploration in Discover automatically generates a grid of charts showing available metrics from your data. Use this view to quickly search and filter metrics, break metrics down by dimension, access them using ES|QL, and add metrics to dashboards with a single click.
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](../../../explore-analyze/discover.md).
 
@@ -22,7 +22,7 @@ If you're just getting started with **Discover** and want to learn its main prin
 ## Requirements
 
 ### Data recognition
-All data stored in `metrics-*` indices is by default recognized as metrics data, and triggers the **Discover** experience detailed on this page.
+By default, all data stored in `metrics-*` indices is recognized as metrics data and triggers the **Discover** experience described on this page.
 
 ### Required Kibana privileges
 
@@ -33,16 +33,15 @@ Viewing metrics data in **Discover** requires at least `read` privileges for:
 - **Index**
 - **Infrastructure**
 
-For more on assigning Kibana privileges, refer to the
-[Kibana privileges documentation](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+For more on assigning Kibana privileges, refer to the [Kibana privileges documentation](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ## Load metrics data
 
 :::{note}
-To visualize your data as metric charts, your metrics data stream needs to have its **Index mode** set to **Time series**. Find **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
+To visualize your data as metric charts, the metric's data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
 :::
 
-The dedicated metrics view is only available in ES|QL mode. Select **Try ES|QL** from the **Discover** main page.
+The dedicated metrics view is only available in ES|QL mode. From the **Discover** main page, select **Try ES|QL**.
 
 % not sure if the above is true, but wasn't able to access in classic view.
 
@@ -60,7 +59,7 @@ You can also query a specific index:
 FROM metrics-index-1
 ```
 
-## Metrics specific Discover options
+## Metrics-specific Discover options
 
 With your data loaded, use the metrics charts to:
 
@@ -75,7 +74,7 @@ Use the search function to find and visualize specific metric data:
 
 **Break down metrics by dimension**
 
-Break down your metrics by dimension to find metrics containing those dimensions, and which values in those dimensions are contributing the most to each metric.
+Break down your metrics by dimension to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
 
 :::{image} /solutions/images/explore-metrics-host-ip.png
 :alt: Screenshot of adding a dimension.
@@ -93,7 +92,7 @@ Select specific values to focus on within the dimension. You can select up to 10
 
 **View metric charts in full screen**
 
-Select the {icon}`full_screen` to view the metric charts in full screen.
+Select the {icon}`full_screen` to view the metric charts in full-screen mode.
 
 ### Actions
 
