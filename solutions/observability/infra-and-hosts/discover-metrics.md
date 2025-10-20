@@ -14,6 +14,11 @@ products:
 
 If you're just getting started with **Discover** and want to learn its main principles, you should get familiar with the [default experience](../../../explore-analyze/discover.md).
 
+:::{image} /solutions/images/explore-metrics-ui.png
+:alt: Screenshot of adding a dimension.
+:screenshot:
+:::
+
 ## Requirements
 
 ### Data recognition
