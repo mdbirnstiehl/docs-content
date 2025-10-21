@@ -83,7 +83,7 @@ Select specific values to focus on within the dimension. You can select up to 10
 
 **View metric charts in full screen**
 
-Select the full screen ({icon}`full_screen`) to view the metric charts in full-screen mode.
+Select full screen ({icon}`full_screen`) to view the metric charts in full-screen mode.
 
 ### Actions
 
