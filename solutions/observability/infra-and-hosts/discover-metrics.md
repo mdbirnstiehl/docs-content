@@ -26,12 +26,7 @@ By default, all data stored in a `metrics-*` index is recognized as metrics data
 
 ### Required Kibana privileges
 
-% need to check if there are required privileges for metrics.
-
-Viewing metrics data in **Discover** requires at least `read` privileges for:
-- **Discover**
-- **Index**
-- **Infrastructure**
+Viewing metrics data in **Discover** requires at least `read` privileges for **Discover**.
 
 For more on assigning Kibana privileges, refer to the [Kibana privileges documentation](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
@@ -41,22 +36,18 @@ For more on assigning Kibana privileges, refer to the [Kibana privileges documen
 To visualize your metrics data as charts, its data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
 :::
 
-The dedicated metrics view is only available in ES|QL mode. From the **Discover** main page, select **Try ES|QL**.
+The dedicated metrics view is only available in ES|QL mode. From the **Discover** main page, select **Try ES|QL** to open ES|QL mode.
 
-% not sure if the above is true, but wasn't able to access in classic view.
-
-Use the `FROM` command to select the data source.
-
-For example, the following query returns all of your metrics data:
+Use the `TS` command to select the data source. For example, the following query returns all of your metrics data:
 
 ```esql
-FROM metrics*
+TS metrics*
 ```
 
 You can also query a specific index:
 
 ```esql
-FROM metrics-index-1
+TS metrics-index-1
 ```
 
 ## Metrics-specific Discover options
