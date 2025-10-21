@@ -22,7 +22,7 @@ If you're just getting started with **Discover** and want to learn its main prin
 ## Requirements
 
 ### Data recognition
-By default, all data stored in `metrics-*` indices is recognized as metrics data and triggers the **Discover** experience described on this page.
+By default, all data stored in a `metrics-*` index is recognized as metrics data and triggers the **Discover** experience described on this page.
 
 ### Required Kibana privileges
 
@@ -38,14 +38,14 @@ For more on assigning Kibana privileges, refer to the [Kibana privileges documen
 ## Load metrics data
 
 :::{note}
-To visualize your data as metric charts, the metric's data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
+To visualize your metrics data as charts, its data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
 :::
 
 The dedicated metrics view is only available in ES|QL mode. From the **Discover** main page, select **Try ES|QL**.
 
 % not sure if the above is true, but wasn't able to access in classic view.
 
-Use the `FROM` command to identify the sources to get the data from.
+Use the `FROM` command to select the data source.
 
 For example, the following query returns all of your metrics data:
 
@@ -92,7 +92,7 @@ Select specific values to focus on within the dimension. You can select up to 10
 
 **View metric charts in full screen**
 
-Select the {icon}`full_screen` to view the metric charts in full-screen mode.
+Select the full screen ({icon}`full_screen`) to view the metric charts in full-screen mode.
 
 ### Actions
 
