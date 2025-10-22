@@ -31,8 +31,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
 * Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
 * Fixes `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
-* Fixes a bug with Synthetics alerting where a down monitor triggered recovered alerts when it shouldn't. [#237479]({{kib-pull}}237479).
-* Fixes the AI Assistant button tooltip by closing the tooltip when the button is not being hovered over[#237202]({{kib-pull}}237202).
+* Fixes a bug with Synthetics alerting where a down monitor triggered recovered alerts when it shouldn't [#237479]({{kib-pull}}237479).
+* Fixes the AI Assistant button tooltip by closing the tooltip when the button is not being hovered over [#237202]({{kib-pull}}237202).
 
 ## 9.1.5 [elastic-observability-9.1.5-release-notes]
 
