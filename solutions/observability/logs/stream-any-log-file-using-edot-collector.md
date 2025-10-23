@@ -1,5 +1,5 @@
 ---
-navigation_title: Stream any log file using OTel Collector
+navigation_title: Send any log file using OTel Collector
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-stream-edot.html
   - https://www.elastic.co/guide/en/serverless/current/observability-stream-log-files-edot.html
