@@ -385,9 +385,9 @@ To duplicate a shared conversation:
 
 #### Archive conversations
 
-The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** (({icon}`boxes_vertical`)) menu. Users can't continue or edit archived conversations.
+The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Users can't continue or edit archived conversations.
 
-To continue or edit an archived conversation, unarchive it by selecting **Unarchive** from the **Conversation actions** (({icon}`boxes_vertical`)) menu.
+To continue or edit an archived conversation, unarchive it by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
 
 ### Use contextual prompts [obs-ai-prompts]
 
