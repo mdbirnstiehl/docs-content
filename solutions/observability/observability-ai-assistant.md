@@ -361,6 +361,40 @@ Additional functions are available when your cluster has APM data:
 `get_apm_services_list`
 :   Get the list of monitored services, their health statuses, and alerts.
 
+#### Share conversations
+
+Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant.
+
+To share a conversation:
+
+1. Select the **Private** / **Shared** badge next to the conversation's title
+1. Use the dropdown menu to define the chat's visibility.
+
+:::{image} /solutions/images/obs-ai-assistant-shared-conversations.png
+:alt: AI Assistant chat with the sharing status dropdown open
+:screenshot:
+:::
+
+After sharing a conversation, you can copy its URL and send the link to your team:
+
+1. Open an AI Assistant chat.
+1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+1. Select **Copy URL**.
+
+When someone shares a chat with you, you can review it, but you can't continue the conversation. To continue the conversation where your colleague left off, duplicate the conversation.
+
+To duplicate a shared conversation:
+
+1. Open an AI Assistant chat.
+1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
+1. Select **Duplicate**.
+
+#### Archive conversations
+
+The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** (({icon}`boxes_vertical`)) menu. Users can't continue or edit archived conversations.
+
+To continue or edit an archived conversation, unarchive it by selecting **Unarchive** from the **Conversation actions** (({icon}`boxes_vertical`)) menu.
+
 ### Use contextual prompts [obs-ai-prompts]
 
 AI Assistant contextual prompts throughout {{observability}} provide the following information:
@@ -413,10 +447,6 @@ When the alert fires, contextual details about the event—such as when the aler
 :alt: AI Assistant conversation created in response to an alert
 :screenshot:
 :::
-
-::::{important}
-Conversations created by the AI Assistant are public and accessible to every user with permissions to use the assistant.
-::::
 
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
