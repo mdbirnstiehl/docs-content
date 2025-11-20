@@ -40,7 +40,7 @@ To set up or use AI assistant, you need the following:
 
 * An [LLM connector](/solutions/security/ai/set-up-connectors-for-large-language-models-llm.md)
 
-* (Optional) To use [knowledge base](#obs-ai-add-data): 
+* (Optional) To use [knowledge base](#obs-ai-add-data):
   - A 4 GB {{ml}} node
     :::{note}
     In {{ecloud}} or {{ece}}, if you have {{ml}} autoscaling enabled, {{ml}} nodes automatically start when using the knowledge base and AI Assistant. Therefore using these features incurs additional costs.
@@ -357,9 +357,9 @@ Additional functions are available when your cluster has APM data:
 
 #### Share conversations
 
-Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant.
+Conversations that you start with AI Assistant are private by default and not visible to other users in the space. Sharing conversations lets everyone in the space see what you've already asked or learned, making it easier to collaborate.
 
-To share a conversation:
+To change the visibility of a conversation:
 
 1. Select the **Private** / **Shared** badge next to the conversation's title
 1. Use the dropdown menu to define the chat's visibility.
@@ -377,7 +377,7 @@ After sharing a conversation, you can copy its URL and send the link to your tea
 
 When someone shares a chat with you, you can review it, but you can't continue the conversation. To continue the conversation where your colleague left off, duplicate the conversation.
 
-To duplicate a shared conversation:
+To duplicate a conversation:
 
 1. Open an AI Assistant chat.
 1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
@@ -385,9 +385,7 @@ To duplicate a shared conversation:
 
 #### Archive conversations
 
-The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Users can't continue or edit archived conversations.
-
-To continue or edit an archived conversation, unarchive it by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
+The owner of a conversation can archive it by selecting **Archive** from the **Conversation actions** ({icon}`boxes_vertical`) menu. Once archived, a conversation can't be continued or edited unless it is unarchived. Unarchive a conversation by selecting **Unarchive** from the **Conversation actions** ({icon}`boxes_vertical`) menu.
 
 ### Use contextual prompts [obs-ai-prompts]
 
