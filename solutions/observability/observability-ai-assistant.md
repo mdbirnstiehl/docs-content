@@ -367,7 +367,7 @@ Conversations that you start with AI Assistant are private by default and not vi
 To change the visibility of a conversation:
 
 1. Select the **Private** / **Shared** badge next to the conversation's title
-1. Use the dropdown menu to define the chat's visibility.
+1. Use the dropdown menu to define the conversation's visibility.
 
 :::{image} /solutions/images/obs-ai-assistant-shared-conversations.png
 :alt: AI Assistant chat with the sharing status dropdown open
@@ -380,7 +380,7 @@ After sharing a conversation, you can copy its URL and send the link to your tea
 1. Open the **Conversation actions** ({icon}`boxes_vertical`) menu.
 1. Select **Copy URL**.
 
-When someone shares a chat with you, you can review it, but you can't continue the conversation. To continue the conversation where your colleague left off, duplicate the conversation.
+When someone shares a chat with you, you can view it, but you can't edit or continue the conversation. To continue the conversation where your colleague left off, duplicate the conversation.
 
 To duplicate a conversation:
 
