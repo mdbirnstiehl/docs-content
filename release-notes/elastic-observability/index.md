@@ -24,7 +24,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.2.2 [elastic-observability-9.2.2-release-notes]
 
 ### Features and enhancements [elastic-observability-9.2.2-features-enhancements]
-* Adds new sub-feature privileges for Synthetics global parameters. [#243821]({{kib-pull}}243821).
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
 
 ### Fixes [elastic-observability-9.2.2-fixes]
 * Fixes issue with the `Authorization` header when  making calls through the {{kib}} tool [#244017]({{kib-pull}}244017).
