@@ -79,7 +79,7 @@ If the user should be able to create and update monitors using [projects](/solut
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_security` | Allows access to all security-related operations such as CRUD operations on users and roles and cache clearing. |
 | [Cluster](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster) | `manage_api_key` | Allows access to all security-related operations on {{es}} API keys. |
 
-### Allow users to view global parameter values
+### To allow users to view global parameter values
 
 ```{applies_to}
 stack: ga 9.1
