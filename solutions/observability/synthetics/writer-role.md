@@ -92,4 +92,4 @@ To add the **Can read global parameter values** {{kib}} privilege to a role:
 
 1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
 2. Turn on **Customize sub-feature privileges**.
-3. Select **Can read global parameter values**.
+3. Turn on **Can read global parameter values**.

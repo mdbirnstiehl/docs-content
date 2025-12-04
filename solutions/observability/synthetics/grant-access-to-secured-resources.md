@@ -12,8 +12,6 @@ products:
 
 # Grant users access to secured resources [observability-synthetics-feature-roles]
 
-You can use role-based access control to grant users access to secured resources. The roles that you set up depend on your organization’s security requirements and the minimum privileges required to use specific features.
-
 ::::{tab-set}
 :group: stack-serverless
 
@@ -60,11 +58,11 @@ Read more about user roles in [Assign user roles and privileges](/deploy-manage/
 
 ::::
 
-## Allow users to view global parameter values
+### Allow users to view global parameter values [observability-synthetics-view-global-params]
 
 ```{applies_to}
 stack: ga 9.1
 serverless: ga
 ```
 
-By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-parameters).
+By default, users with custom roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-parameters).
