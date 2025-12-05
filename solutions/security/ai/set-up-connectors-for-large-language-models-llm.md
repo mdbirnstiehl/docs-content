@@ -19,6 +19,11 @@ products:
 Different LLMs have varying performance when used to power different features and use-cases. For more information about how various models perform on different tasks in {{elastic-sec}}, refer to the [Large language model performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
 :::
 
+## Elastic Managed LLM
+
+:::{include} ../../_snippets/elastic-managed-llm.md
+:::
+
 ## Connect to a third-party LLM
 
 Follow these guides to connect to one or more third-party LLM providers:
@@ -28,11 +33,23 @@ Follow these guides to connect to one or more third-party LLM providers:
 * [OpenAI](/solutions/security/ai/connect-to-openai.md)
 * [Google Vertex](/solutions/security/ai/connect-to-google-vertex.md)
 
-## Connect to a custom local LLM
+## Connect to a self-managed LLM
 
-You can [connect to LM Studio](/solutions/security/ai/connect-to-own-local-llm.md) to use a custom LLM deployed and managed by you.
+The following guides describe how to connect to a custom LLM deployed and managed by you:
 
+- For production environments or air-gapped environments, you can [connect to vLLM](/solutions/security/ai/connect-to-vLLM.md).
+- For experimental deployments, you can [connect to LM Studio](/solutions/security/ai/connect-to-own-local-llm.md).
 
+## Preconfigured connectors
+
+```{applies_to}
+stack: ga 9.0
+serverless: unavailable
+```
+
+You can use [preconfigured connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md) to set up a third-party LLM connector. 
+
+If you use a preconfigured connector for your LLM connector we recommend you add the `exposeConfig: true` parameter within the `xpack.actions.preconfigured` section of the `kibana.yml` config file. This parameter makes debugging easier by adding configuration information to the debug logs, including which large language model the connector uses.
 
 
 

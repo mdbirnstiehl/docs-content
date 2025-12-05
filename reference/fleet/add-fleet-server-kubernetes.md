@@ -138,7 +138,7 @@ A {{fleet-server}} is an {{agent}} that is enrolled in a {{fleet-server}} policy
 ::::{tip}
 If you already have a {{fleet}} policy with the {{fleet-server}} integration, you know its ID, and you know how to generate an [{{es}} service token](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) for the {{fleet-server}}, skip directly to [{{fleet-server}} installation](#add-fleet-server-kubernetes-install).
 
-Also note that the `service token` required by the {{fleet-server}} is different from the `enrollment tokens` used by {{agent}}s to enroll to {{fleet}}.
+The `service token` required by the {{fleet-server}} is different from the `enrollment tokens` used by {{agent}}s to enroll to {{fleet}}.
 
 ::::
 
@@ -336,7 +336,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
+            image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"
@@ -422,7 +422,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
           automountServiceAccountToken: false
           containers:
           - name: elastic-agent
-            image: docker.elastic.co/beats/elastic-agent:{{stack-version}}
+            image: docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
             env:
               - name: FLEET_SERVER_ENABLE
                 value: "true"
