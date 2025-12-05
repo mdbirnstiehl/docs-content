@@ -15,7 +15,7 @@ Manage log data retention in the following ways:
 * [Manage data retention using Streams](#logs-data-retention-streams)
 * [Store logs in data streams](#logs-data-retention-data-streams)
 * [Customize the built-in `logs@lifecycle` policy](#logs-data-retention-data-streams)
-* [Automate rollover based on log volume](logs-data-retention-automate-rollover)
+* [Automate rollover based on log volume](#logs-data-retention-automate-rollover)
 * [Inspect and manage {{ilm-init}} policies using the {{ilm-init}} API](#logs-data-retention-ilm-api)
 
 ## Manage data retention using Streams [logs-data-retention-streams]
