@@ -52,9 +52,7 @@ Refer to the **[Customize built-in policies tutorial](../../../manage-data/lifec
 
 When continuously indexing timestamped documents, you need to periodically roll over to a new index to ensure that backing indices stay within optimal size and performance limits.
 
-% any logs specific limits or recommendations?
-
-Refer to the [Automate rollover tutorial](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) for more information.
+Refer to the [Automate rollover tutorial](../../../manage-data/lifecycle/index-lifecycle-management/ilm-tutorials.md) for more information.
 
 ## Use the {{ilm-init}} API [logs-data-retention-ilm-api]
 
