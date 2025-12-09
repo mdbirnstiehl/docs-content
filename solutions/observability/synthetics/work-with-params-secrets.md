@@ -48,6 +48,26 @@ From any page in the Synthetics UI:
 :screenshot:
 :::
 
+### Allow users to view global parameter values
+
+```{applies_to}
+stack: ga 9.1
+serverless: ga
+```
+
+By default, custom user roles do not have access to global parameter values. Administrators can grant read access to global parameters by adding the Synthetics **Can read global parameter values** {{kib}} privilege to a role. When added, users can view a global parameter value using the [**Get parameters** API](https://www.elastic.co/docs/api/doc/kibana/operation/operation-get-parameters) or by selecting the **show value** ({icon}`eye`) icon.
+
+To add the **Can read global parameter values** {{kib}} privilege to a role:
+
+1. Go to the **Roles** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Edit an existing role or select **Create role**.
+1. From the **Kibana** section, select **Add Kibana privilege**.
+1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
+2. Turn on **Customize sub-feature privileges**.
+3. Turn on **Can read global parameter values**.
+
+Refer to [Defining roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) for more on creating custom roles.
+
 ### Synthetics project config file [synthetics-dynamic-configs]
 
 Use a `synthetics.config.js` or `synthetics.config.ts` file to define variables required by your tests. This file should be placed in the root of your Synthetics project.
