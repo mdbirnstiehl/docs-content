@@ -140,7 +140,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ### Fixes [elastic-observability-9.1.10-fixes]
-* Fixes validation error with maintenance windows on lightweight synthetics monitors [#247880]({{kib-pull}}247880).
+* Fixes validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
 * Fixes related dashboards for ES Query and other stack rules supported in Observability [#247564]({{kib-pull}}247564).
 * Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
 * Fixes Agent from interpreting JS template literals as policy variables [#247284]({{kib-pull}}247284).
