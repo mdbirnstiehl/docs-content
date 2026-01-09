@@ -145,6 +145,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes console state persisting across journey steps [#247376]({{kib-pull}}247376).
 * Fixes Agent from interpreting JS template literals as policy variables [#247284]({{kib-pull}}247284).
 * Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist[#246088]({{kib-pull}}246088).
+* Fixes trace links to correctly calculate date range [#247531]({{kib-pull}}247531).
 
 ## 9.1.9 [elastic-observability-9.1.9-release-notes]
 
