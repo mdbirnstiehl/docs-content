@@ -21,12 +21,12 @@ Applies to: {{stack}}
 
 **Details**
 
-When upgrading to an affected version, {{kib}} may unintentionally delete package policies for Synthetics **project monitors** during package policy cleanup. In deployments with a large number of project monitors (for example, around 10,000+ package policies in a single space), attempts to recreate deleted policies can fail and leave your instance in a broken state.
+When upgrading to an affected version, {{kib}} may unintentionally delete package policies for Synthetics project monitors during package policy cleanup. In deployments with many project monitors (10,000+ package policies in a single space), attempts to recreate deleted policies can fail and leave your instance in a broken state.
 
 For more information, check [#248762](https://github.com/elastic/kibana/pull/248762).
 
 **Workaround**<br>
-Trigger package policy recreation by making a dummy update to the affected project monitors (for example, add a tag). Alternatively, make a dummy edit to the private location configuration to trigger recreation.
+Trigger package policy recreation by making a dummy update to the affected project monitors (for example, add a tag). Alternatively, trigger recreation by making a dummy edit to the private location configuration.
 
 :::
 
