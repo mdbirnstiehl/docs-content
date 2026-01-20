@@ -34,7 +34,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds support for `geo_point` fields to classic streams [#244356]({{kib-pull}}244356).
 * Allows users to add custom description for processors [#243998]({{kib-pull}}243998).
 * Adds a tour of the Streams UI [#244808]({{kib-pull}}244808).
-* Adds a message to inform users when a stream is missing [#244366]({{kib-pull}}244366).
+* Adds a message to tell users when a stream is missing [#244366]({{kib-pull}}244366).
 * Prevents conflicts in **Processing** tab when editing and reordering streams [#244228]({{kib-pull}}244228).
 * Adds field type icons to the **Processing** UI [#242134]({{kib-pull}}242134), [#241825]({{kib-pull}}241825).
 * Adds timezone and locale parameters to Streamlang [#241369]({{kib-pull}}241369).
@@ -43,7 +43,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds autoscroll to **Review partitioning suggestions** panels [#242891]({{kib-pull}}242891).
 * Hides document match filter controls in the processing preview for users without manage privileges [#242119]({{kib-pull}}242119).
 * Adds messaging to show nested processors and conditions [#240778]({{kib-pull}}240778).
-* Allows users toy to bulk mute and unmute alerts [#245690]({{kib-pull}}245690).
+* Allows users to bulk mute and unmute alerts [#245690]({{kib-pull}}245690).
 * Adds a **Find Alert Rule Templates** API that shows installed templates in the **Create new rule** modal [#245373]({{kib-pull}}245373).
 * Adds a unified rules list [#242208]({{kib-pull}}242208).
 * Adds **View in discover** button to alert details for Infrastructure rules [#236880]({{kib-pull}}236880).
@@ -98,7 +98,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
 * Fixes Elastic Agent from interpreting JS template literals as policy variables  [#247284]({{kib-pull}}247284).
 * Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
-* Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
+* Turns off max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
 * Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
 * Fixes the icon in the "Elastic documentation not available" callout in AI Assistant settings [#247885]({{kib-pull}}247885).
 * Fixes issue with the `Authorization` header when  making calls through the {{kib}} tool [#244017]({{kib-pull}}244017).
