@@ -21,6 +21,107 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.3.0 [elastic-observability-9.3.0-release-notes]
+
+### Features and enhancements [elastic-observability-9.3.0-features-enhancements]
+
+* Adds the math, replace, drop, and convert processors [#246050]({{kib-pull}}246050), [#242310]({{kib-pull}}242310), [#242161]({{kib-pull}}242161), [#240023]({{kib-pull}}240023).
+* Adds **Suggest ingest pipeline** feature [#243950]({{kib-pull}}243950).
+* Enforces field name spacing in wired streams and detects type mismatches in processor configurations [#244221]({{kib-pull}}244221).
+* Allows users to configure Streams visibility on a space-by-space basis [#244285]({{kib-pull}}244285).
+* Adds AI pattern suggestions for the Streams dissect processor [#242377]({{kib-pull}}242377).
+* Improves processing warnings with truncation logic and wrapped text [#239188]({{kib-pull}}239188).
+* Adds support for `geo_point` fields to classic streams [#244356]({{kib-pull}}244356).
+* Allows users to add custom description for processors [#243998]({{kib-pull}}243998).
+* Adds a tour of the Streams UI [#244808]({{kib-pull}}244808).
+* Adds a message to inform users when a stream is missing [#244366]({{kib-pull}}244366).
+* Prevents conflicts in **Processing** tab when editing and reordering streams [#244228]({{kib-pull}}244228).
+* Adds field type icons to the **Processing** UI [#242134]({{kib-pull}}242134), [#241825]({{kib-pull}}241825).
+* Adds timezone and locale parameters to Streamlang [#241369]({{kib-pull}}241369).
+* Adds an empty state for **Processing** tab when no data is available [#244893]({{kib-pull}}244893).
+* Adds specific error messaging to the Streams schema editor when expensive queries are turned off [#243406]({{kib-pull}}243406).
+* Adds autoscroll to **Review partitioning suggestions** panels [#242891]({{kib-pull}}242891).
+* Hides document match filter controls in the processing preview for users without manage privileges [#242119]({{kib-pull}}242119).
+* Adds messaging to show nested processors and conditions [#240778]({{kib-pull}}240778).
+* Allows users toy to bulk mute and unmute alerts [#245690]({{kib-pull}}245690).
+* Adds a **Find Alert Rule Templates** API that shows installed templates in the **Create new rule** modal [#245373]({{kib-pull}}245373).
+* Adds a unified rules list [#242208]({{kib-pull}}242208).
+* Adds **View in discover** button to alert details for Infrastructure rules [#236880]({{kib-pull}}236880).
+* Adds new pre-configured connectors and updates existing ones [#242791]({{kib-pull}}242791).
+* Allows users to view and filter by manually added workflow tags [#244251]({{kib-pull}}244251).
+* Shows alert workflow tags on the **Overview** tab of the alert details flyout [#246440]({{kib-pull}}246440).
+* Adds a warning when deleting API keys currently in use by alerting rules [#243353]({{kib-pull}}243353).
+* Adds options for metric threshold alerts when there's no data [#247669]({{kib-pull}}247669).
+* Allows users to configure custom global ingest pipelines on SLO rollup data [#245025]({{kib-pull}}245025).
+* Adds index sorting to SLI index settings [#244978]({{kib-pull}}244978).
+* Allows users to view the SLO associated with a burn rate rule from the rule details page [#240535]({{kib-pull}}240535).
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821)..
+* Adds **Edit tags** to alert actions [#243792]({{kib-pull}}243792).
+* Adds the **ELSER in EIS** model option for the Observability and Search AI Assistant Knowledge Base [#243298]({{kib-pull}}243298).
+* Removes the `AI Assistants Settings` privilege [#239144]({{kib-pull}}239144).
+* Adds Observability tools for log and metric change point analysis [#242423]({{kib-pull}}242423).
+* Adds `isStream` parameter to the `chat/complete` endpoint to support non-streaming responses [#240819]({{kib-pull}}240819).
+* Adds `.integration_knowledge*` system index [#237085]({{kib-pull}}237085).
+* Updates Observability Serverless side navigation [#235984]({{kib-pull}}235984).
+
+
+### Fixes [elastic-observability-9.3.0-fixes]
+
+* Decouples Streams AI features from the AI Assistant [#242019]({{kib-pull}}242019).
+* Fixes the simulation of geo points [#241824]({{kib-pull}}241824).
+* Fixes processing field name autocomplete that wasn't working on new fields [#246934]({{kib-pull}}246934).
+* Turns off geopoint mapping in the processing preview [#245506]({{kib-pull}}245506).
+* Fixes manual ingest pipeline script validation [#245439]({{kib-pull}}245439).
+* Fixes cell actions populating as undefined with empty cells [#243766]({{kib-pull}}243766).
+* Removes mentions of template snippets (mustache templates) from descriptions [#243656]({{kib-pull}}243656).
+* Speeds up field simulation [#241313]({{kib-pull}}241313).
+* Fixes child stream input validation [#242581]({{kib-pull}}242581).
+* Fixes invalid state for wired streams toggle [#241266]({{kib-pull}}241266).
+* Fixes wrapping issues in AI suggestions [#240883]({{kib-pull}}240883).
+* Fixes related dashboards for ES Query and other stack rules supported in observability [#247564]({{kib-pull}}247564).
+* Fixes default alerts flow when default rules are not defined [#245736]({{kib-pull}}245736).
+* Adds managed field to `dataViewSpecSchema` [#244134]({{kib-pull}}244134).
+* Fixes empty **Related dashboards** meu when linking dashboards to a rule [#243496]({{kib-pull}}243496).
+* Prevents default alerts from being created when connectors are not defined [#237504]({{kib-pull}}237504).
+* Copies alert states to payload [#240411]({{kib-pull}}240411).
+* Replaces metric names inside filter values [#238849]({{kib-pull}}238849).
+* Reverts show transform errors across all SLO pages [#243013]({{kib-pull}}243013).
+* Reverts fix issue where filters do not apply to overview stats [#242978]({{kib-pull}}242978).
+* Fixes inconsistent browser back button behavior on SLO page [#242761]({{kib-pull}}242761).
+* Fixes layout of the **SLO management** page filters [#239418]({{kib-pull}}239418).
+* Excludes stale SLOs from "group by" stats [#240077]({{kib-pull}}240077).
+* Fixes alerts being incorrectly triggered when a monitor is down [#237479]({{kib-pull}}237479).
+* Creates default rules when creating or editing a monitor, not from navigation-based events [#245441]({{kib-pull}}245441).
+* Uses monitor query id for project monitors package policies [#248762]({{kib-pull}}248762).
+* Fixes duplicate test results on monitor status heatmap [#248761]({{kib-pull}}248761).
+* Fixes validation error with maintenance windows on lightweight Synthetics monitors [#247880]({{kib-pull}}247880).
+* Fixes console state from persisting across journey steps [#247376]({{kib-pull}}247376).
+* Fixes Elastic Agent from interpreting JS template literals as policy variables  [#247284]({{kib-pull}}247284).
+* Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
+* Disables max attempts for the private locations sync task [#237784]({{kib-pull}}237784).
+* Fixes creating and updating private location monitors [#238326]({{kib-pull}}238326).
+* Fixes the icon in the "Elastic documentation not available" callout in AI Assistant settings [#247885]({{kib-pull}}247885).
+* Fixes issue with the `Authorization` header when  making calls through the {{kib}} tool [#244017]({{kib-pull}}244017).
+* Updates system prompt title for generic deployments [#243266]({{kib-pull}}243266).
+* Fixes the AI Assistant button tooltip from persisting when not being hovered over [#237202]({{kib-pull}}237202).
+* Fixes error when the AI Assistant is off [#238811]({{kib-pull}}238811).
+* Fixes Knowledge base model label in the AI Assistant settings [#239824]({{kib-pull}}239824).
+* Fixes Kibana tool from failing when using a proxy [#236653]({{kib-pull}}236653).
+* Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
+* Fixes error handling for tool response [#241425]({{kib-pull}}241425).
+* Fixes **AI Assistant visibility** setting syncing issues [#239555]({{kib-pull}}239555).
+* Fixes ES|QL query execution timeout issues[#238200]({{kib-pull}}238200).
+* Fixes handling of missing `error.id` [#243638]({{kib-pull}}243638).
+* Hides non-trace services in **Service Inventory** and **Service Ma**p [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
+* Fixes missing spans in discover traces view [#247689]({{kib-pull}}247689).
+* Fixes onboarding issues [#246208]({{kib-pull}}246208).
+* Adds **Background Search** to the ECH Observability navigation menu [#237494]({{kib-pull}}237494).
+* Aligns **Members** link across solutions [#240992]({{kib-pull}}240992).
+* Fixes icon colors for navigation menu [#237970]({{kib-pull}}237970).
+* Fixes gap while loading data [#238879]({{kib-pull}}238879).
+* Fixes **Dataset Quality** flyout rendering [#237840]({{kib-pull}}237840).
+
+
 ## 9.2.4 [elastic-observability-9.2.4-release-notes]
 
 
