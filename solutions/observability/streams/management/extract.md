@@ -9,10 +9,11 @@ After selecting a stream, use the **Processing** tab to add [processors](#stream
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
-The **Processing** tab also:
+The **Processing** tab can also:
 
-- Simulates your processors and provides an immediate [preview](#streams-preview-changes) that's tested end to end
-- Flags indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
+- {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`[Generate pipeline suggestions](streams-generate-pipeline-suggestions)
+- Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end
+- Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
 
 After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
@@ -64,9 +65,24 @@ Refer to individual [supported processors](#streams-extract-processors) for more
 Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
 :::
 
-### Add conditions [streams-add-processor-conditions]
+## Generate pipeline suggestions [streams-generate-pipeline-suggestions]
+```{applies_to}
+stack: preview 9.3+
+serverless: preview
+```
 
-You can add conditions to processors so they only run on data that meets those conditions. Each condition is a boolean expression that's evaluated for every document.
+Instead of creating pipelines manually, you can have AI generate pipeline suggestions for you. To do this:
+
+1. From the **Processing** tab, select **Suggest a pipeline**.
+1. Review the suggested processors, and, if everything looks good, select **Accept**.
+
+### How does **Suggest a pipeline** work? [streams-pipeline-generation]
+:::{include} _snippets/streams-suggestions.md
+:::
+
+## Add conditions [streams-add-processor-conditions]
+
+You can add conditions, boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
 
 To add a condition:
 
@@ -93,7 +109,7 @@ Streams processors support the following comparators:
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
 
-### Preview changes [streams-preview-changes]
+## Preview changes [streams-preview-changes]
 
 After you create processors, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
 
@@ -114,11 +130,11 @@ If you edit the stream after saving your changes, keep the following in mind:
 - Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
 - Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
-### Ignore failures [streams-ignore-failures]
+## Ignore failures [streams-ignore-failures]
 
 Each processor has the **Ignore failures** option. When enabled, document processing continues when even if the processor fails.
 
-### Ignore missing fields [streams-ignore-missing-fields]
+## Ignore missing fields [streams-ignore-missing-fields]
 
 Dissect, grok, and rename processors include the **Ignore missing fields** option. When enabled, document processing continues even if a source field is missing.
 
@@ -145,7 +161,7 @@ Streams displays failures at the bottom of the process editor. Some failures mig
 :screenshot:
 :::
 
-### Mapping conflicts [streams-processing-mapping-conflicts]
+## Mapping conflicts [streams-processing-mapping-conflicts]
 
 As part of processing, Streams simulates your changes end to end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
 
