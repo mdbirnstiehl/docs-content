@@ -41,8 +41,12 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds an empty state for **Processing** tab when no data is available [#244893]({{kib-pull}}244893).
 * Adds specific error messaging to the Streams schema editor when expensive queries are turned off [#243406]({{kib-pull}}243406).
 * Adds autoscroll to **Review partitioning suggestions** panels [#242891]({{kib-pull}}242891).
+* Adds space ownership validation for unlink operations, preventing users from unlinking attachments that belong to a different space [#245250]({{kib-pull}}245250).
+* Improves Streams attachment filters with multi-type selection, server-side filtering, and suggestions limit [#245248]({{kib-pull}}245248).
+* Adds details flyout and improved UX to the Streams attachment feature [#244880]({{kib-pull}}244880).
 * Hides document match filter controls in the processing preview for users without manage privileges [#242119]({{kib-pull}}242119).
 * Adds messaging to show nested processors and conditions [#240778]({{kib-pull}}240778).
+* Adds abort capabilities and silent mode when generating stream descriptions [#247082]({{kib-pull}}247082).
 * Allows users to bulk mute and unmute alerts [#245690]({{kib-pull}}245690).
 * Adds a **Find Alert Rule Templates** API that shows installed templates in the **Create new rule** modal [#245373]({{kib-pull}}245373).
 * Adds a unified rules list [#242208]({{kib-pull}}242208).
@@ -55,19 +59,33 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Allows users to configure custom global ingest pipelines on SLO rollup data [#245025]({{kib-pull}}245025).
 * Adds index sorting to SLI index settings [#244978]({{kib-pull}}244978).
 * Allows users to view the SLO associated with a burn rate rule from the rule details page [#240535]({{kib-pull}}240535).
-* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821)..
+* Adds SLO attachments and migrates UI to attachments API [#244092]({{kib-pull}}244092).
+* Adds new sub-feature privileges for Synthetics global parameters [#243821]({{kib-pull}}243821).
+* Adds badge sync to **Trace timeline** [#246510]({{kib-pull}}246510).
+* Adds errors to **Trace timeline** [#245161]({{kib-pull}}245161).
+* Replaces current document count chart with RED metrics [#236635]({{kib-pull}}236635).
+* Adds **Span links** badge to **Trace timeline** [#244389]({{kib-pull}}244389).
+* Adds `deactivate_all_instrumentations`, `deactivate_instrumentations`, `send_logs`, `send_metrics`, and `send_traces` agent configuration settings for EDOT PHP [#246021]({{kib-pull}}246021).
+* Adds dashboard suggestions for **ECS**, **K8s**, and **OTel** dashboards when selecting **Pods** in Infra Inventory UI [#245784]({{kib-pull}}245784).
+* Ensures Infra Inventory UIs reflect supported schemas [#244481]({{kib-pull}}244481).
+* Adds metrics dashboard for non-EDOT agents in the OTEL native ingestion path [#236978]({{kib-pull}}236978).
+* Adds `sampling_rate` central configuration to EDOT PHP [#241908]({{kib-pull}}241908).
+* Adds `opamp_polling_interval` and `sampling_rate` central configuration to EDOT Node.js [#241048]({{kib-pull}}241048).
 * Adds **Edit tags** to alert actions [#243792]({{kib-pull}}243792).
 * Adds the **ELSER in EIS** model option for the Observability and Search AI Assistant Knowledge Base [#243298]({{kib-pull}}243298).
 * Removes the `AI Assistants Settings` privilege [#239144]({{kib-pull}}239144).
 * Adds Observability tools for log and metric change point analysis [#242423]({{kib-pull}}242423).
 * Adds `isStream` parameter to the `chat/complete` endpoint to support non-streaming responses [#240819]({{kib-pull}}240819).
 * Adds `.integration_knowledge*` system index [#237085]({{kib-pull}}237085).
+* Adds **Similar errors** section with Occurrences chart [#244665]({{kib-pull}}244665).
 * Updates Observability Serverless side navigation [#235984]({{kib-pull}}235984).
 
 
 ### Fixes [elastic-observability-9.3.0-fixes]
 
 * Decouples Streams AI features from the AI Assistant [#242019]({{kib-pull}}242019).
+* Fixes stale query value being used when saving significant events and adds debouncing to preview chart [#249833]({{kib-pull}}249833).
+* Taking bulk actions on Streams features now requires the `manage` permission [#246129]({{kib-pull}}246129).
 * Fixes the simulation of geo points [#241824]({{kib-pull}}241824).
 * Fixes processing field name autocomplete that wasn't working on new fields [#246934]({{kib-pull}}246934).
 * Turns off geopoint mapping in the processing preview [#245506]({{kib-pull}}245506).
@@ -110,10 +128,39 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping components in the Observability AI Assistant flyout on small screens [#241026]({{kib-pull}}241026).
 * Fixes error handling for tool response [#241425]({{kib-pull}}241425).
 * Fixes **AI Assistant visibility** setting syncing issues [#239555]({{kib-pull}}239555).
+* Updates the AI agent used for Observability AI insights [#249776]({{kib-pull}}249776).
+* Fixes alias resolution when checking lock index mappings [#244559]({{kib-pull}}244559).
+* Adds `maxQueue` backpressure to anonymization regex worker pool [#249108]({{kib-pull}}249108).
 * Fixes ES|QL query execution timeout issues[#238200]({{kib-pull}}238200).
 * Fixes handling of missing `error.id` [#243638]({{kib-pull}}243638).
-* Hides non-trace services in **Service Inventory** and **Service Ma**p [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
+* Hides non-trace services in **Service Inventory** and **Service Map** [#241080]({{kib-pull}}241080), [#240104]({{kib-pull}}240104).
+* Updates `useAnyOfApmParams` to include mobile services [#237500]({{kib-pull}}237500).
+* Fixes dependencies and service map for `txn == exit-span` use cases [#235392]({{kib-pull}}235392).
+* Fixes AI insights with fallback message fields [#243437]({{kib-pull}}243437).
+* Fixes missing service environment in custom links [#248631]({{kib-pull}}248631).
+* Updates the **Open in Discover** query in the **Related logs** section of the **Overview** tab [#240409]({{kib-pull}}240409).
 * Fixes missing spans in discover traces view [#247689]({{kib-pull}}247689).
+* Fixes **Trace timeline** tests [#247252]({{kib-pull}}247252).
+* Fixes traces duplicate spans in Discover [#244984]({{kib-pull}}244984).
+* Fixes trace links calculating date range incorrectly [#247531]({{kib-pull}}247531).
+* Fixes error rate chart warning on first load [#247052]({{kib-pull}}247052).
+* Fixes broken links from **View In Context** Discover modal [#248939]({{kib-pull}}248939).
+* Fixes loss of UI state in signal-specific Discover fly-out tabs when refreshing a query [#248203]({{kib-pull}}248203).
+* Fixes **Metrics explorer** search bar issue on some screen sizes [#246945]({{kib-pull}}246945).
+* Replaces `host.hostname` with `host.name` in Infrastructure tab [#246386]({{kib-pull}}246386).
+* Fixes charts not filtering by `host.name` [#242673]({{kib-pull}}242673).
+* Removes filtering capabilities in host metrics [#239724]({{kib-pull}}239724).
+* Fixes broken metadata filtering when typing "OR" in host flyouts [#233836]({{kib-pull}}233836).
+* Fixes CPU query by changing the gap policy to include zeros [#239596]({{kib-pull}}239596).
+* Fixes the incorrectly formatted **Values** dropdown in Storybook [#241812]({{kib-pull}}241812).
+* Escapes special characters when creating ES|QL query for Lens charts [#241662]({{kib-pull}}241662).
+* Adds missing transaction action links [#241336]({{kib-pull}}241336).
+* Updates metrics experience API routes to delegate authorization to Elasticsearch [#241195]({{kib-pull}}241195).
+* Fixes error when clearing custom link filters [#241164]({{kib-pull}}241164).
+* Improves metrics profile resolution by removing index pattern and time series validation [#241047]({{kib-pull}}241047).
+* Fixes KPIs subtitle logic [#243217]({{kib-pull}}243217).
+* Fixes JVM metric conflicts with explicit cast [#244151]({{kib-pull}}244151).
+* Removes unnecessary `_source` from queries [#239205]({{kib-pull}}239205).
 * Fixes onboarding issues [#246208]({{kib-pull}}246208).
 * Adds **Background Search** to the ECH Observability navigation menu [#237494]({{kib-pull}}237494).
 * Aligns **Members** link across solutions [#240992]({{kib-pull}}240992).
@@ -170,7 +217,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes simulation of geo points in Streams [#241824]({{kib-pull}}241824).
 * Speeds up field simulation in Streams [#241313]({{kib-pull}}241313).
 * Fixes the incorrectly formatted **Values** dropdown in Storybook [#241812]({{kib-pull}}241812).
-* Escapes special characters when creating ESQL query for Lens charts [#241662]({{kib-pull}}241662).
+* Escapes special characters when creating ES|QL query for Lens charts [#241662]({{kib-pull}}241662).
 
 
 ## 9.2.0 [elastic-observability-9.2.0-release-notes]
