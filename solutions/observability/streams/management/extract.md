@@ -70,11 +70,15 @@ Editing processors with JSON is planned for a future release, and additional pro
 stack: preview 9.3+
 serverless: preview
 ```
+:::{note}
+This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+:::
 
 Instead of creating pipelines manually, you can have AI generate pipeline suggestions for you. To do this:
 
 1. From the **Processing** tab, select **Suggest a pipeline**.
-1. Review the suggested processors, and, if everything looks good, select **Accept**.
+1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
+1. Select **Regenerate** to have Streams regenerate the suggested pipeline. Change the LLM that Streams uses to generate suggestions from the {icon}`controls` menu.
 
 ### How does **Suggest a pipeline** work? [streams-pipeline-generation]
 
@@ -110,8 +114,16 @@ Streams processors support the following comparators:
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
 
-## Processor actions
-After adding a processor, select the
+## Processor actions [streams-processor-actions]
+
+Modify an existing processor by opening the actions ({icon}`boxes_vertical) menu next to the processor you want to update. You have the following options:
+
+* **Move up** or **Move down**: Change the order of the processor.
+* **Add description**: Change the processor description from the metadata to a description of your choice.
+* **Remove description**: After adding a description, use this option to return the description to the metadata.
+* **Edit**: Modify the processor.
+* **Duplicate**: Create another processor with the same configuration.
+* **Delete**: permanently remove the processor.
 
 ## Preview changes [streams-preview-changes]
 
