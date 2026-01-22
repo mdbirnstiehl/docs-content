@@ -166,7 +166,7 @@ The following queries require superuser privileges. If you don't have superuser 
 Trigger package policy recreation using one of the following methods:
 
 * Make a dummy update to the affected project monitors through the UI (for example, add a tag).
-* Make a dummy edit to the private location configuration.
+* Make a dummy edit to the private location configuration. Like editing the name of private location, this regenerates all package policies for that location's monitors.
 * Push a dummy project monitor update.
 
 ::::
