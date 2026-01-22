@@ -16,7 +16,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-::::{dropdown} Synthetics monitors statuses becomes pending after upgrade
+::::{dropdown} Synthetics monitors statuses become pending after upgrade
 Applies to: {{stack}} 8.19.5 and later
 
 **Details**
@@ -27,7 +27,7 @@ A fix for this issue was implemented in [#248762](https://github.com/elastic/kib
 
 **Detecting missing package policies**
 
-The following queries require superuser privileges. If you don't have superuser privileges and have pending monitors after upgrading, try making a dummy update to one of them through the UI to try to resolve the issue.
+The following queries require superuser privileges. If you don't have superuser privileges and have pending monitors after upgrading, try making a dummy update to one of them through the UI to resolve the issue.
 
 1. Check the task state:
 
@@ -49,7 +49,7 @@ The following queries require superuser privileges. If you don't have superuser 
     }
     ```
 
-    If `hasAlreadyDoneCleanup` is `false` in the response and the task is timing out, you need to manually update the task state:
+    If `hasAlreadyDoneCleanup` is `false` in the response and the task is timing out, you need to manually update the task state as shown in the following example. If `hasAlreadyDoneCleanup` is `true`, this issue most likely isn't causing your problem.
 
     ```sh
     POST .kibana_task_manager_9.3.0_001/_update/task:Synthetics:Sync-Private-Location-Monitors-single-instance
