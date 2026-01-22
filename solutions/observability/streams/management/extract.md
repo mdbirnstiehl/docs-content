@@ -151,7 +151,7 @@ Modify processors you've created by opening the actions ({icon}`boxes_vertical`)
 * **Add description**: Change the processor description from the metadata to a description of your choice.
 * **Remove description**: After adding a description, use this option to return the description to the metadata.
 * **Edit**: Modify the processor.
-* **Duplicate**: Create another processor with the same configuration.
+* **Duplicate**: Create another processor with the same configuration to use as a template.
 * **Delete**: permanently remove the processor.
 
 ## Detect and resolve failures [streams-detect-failures]
