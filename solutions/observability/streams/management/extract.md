@@ -11,7 +11,7 @@ For example, in [Discover](../../../../explore-analyze/discover.md), extracted f
 
 The **Processing** tab can also:
 
-- {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`[Generate pipeline suggestions](streams-generate-pipeline-suggestions)
+- {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`[Generate pipeline suggestions](#streams-generate-pipeline-suggestions)
 - Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end
 - Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
 
@@ -77,7 +77,8 @@ Instead of creating pipelines manually, you can have AI generate pipeline sugges
 1. Review the suggested processors, and, if everything looks good, select **Accept**.
 
 ### How does **Suggest a pipeline** work? [streams-pipeline-generation]
-:::{include} _snippets/streams-suggestions.md
+
+:::{include} ../../../_snippets/streams-suggestions.md
 :::
 
 ## Add conditions [streams-add-processor-conditions]
@@ -108,6 +109,9 @@ Streams processors support the following comparators:
 :::
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
+
+## Processor actions
+After adding a processor, select the
 
 ## Preview changes [streams-preview-changes]
 

@@ -59,5 +59,5 @@ To add a generated grok pattern:
 
 ### How does **Generate patterns** work? [streams-grok-pattern-generation]
 
-:::{include} _snippets/streams-suggestions.md
+:::{include} ../../../../_snippets/streams-suggestions.md
 :::

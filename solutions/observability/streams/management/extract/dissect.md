@@ -50,5 +50,5 @@ To add a generated dissect pattern:
 
 ### How does **Generate patterns** work? [streams-dissect-pattern-generation]
 
-:::{include} _snippets/streams-suggestions.md
+:::{include} ../../../../_snippets/streams-suggestions.md
 :::
