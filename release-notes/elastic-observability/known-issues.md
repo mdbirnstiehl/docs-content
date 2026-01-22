@@ -16,7 +16,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-::::{dropdown} Synthetics monitor status becomes pending after upgrade
+::::{dropdown} Synthetics monitors statuses becomes pending after upgrade
 Applies to: {{stack}} 8.19.5 and later
 
 **Details**
