@@ -49,14 +49,14 @@ The following queries require superuser privileges. If you don't have superuser 
     }
     ```
 
-    If `hasAlreadyDoneCleanup` is `false` in the response and the task is timing out, you need to manually update the task state to prevent repeated cleanup attempts. Replace `<version>` with your {{stack}} version (for example, `9.3.0`):
+    If `hasAlreadyDoneCleanup` is `false` in the response and the task is timing out, you need to manually update the task state:
 
     ```sh
     POST .kibana_task_manager_9.3.0_001/_update/task:Synthetics:Sync-Private-Location-Monitors-single-instance
     {
       "doc": {
         "task": {
-          "state": "{\"lastStartedAt\":\"2025-11-08T16:28:50.289Z\",\"startedAt\":\"2025-12-04T01:55:33.471Z\",\"lastTotalParams\":2,\"lastTotalMWs\":14,\"hasAlreadyDoneCleanup\":true,\"maxCleanUpRetries\":3}"
+          "state": "{\"hasAlreadyDoneCleanup\":true, <copy the rest of the state from above response> }"
         }
       }
     }
