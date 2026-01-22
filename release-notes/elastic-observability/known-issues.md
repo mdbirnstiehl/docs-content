@@ -167,7 +167,7 @@ Trigger package policy recreation using one of the following methods:
 
 * Make a dummy update to the affected project monitors through the UI (for example, add a tag).
 * Make a dummy edit to the private location configuration. Like editing the name of private location, this regenerates all package policies for that location's monitors.
-* Push a dummy project monitor update.
+* Push a dummy project monitor update, like adding a tag to the project monitor config and run a `npm run push`. 
 
 ::::
 
