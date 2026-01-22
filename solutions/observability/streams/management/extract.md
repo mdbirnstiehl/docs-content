@@ -145,7 +145,7 @@ Dissect, grok, and rename processors include the **Ignore missing fields** optio
 
 ### Processor actions [streams-processor-actions]
 
-Modify processors you've created by opening the actions ({icon}`boxes_vertical) menu next to the processor you want to update. You have the following options:
+Modify processors you've created by opening the actions ({icon}`boxes_vertical`) menu next to the processor you want to update. You have the following options:
 
 * **Move up** or **Move down**: Change the order of the processor.
 * **Add description**: Change the processor description from the metadata to a description of your choice.
