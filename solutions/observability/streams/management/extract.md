@@ -47,7 +47,7 @@ Streams exposes a Streamlang configuration, but internally it relies on {{es}} i
 - **Conditional execution**: ES|QL's enforced table shape limits conditional casting, parsing, and wildcard field operations that ingest pipelines can do per-document.
 - **Arrays of objects / flattening**: Ingest pipelines preserve nested JSON arrays, while ES|QL flattens to columns, so operations like rename and delete on parent objects can differ or fail.
 
-## Add a processor [streams-add-processors]
+## Add processors [streams-add-processors]
 
 Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.
 
@@ -65,7 +65,7 @@ Refer to individual [supported processors](#streams-extract-processors) for more
 Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
 :::
 
-## Generate pipeline suggestions [streams-generate-pipeline-suggestions]
+### Generate pipeline suggestions [streams-generate-pipeline-suggestions]
 ```{applies_to}
 stack: preview 9.3+
 serverless: preview
@@ -80,12 +80,12 @@ Instead of creating pipelines manually, you can have AI generate pipeline sugges
 1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
 1. Select **Regenerate** to have Streams regenerate the suggested pipeline. Change the LLM that Streams uses to generate suggestions from the {icon}`controls` menu.
 
-### How does **Suggest a pipeline** work? [streams-pipeline-generation]
+#### How does **Suggest a pipeline** work? [streams-pipeline-generation]
 
 :::{include} ../../../_snippets/streams-suggestions.md
 :::
 
-## Add conditions [streams-add-processor-conditions]
+### Add conditions [streams-add-processor-conditions]
 
 You can add conditions, boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
 
@@ -114,18 +114,7 @@ Streams processors support the following comparators:
 
 After creating a condition, add a processor or another condition to it by selecting the {icon}`plus_in_circle`.
 
-## Processor actions [streams-processor-actions]
-
-Modify an existing processor by opening the actions ({icon}`boxes_vertical) menu next to the processor you want to update. You have the following options:
-
-* **Move up** or **Move down**: Change the order of the processor.
-* **Add description**: Change the processor description from the metadata to a description of your choice.
-* **Remove description**: After adding a description, use this option to return the description to the metadata.
-* **Edit**: Modify the processor.
-* **Duplicate**: Create another processor with the same configuration.
-* **Delete**: permanently remove the processor.
-
-## Preview changes [streams-preview-changes]
+### Preview changes [streams-preview-changes]
 
 After you create processors, the **Data preview** tab simulates processor results with additional filtering options depending on the outcome of the simulation.
 
@@ -146,13 +135,24 @@ If you edit the stream after saving your changes, keep the following in mind:
 - Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
 - Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 
-## Ignore failures [streams-ignore-failures]
+### Ignore failures [streams-ignore-failures]
 
 Each processor has the **Ignore failures** option. When enabled, document processing continues when even if the processor fails.
 
-## Ignore missing fields [streams-ignore-missing-fields]
+### Ignore missing fields [streams-ignore-missing-fields]
 
 Dissect, grok, and rename processors include the **Ignore missing fields** option. When enabled, document processing continues even if a source field is missing.
+
+### Processor actions [streams-processor-actions]
+
+Modify processors you've created by opening the actions ({icon}`boxes_vertical) menu next to the processor you want to update. You have the following options:
+
+* **Move up** or **Move down**: Change the order of the processor.
+* **Add description**: Change the processor description from the metadata to a description of your choice.
+* **Remove description**: After adding a description, use this option to return the description to the metadata.
+* **Edit**: Modify the processor.
+* **Duplicate**: Create another processor with the same configuration.
+* **Delete**: permanently remove the processor.
 
 ## Detect and resolve failures [streams-detect-failures]
 
@@ -177,7 +177,7 @@ Streams displays failures at the bottom of the process editor. Some failures mig
 :screenshot:
 :::
 
-## Mapping conflicts [streams-processing-mapping-conflicts]
+### Mapping conflicts [streams-processing-mapping-conflicts]
 
 As part of processing, Streams simulates your changes end to end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
 
