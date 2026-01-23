@@ -4,7 +4,7 @@ applies_to:
   stack: preview =9.1, ga 9.2+
 ---
 
-# Streamlang reference [streams-streamlang]
+# Streamlang [streams-streamlang]
 
 Streamlang is a YAML-friendly domain-specific language (DSL) for defining processing configurations for Streams. It provides a consistent interface for specifying how documents should be transformed, regardless of where the processing is executed.
 
@@ -14,7 +14,7 @@ Streamlang enables seamless movement between query-time and ingest-time processi
 - **ES|QL**: Query-time processing
 - **OTTL**: OpenTelemetry collector processing (planned)
 
-When you configure processors and conditions in the Streams UI, you're working with Streamlang under the hood. The UI provides two editing modes:
+When you configure processors and conditions in the Streams UI, you're working with Streamlang. The UI provides two editing modes:
 
 - **Interactive mode**: A form-based editor for building Streamlang configurations visually
 - **YAML mode**: A code editor for writing Streamlang directly as YAML
@@ -322,11 +322,11 @@ steps:
     eq: string
 ```
 
-Since `attributes.result` could be a number or string depending on the document, ES|QL rejects this as invalid.
+Because `attributes.result` could be a number or string depending on the document, ES|QL rejects this as invalid.
 
 ### Type conversion differences [streams-streamlang-conversion]
 
-ES|QL is more lenient with type conversions than ingest pipelines. When using the `convert` action, behavior may differ between targets:
+ES|QL is more lenient with type conversions than ingest pipelines. When using the `convert` action, behavior might differ between targets:
 
 - String to integer conversions in ingest pipelines require the string to represent a valid 32-bit signed integer
 - Float strings (like `"3.14"`) won't convert to integers in ingest pipelines
