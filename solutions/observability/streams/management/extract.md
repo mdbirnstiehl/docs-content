@@ -74,7 +74,7 @@ serverless: preview
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
-Instead of creating pipelines manually, you can have AI generate pipeline suggestions for you. To do this:
+Setting up processors is generally a multistep process. For example, you might need a grok processor to extract fields, a date processor to convert timestamps, and a remove processor to get rid of temporary fields. Instead of creating individual processors manually, you can have AI suggest an entire pipeline for you:
 
 1. From the **Processing** tab, select **Suggest a pipeline**.
 1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
@@ -145,12 +145,12 @@ Dissect, grok, and rename processors include the **Ignore missing fields** optio
 
 ### Processor actions [streams-processor-actions]
 
-Modify processors you've created by opening the actions ({icon}`boxes_vertical`) menu next to the processor you want to update. You have the following options:
+Modify existing processors by opening the actions ({icon}`boxes_vertical`) menu next to the processor you want to modify. You then have the following options:
 
 * **Move up** or **Move down**: Change the order of the processor.
-* **Add description**: Change the processor description from the metadata to a description of your choice.
-* **Remove description**: After adding a description, use this option to return the description to the metadata.
-* **Edit**: Modify the processor.
+* **Add description**: Change the processor description from its metadata to a description of your choice.
+* **Remove description**: For processors with an added description, use this option to return the description to the metadata.
+* **Edit**: Modify the processor configuration.
 * **Duplicate**: Create another processor with the same configuration to use as a template.
 * **Delete**: permanently remove the processor.
 
