@@ -9,11 +9,11 @@ After selecting a stream, use the **Processing** tab to add [processors](#stream
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
-The **Processing** tab can also:
+The **Processing** tab also has the following features:
 
-- {applies_to}`stack: preview 9.3+` {applies_to}`serverless: preview`[Generate pipeline suggestions](#streams-generate-pipeline-suggestions)
-- Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end
-- Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` [Generate pipeline suggestions](#streams-generate-pipeline-suggestions).
+- Simulate your processors and provide an immediate [preview](#streams-preview-changes) that's tested end to end.
+- Flag indexing issues, like [mapping conflicts](#streams-processing-mapping-conflicts), so you can address them before applying changes.
 
 After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
 
@@ -87,7 +87,7 @@ Setting up processors is generally a multistep process. For example, you might n
 
 ### Add conditions [streams-add-processor-conditions]
 
-You can add conditions, boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
+You can add conditions, Boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
 
 To add a condition:
 
@@ -145,14 +145,14 @@ Dissect, grok, and rename processors include the **Ignore missing fields** optio
 
 ### Processor actions [streams-processor-actions]
 
-Modify existing processors by opening the actions ({icon}`boxes_vertical`) menu next to the processor you want to modify. You then have the following options:
+To modify an existing processor, open the actions menu {icon}`boxes_vertical` next to it to see the available options:
 
 * **Move up** or **Move down**: Change the order of the processor.
 * **Add description**: Change the processor description from its metadata to a description of your choice.
 * **Remove description**: For processors with an added description, use this option to return the description to the metadata.
 * **Edit**: Modify the processor configuration.
 * **Duplicate**: Create another processor with the same configuration to use as a template.
-* **Delete**: permanently remove the processor.
+* **Delete**: Remove the processor permanently.
 
 ## Detect and resolve failures [streams-detect-failures]
 
