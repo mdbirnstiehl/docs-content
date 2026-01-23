@@ -60,8 +60,8 @@ After adding all desired processors and conditions, select **Save changes**.
 
 Refer to individual [supported processors](#streams-extract-processors) for more on configuring specific processors.
 
-:::{note}
-Editing processors with JSON is planned for a future release, and additional processors may be supported over time.
+:::{tip}
+For advanced configurations or if you prefer working with code, switch to **YAML mode** to write [Streamlang](./streamlang.md) directly. YAML mode is also automatically enabled when your configuration uses features that can't be represented in the form-based editor.
 :::
 
 ### Add conditions [streams-add-processor-conditions]
