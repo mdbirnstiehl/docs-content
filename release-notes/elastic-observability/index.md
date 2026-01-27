@@ -21,6 +21,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+
+## 9.2.5 [elastic-observability-9.2.5-release-notes]
+
+
+### Fixes [elastic-observability-9.2.5-fixes]
+* Fixes incorrect dependencies stats [#249434]({{kib-pull}}249434).
+* Adds `maxQueue` backpressure to anonymization regex worker pool [#249108]({{kib-pull}}249108).
+* Fixes broken links from **View In Context** Discover modal [#248939]({{kib-pull}}248939).
+* Uses monitor query id for project monitors package policies [#248762]({{kib-pull}}248762).
+* Fixes duplicate test results on monitor status heatmap [#248761]({{kib-pull}}248761).
+* Fixes loss of UI state in signal-specific Discover fly-out tabs when refreshing a query [#248203]({{kib-pull}}248203).
+* Fixes missing spans in discover traces view [#247689]({{kib-pull}}247689).
+* Provides users with more granular control over how alerts behave when data stops being reported for metric threshold rules [#247669]({{kib-pull}}247669).
+* Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
+
 ## 9.2.4 [elastic-observability-9.2.4-release-notes]
 
 
