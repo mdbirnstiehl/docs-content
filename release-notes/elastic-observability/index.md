@@ -55,7 +55,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Allows users to view and filter by manually added workflow tags [#244251]({{kib-pull}}244251).
 * Shows alert workflow tags on the **Overview** tab of the alert details flyout [#246440]({{kib-pull}}246440).
 * Adds a warning when deleting API keys currently in use by alerting rules [#243353]({{kib-pull}}243353).
-* Adds options for metric threshold alerts when there's no data [#247669]({{kib-pull}}247669).
 * Allows users to configure custom global ingest pipelines on SLO rollup data [#245025]({{kib-pull}}245025).
 * Adds index sorting to SLI index settings [#244978]({{kib-pull}}244978).
 * Allows users to view the SLO associated with a burn rate rule from the rule details page [#240535]({{kib-pull}}240535).
@@ -74,9 +73,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds **Edit tags** to alert actions [#243792]({{kib-pull}}243792).
 * Adds the **ELSER in EIS** model option for the Observability and Search AI Assistant Knowledge Base [#243298]({{kib-pull}}243298).
 * Removes the `AI Assistants Settings` privilege [#239144]({{kib-pull}}239144).
-* Adds Observability tools for log and metric change point analysis [#242423]({{kib-pull}}242423).
-* Adds `isStream` parameter to the `chat/complete` endpoint to support non-streaming responses [#240819]({{kib-pull}}240819).
-* Adds `.integration_knowledge*` system index [#237085]({{kib-pull}}237085).
+* Observability Agent for Agent Builder is released in 9.3. This includes Observability related tools and AI Insights for alerts, logs in Discover, and errors in APM.
 * Adds **Similar errors** section with Occurrences chart [#244665]({{kib-pull}}244665).
 * Updates Observability Serverless side navigation [#235984]({{kib-pull}}235984).
 
@@ -103,6 +100,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Prevents default alerts from being created when connectors are not defined [#237504]({{kib-pull}}237504).
 * Copies alert states to payload [#240411]({{kib-pull}}240411).
 * Replaces metric names inside filter values [#238849]({{kib-pull}}238849).
+* Provides users with more granular control over how alerts behave when data stops being reported for metric threshold rules [#247669]({{kib-pull}}247669).
 * Reverts show transform errors across all SLO pages [#243013]({{kib-pull}}243013).
 * Reverts fix issue where filters do not apply to overview stats [#242978]({{kib-pull}}242978).
 * Fixes inconsistent browser back button behavior on SLO page [#242761]({{kib-pull}}242761).
