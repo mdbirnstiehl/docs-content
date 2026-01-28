@@ -58,7 +58,7 @@ Refer to the [Automate rollover tutorial](../../../manage-data/lifecycle/index-l
 
 You can also review {{ilm-init}} policies using the `Get lifecycle policies` API.
 
-For example, running `GET /_ilm/policy/logs@lifecycle` pulls up the default logs {{ilm-init}} policy, and shows something like the following:
+For example, running `GET /_ilm/policy/logs@lifecycle` pulls up the default logs {{ilm-init}} policy, and shows a result similar to the following:
 
 ```json
 {
