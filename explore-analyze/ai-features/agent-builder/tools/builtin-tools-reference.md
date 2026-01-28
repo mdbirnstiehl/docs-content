@@ -18,7 +18,7 @@ products:
 
 This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 
-Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [Manage tools](/explore-analyze/ai-features/agent-builder/tools.md#manage-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -68,8 +68,8 @@ All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-
 `platform.core.search` {applies_to}`stack: ga 9.2+`
 :   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
-`platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
-:   Searches and retrieves documentation about Elastic products ({{kib}}, Elasticsearch, Elastic Security, Elastic Observability).
+$$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
+:   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.
 
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
@@ -195,11 +195,16 @@ The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/b
 <!-- `security.attack_discovery_search`
 :   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs.-->
 
-`security.security_labs_search`
-:   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content.
+$$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
+:   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
+
+:::{tip}
+You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
+:::
 
 ## Related pages
 
 - [Tools in {{agent-builder}}](../tools.md)
 - [Custom ES|QL tools](esql-tools.md)
 - [Custom index search tools](index-search-tools.md)
+
