@@ -18,7 +18,7 @@ products:
 
 This page lists all built-in tools available in {{agent-builder}}. Built-in tools enable core operations for working with {{es}} data across platform, observability, and security use cases out-of-the-box.
 
-Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [find all available tools](/explore-analyze/ai-features/agent-builder/tools.md#find-available-tools).
+Built-in tools are read-only: you can't modify or delete them. To check which tools are available in your Elastic deployment, refer to [Manage tools](/explore-analyze/ai-features/agent-builder/tools.md#manage-tools).
 
 :::{tip}
 For an overview of how tools work in {{agent-builder}}, refer to the [Tools overview](../tools.md).
@@ -30,7 +30,7 @@ Built-in platform core tools are available across all deployments, while observa
 
 ## Agents and tools
 
-[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/agent-builder-agents.md#create-a-new-agent-in-the-gui) you create.
+[Built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are pre-configured with relevant tools. For example, the Observability agent includes all observability tools by default. You can assign any available built-in tools to [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) you create.
 
 ## Platform core tools
 ```{applies_to}
@@ -47,29 +47,29 @@ Platform core tools provide fundamental capabilities for interacting with {{es}}
 All [built-in agents](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md) are assigned these tools by default.
 :::
 
-`platform.core.execute_esql` {applies_to}`stack: ga 9.2+`
+`platform.core.execute_esql`
 :   Executes an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query and returns the results in a tabular format.
 
-`platform.core.generate_esql` {applies_to}`stack: ga 9.2+`
+`platform.core.generate_esql`
 :   Generates an [{{esql}}](elasticsearch://reference/query-languages/esql.md) query from a natural language query.
 
-`platform.core.get_document_by_id` {applies_to}`stack: ga 9.2+`
+`platform.core.get_document_by_id`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
-`platform.core.get_index_mapping` {applies_to}`stack: ga 9.2+`
+`platform.core.get_index_mapping`
 :   Retrieves mappings for the specified index or indices.
 
-`platform.core.index_explorer` {applies_to}`stack: ga 9.2+`
+`platform.core.index_explorer`
 :   Lists relevant indices and corresponding mappings based on a natural language query.
 
-`platform.core.list_indices` {applies_to}`stack: ga 9.2+`
+`platform.core.list_indices`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-`platform.core.search` {applies_to}`stack: ga 9.2+`
+`platform.core.search`
 :   Searches and analyzes data within your {{es}} cluster using full-text relevance searches or structured analytical queries.
 
-`platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
-:   Searches and retrieves documentation about Elastic products ({{kib}}, Elasticsearch, Elastic Security, Elastic Observability).
+$$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
+:   Searches and retrieves documentation about Elastic products. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Elastic documentation** from the **Documentation** section. This takes a few minutes.
 
 `platform.core.integration_knowledge` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves knowledge from [{{fleet}}](/reference/fleet/index.md)-installed integrations, including information on how to configure and use integrations for data ingestion.
@@ -195,11 +195,16 @@ The [built-in Threat Hunting Agent](/explore-analyze/ai-features/agent-builder/b
 <!-- `security.attack_discovery_search`
 :   Returns any related [attack discoveries](/solutions/security/ai/attack-discovery.md) from the last week, given one or more alert IDs.-->
 
-`security.security_labs_search`
-:   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content.
+$$$agent-builder-security-labs-search-tool$$$ `security.security_labs_search`
+:   Searches [Elastic Security Labs](https://www.elastic.co/security-labs) research and threat intelligence content. To use this tool, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install **Security labs** from the **Documentation** section. This takes a few minutes.
+
+:::{tip}
+You can also manage tools programmatically. To learn more, refer to [Tools API](../tools.md#tools-api).
+:::
 
 ## Related pages
 
 - [Tools in {{agent-builder}}](../tools.md)
 - [Custom ES|QL tools](esql-tools.md)
 - [Custom index search tools](index-search-tools.md)
+
