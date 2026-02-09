@@ -42,7 +42,7 @@ Workflows are tightly integrated with Agent Builder functionalities:
 
 ## Examples: Agent Builder and Elastic Workflows
 
-This section provides conceptual examples of what you can achieve with Agent Builder workflows. For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/observability](https://github.com/elastic/workflows/tree/main/workflows/observability) GitHub repo.
+For specific examples of workflows, including complete annotated code samples, refer to the [elastic/workflows/observability](https://github.com/elastic/workflows/tree/main/workflows/observability) GitHub repo.
 
 
 ## Related resources
