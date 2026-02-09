@@ -16,6 +16,24 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Browser monitors with JavaScript template literals fail on private locations
+Applies to: All {{stack}} versions
+
+**Details**
+
+Browser monitors created through the {{kib}} Synthetics UI or the public APIs that are not using projects fail to execute on private locations when inline scripts contain JavaScript template literals (`` `${variable}` ``).
+
+A fix for this issue is expected in {{stack}} 9.4.
+
+For more information, check [Issue #248](https://github.com/elastic/sdh-synthetics/issues/248).
+
+**Workaround**
+
+Use project monitors.
+
+:::
+
+
 ::::{dropdown} Synthetics monitors statuses become pending after upgrade
 Applies to: {{stack}} 8.19.5 and later
 
@@ -167,7 +185,7 @@ Trigger package policy recreation using one of the following methods:
 
 * Make a dummy update to the affected project monitors through the UI (for example, add a tag).
 * Make a dummy edit to the private location configuration. Like editing the name of private location, this regenerates all package policies for that location's monitors.
-* Push a dummy project monitor update, like adding a tag to the project monitor config and run a `npm run push`. 
+* Push a dummy project monitor update, like adding a tag to the project monitor config and run a `npm run push`.
 
 ::::
 
