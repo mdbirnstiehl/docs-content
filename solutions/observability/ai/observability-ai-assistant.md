@@ -233,7 +233,7 @@ After creating the pipeline, complete the following steps:
 
 ### Add user-specific system prompts [obs-ai-assistant-user-prompt]
 
-User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French," and all subsequent responses will be in French.
+User-specific prompts customize how the AI assistant responds by appending personalized instructions to built-in system prompts. For example, you could specify "Always respond in French", and all subsequent responses will be in French.
 
 A user-specific prompt only applies to the user that sets it.
 
@@ -447,7 +447,7 @@ When the alert fires, contextual details about the event—such as when the aler
 
 It might take a minute or two for the AI Assistant to process the message and create the conversation.
 
-Note that overly broad prompts may result in the request exceeding token limits. For more information, refer to [Token limits](#obs-ai-token-limits). Also, attempting to analyze several alerts in a single connector execution may cause you to exceed the function call limit. If this happens, modify the message specified in the connector configuration to avoid exceeding limits.
+Overly broad prompts may result in the request exceeding token limits. For more information, refer to [Token limits](#obs-ai-token-limits). Also, attempting to analyze several alerts in a single connector execution may cause you to exceed the function call limit. If this happens, modify the message specified in the connector configuration to avoid exceeding limits.
 
 When asked to send a message to another connector, such as Slack, the AI Assistant attempts to include a link to the generated conversation.
 
