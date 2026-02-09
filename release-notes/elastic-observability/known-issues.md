@@ -21,7 +21,7 @@ Applies to: All {{stack}} versions
 
 **Details**
 
-Browser monitors created through the {{kib}} Synthetics UI or the public APIs that are not using projects fail to execute on private locations when inline scripts contain JavaScript template literals (`` `${variable}` ``).
+Browser monitors created through the {{kib}} Synthetics UI or the public APIs that are not using projects fail to run on private locations when inline scripts contain JavaScript template literals (`` `${variable}` ``).
 
 A fix for this issue is expected in {{stack}} 9.4.
 
