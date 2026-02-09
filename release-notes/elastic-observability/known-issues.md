@@ -29,7 +29,9 @@ For more information, check [Issue #248](https://github.com/elastic/sdh-syntheti
 
 **Workaround**
 
-Use project monitors.
+Use regular JavaScript string interpolation instead of template literals. For example, `const example = "hello" + a + "world"`.
+
+Alternatively, you can switch to project monitors.
 
 :::
 
