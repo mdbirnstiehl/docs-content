@@ -16,7 +16,7 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
-:::{dropdown} Browser monitors with JavaScript template literals fail on private locations
+::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 
 **Details**
@@ -29,11 +29,27 @@ For more information, check [Issue #248](https://github.com/elastic/sdh-syntheti
 
 **Workaround**
 
-Use regular JavaScript string interpolation instead of template literals. For example, `const example = "hello" + a + "world"`.
+Use regular JavaScript string concatenation instead of template literals.
+
+For example, instead of:
+
+```js
+step('Go to page', async () => {
+  await page.goto(`${params.basePath}${params.route}`);
+});
+```
+
+Use:
+
+```js
+step('Go to page', async () => {
+  await page.goto(params.basePath + params.route);
+});
+```
 
 Alternatively, you can switch to project monitors.
 
-:::
+::::
 
 
 ::::{dropdown} Synthetics monitors statuses become pending after upgrade
