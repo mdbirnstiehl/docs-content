@@ -16,6 +16,8 @@ Manage log data retention in the following ways:
 * [Manage log data retention in data streams](#logs-data-retention-data-streams)
 
 ## Manage data retention using Streams [logs-data-retention-streams]
+```{applies_to}
+stack: ga 9.2+
 
 [Streams](../streams/streams.md) provides a single, centralized UI within {{kib}} that simplifies common tasks, including setting data retention. The **Retention** tab lets you manage how your stream retains data and provides insight into data ingestion and storage size.
 
