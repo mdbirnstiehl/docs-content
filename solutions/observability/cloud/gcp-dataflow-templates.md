@@ -145,7 +145,8 @@ Before running the job, fill in required parameters:
 ::::{note}
 For **Cloud Pub/Sub subscription**, use the subscription you created in the previous step. Use the values you obtained earlier for the following fields:
 
-* **Cloud ID** when using {{ech}} or **Elasticsearch URL in the format https://hostname:[port]** when using {{serverless-short}}
+* For {{ech}} deployments, your **Cloud ID**
+* For {{serverless-short}}, your **Elasticsearch URL in the format https://hostname:[port]**.
 * **Base64-encoded API Key**.
 
 If you don’t have an **Error output topic**, create one like you did in the previous step.
