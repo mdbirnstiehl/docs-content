@@ -136,18 +136,13 @@ Elastic Serverless Forwarder uses the configuration file to know the input sourc
           - type: "elasticsearch"
             args:
               cloud_id: "<your-cloud-id>"
-              api_key: "<your-api-key>>"
+              api_key: "<your-api-key>"
     ```
 
 3. Upload the configuration file you have just created to the S3 bucket you created at step 5.
 :::
 
 :::{tab-item} {{observability-serverless}}
-This is where the content for tab #2 goes.
-:::
-
-::::
-
 1. From your {{serverless-short}} project, select the help icon, then select **Connection details** and copy your **{{es}} endpoint**.
 2. Create an encoded API key for authentication.
 
@@ -165,6 +160,9 @@ This is where the content for tab #2 goes.
     ```
 
 3. Upload the configuration file you have just created to the S3 bucket you created at step 5.
+:::
+
+::::
 
 
 ## Step 7: Ingest VPC flow logs into Elastic [esf-step-seven]
