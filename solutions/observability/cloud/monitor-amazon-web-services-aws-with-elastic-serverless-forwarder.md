@@ -155,7 +155,7 @@ Elastic Serverless Forwarder uses the configuration file to know the input sourc
         outputs:
           - type: "elasticsearch"
             args:
-              hosts: "<https://hostname:[port]>"
+              hosts: "<https://hostname:port>"
               api_key: "<your-api-key>"
     ```
 

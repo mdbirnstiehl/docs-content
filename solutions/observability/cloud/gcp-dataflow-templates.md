@@ -61,7 +61,7 @@ To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments),
 :::{tab-item} {{obs-serverless}}
 For {{obs-serverless}} projects, you need your **{{es}} endpoint URL** and an **API key**.
 
-To find your endpoint URL, Select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
 :::
 
 ::::

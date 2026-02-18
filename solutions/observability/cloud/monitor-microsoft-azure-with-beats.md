@@ -281,10 +281,10 @@ If script execution is disabled on your system, you need to set the execution po
 {{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
-./metricbeat setup -e -E 'hosts=https://hostname:[port]' -E 'api_key=YOUR_API_KEY' <1>
+./metricbeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
 ```
 
-1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, Select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
 :::
 
 ::::
