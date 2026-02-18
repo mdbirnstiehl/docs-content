@@ -175,9 +175,9 @@ If script execution is disabled on your system, you need to set the execution po
 
 ### Set up assets [_set_up_assets_4]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} stack: ga
 {{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
@@ -188,7 +188,7 @@ If script execution is disabled on your system, you need to set the execution po
 
 :::
 
-:::{tab-item} {{observability-serverless}}
+:::{applies-item} serverless: ga
 {{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
@@ -214,16 +214,16 @@ Next, you are going to configure {{metricbeat}} output to {{es}}.
 
 1. Use the {{metricbeat}} keystore to store [secure settings](beats://reference/metricbeat/keystore.md). Store your connection details in the keystore.
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} stack: ga
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
     :::
 
-    :::{tab-item} {{observability-serverless}}
+    :::{applies-item} serverless: ga
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Elasticsearch endpoint URL>" | ./metricbeat keystore add ES_HOST --stdin
@@ -271,9 +271,9 @@ Next, you are going to configure {{metricbeat}} output to {{es}}.
 
 5. To configure {{metricbeat}} to output to {{es}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} stack: ga
     ```yaml
     cloud.id: ${CLOUD_ID}
     output.elasticsearch:
@@ -281,7 +281,7 @@ Next, you are going to configure {{metricbeat}} output to {{es}}.
     ```
     :::
 
-    :::{tab-item} {{observability-serverless}}
+    :::{applies-item} serverless: ga
     ```yaml
     output.elasticsearch:
       hosts: ["${ES_HOST}"]
@@ -419,9 +419,9 @@ If script execution is disabled on your system, you need to set the execution po
 
 #### Set up assets [_set_up_assets_5]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} stack: ga
 {{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
@@ -432,7 +432,7 @@ If script execution is disabled on your system, you need to set the execution po
 
 :::
 
-:::{tab-item} {{observability-serverless}}
+:::{applies-item} serverless: ga
 {{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
@@ -458,16 +458,16 @@ Next, you are going to configure {{filebeat}} output to {{es}}.
 
 1. Use the {{filebeat}} keystore to store [secure settings](beats://reference/filebeat/keystore.md). Store your connection details in the keystore.
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} stack: ga
     ```bash
     ./filebeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./filebeat keystore add CLOUD_ID --stdin
     ```
     :::
 
-    :::{tab-item} {{observability-serverless}}
+    :::{applies-item} serverless: ga
     ```bash
     ./filebeat keystore create
     echo -n "<Your Elasticsearch endpoint URL>" | ./filebeat keystore add ES_HOST --stdin
@@ -522,9 +522,9 @@ Next, you are going to configure {{filebeat}} output to {{es}}.
 
 5. To configure {{filebeat}} to output to {{es}}, edit the `filebeat.yml` configuration file. Add the following lines to the end of the file.
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} stack: ga
     ```yaml
     cloud.id: ${CLOUD_ID}
     output.elasticsearch:
@@ -532,7 +532,7 @@ Next, you are going to configure {{filebeat}} output to {{es}}.
     ```
     :::
 
-    :::{tab-item} {{observability-serverless}}
+    :::{applies-item} serverless: ga
     ```yaml
     output.elasticsearch:
       hosts: ["${ES_HOST}"]

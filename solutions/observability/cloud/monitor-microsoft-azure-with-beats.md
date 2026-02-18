@@ -178,9 +178,9 @@ After creating the Azure service principal you need to grant it the correct perm
 
 To configure {{metricbeat}} you need the {{es}} cluster details.
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} stack: ga
 1. On the {{es}} resource page, click **Manage changes in {{ecloud}}**.
 
     ![Elastic resource](/solutions/images/observability-monitor-azure-elastic-deployment.png "")
@@ -194,7 +194,7 @@ To configure {{metricbeat}} you need the {{es}} cluster details.
     ![{{ecloud}} security](/solutions/images/observability-monitor-azure-kibana-security.png "")
 :::
 
-:::{tab-item} {{observability-serverless}}
+:::{applies-item} serverless: ga
 1. From your {{serverless-short}} project, select the help icon, then select **Connection details**.
 2. Copy the **{{es}} endpoint** and keep it safe. You will use it later.
 3. Create an API key for authentication and keep it safe. You will use it later.
@@ -265,9 +265,9 @@ If script execution is disabled on your system, you need to set the execution po
 
 ### Set up assets [_set_up_assets_3]
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} stack: ga
 {{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
@@ -277,7 +277,7 @@ If script execution is disabled on your system, you need to set the execution po
 1. Substitute your Cloud ID and an administrator’s `username:password` in this command. To find your Cloud ID, click on your [deployment](https://cloud.elastic.co/deployments).
 :::
 
-:::{tab-item} {{observability-serverless}}
+:::{applies-item} serverless: ga
 {{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
 
 ```bash
@@ -303,16 +303,16 @@ Next, you are going to configure {{metricbeat}} output to {{es}}.
 
 1. Use the {{metricbeat}} keystore to store [secure settings](beats://reference/metricbeat/keystore.md). Store your connection details in the keystore.
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} stack: ga
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
     :::
 
-    :::{tab-item} {{observability-serverless}}
+    :::{applies-item} serverless: ga
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Elasticsearch endpoint URL>" | ./metricbeat keystore add ES_HOST --stdin
@@ -360,9 +360,9 @@ Next, you are going to configure {{metricbeat}} output to {{es}}.
 
 5. To configure {{metricbeat}} to output to {{es}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
 
-    ::::{tab-set}
+    ::::{applies-switch}
 
-    :::{tab-item} {{ech}}
+    :::{applies-item} stack: ga
     ```yaml
     cloud.id: ${CLOUD_ID}
     output.elasticsearch:
@@ -370,7 +370,7 @@ Next, you are going to configure {{metricbeat}} output to {{es}}.
     ```
     :::
 
-    :::{tab-item} {{observability-serverless}}
+    :::{applies-item} serverless: ga
     ```yaml
     output.elasticsearch:
       hosts: ["${ES_HOST}"]

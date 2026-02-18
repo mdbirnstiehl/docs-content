@@ -48,9 +48,9 @@ You’ll start with installing the Elastic GCP integration to add pre-built dash
 
 This tutorial assumes the Elastic cluster is already running.
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} stack: ga
 For {{ech}} deployments, you need your **Cloud ID** and an **API Key**.
 
 To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments), go to the deployment’s **Overview** page.
@@ -58,7 +58,7 @@ To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments),
 ![Cloud ID](/solutions/images/observability-monitor-gcp-cloud-id.png "")
 :::
 
-:::{tab-item} {{obs-serverless}}
+:::{applies-item} serverless: ga
 For {{obs-serverless}} projects, you need your **{{es}} endpoint URL** and an **API key**.
 
 To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.

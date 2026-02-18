@@ -120,9 +120,9 @@ Note that you can store more than one configuration file.
 
 Elastic Serverless Forwarder uses the configuration file to know the input source and the Elastic connection for the destination information.
 
-::::{tab-set}
+::::{applies-switch}
 
-:::{tab-item} {{ech}}
+:::{applies-item} stack: ga
 1. In Elastic Cloud, from the AWS Integrations page click **Connection details** on the upper right corner and copy your Cloud ID.
 2. Create an encoded API key for authentication.
 
@@ -142,7 +142,7 @@ Elastic Serverless Forwarder uses the configuration file to know the input sourc
 3. Upload the configuration file you have just created to the S3 bucket you created at step 5.
 :::
 
-:::{tab-item} {{observability-serverless}}
+:::{applies-item} serverless: ga
 1. From your {{serverless-short}} project, select the help icon, then select **Connection details** and copy your **{{es}} endpoint**.
 2. Create an encoded API key for authentication.
 
