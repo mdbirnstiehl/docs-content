@@ -433,7 +433,7 @@ If script execution is disabled on your system, you need to set the execution po
 :::
 
 :::{applies-item} serverless: ga
-{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./filebeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
