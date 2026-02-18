@@ -25,28 +25,7 @@ You’ll learn how to:
 
 Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment or [{{obs-serverless}}](../../../deploy-manage/deploy/elastic-cloud/create-serverless-project.md) project. Both include an {{es}} cluster for storing and searching your data and {{kib}} for visualizing and managing your data.
 
-## Step 1: Install the GCP integration [_step_1_install_the_gcp_integration]
-
-You’ll start with installing the Elastic GCP integration to add pre-built dashboards, ingest node configurations, and other assets that help you get the most of the GCP logs you ingest.
-
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `gcp`.
-
-    :::{image} /solutions/images/observability-monitor-gcp-kibana-integrations.png
-    :alt: {{kib}} integrations
-    :::
-
-3. Click the Elastic Google Cloud Platform (GCP) integration to see more details about it, then click **Add Google Cloud Platform (GCP)**.
-
-    :::{image} /solutions/images/observability-monitor-gcp-integration.png
-    :alt: GCP integration
-    :::
-
-4. Click **Save integration**.
-
-:::::{note}
-
-This tutorial assumes the Elastic cluster is already running.
+This tutorial assumes the {{es}} cluster is already running.
 
 ::::{applies-switch}
 
@@ -66,17 +45,29 @@ To find your endpoint URL, select **Manage** next to your project, then find the
 
 ::::
 
-Use [{{kib}}](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to create a Base64-encoded API key to authenticate on your deployment.
+Use {{kib}} to [create a Base64-encoded API key](/deploy-manage/api-keys/elasticsearch-api-keys.md#create-api-key) to authenticate on your deployment.
 
 ::::{important}
 You can optionally restrict the privileges of your API Key; otherwise they’ll be a point in time snapshot of permissions of the authenticated user. For this tutorial the data is written to the `logs-gcp.audit-default` data streams.
 
-::::
+## Step 1: Install the GCP integration [_step_1_install_the_gcp_integration]
 
+You’ll start with installing the Elastic GCP integration to add pre-built dashboards, ingest node configurations, and other assets that help you get the most of the GCP logs you ingest.
 
-:::::
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for `gcp`.
 
+    :::{image} /solutions/images/observability-monitor-gcp-kibana-integrations.png
+    :alt: {{kib}} integrations
+    :::
 
+3. Click the Elastic Google Cloud Platform (GCP) integration to see more details about it, then click **Add Google Cloud Platform (GCP)**.
+
+    :::{image} /solutions/images/observability-monitor-gcp-integration.png
+    :alt: GCP integration
+    :::
+
+4. Click **Save integration**.
 
 ## Step 2: Create a Pub/Sub topic and subscription [_step_2_create_a_pubsub_topic_and_subscription]
 
@@ -146,7 +137,7 @@ Before running the job, fill in required parameters:
 For **Cloud Pub/Sub subscription**, use the subscription you created in the previous step. Use the values you obtained earlier for the following fields:
 
 * For {{ech}} deployments, your **Cloud ID**
-* For {{serverless-short}}, your **Elasticsearch URL in the format https://hostname:[port]**.
+* For {{serverless-short}}, your **{{es}} endpoint URL in the format https://hostname:[port]**.
 * **Base64-encoded API Key**.
 
 If you don’t have an **Error output topic**, create one like you did in the previous step.
