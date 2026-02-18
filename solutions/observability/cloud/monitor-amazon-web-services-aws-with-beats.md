@@ -184,7 +184,7 @@ If script execution is disabled on your system, you need to set the execution po
 ::::{applies-switch}
 
 :::{applies-item} stack: ga
-{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./filebeat setup -e -E 'cloud.id=YOUR_DEPLOYMENT_CLOUD_ID' -E 'cloud.auth=elastic:YOUR_SUPER_SECRET_PASS' <1>
@@ -194,7 +194,7 @@ If script execution is disabled on your system, you need to set the execution po
 :::
 
 :::{applies-item} serverless: ga
-{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+{{filebeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./filebeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
@@ -524,7 +524,7 @@ If script execution is disabled on your system, you need to set the execution po
 ::::{applies-switch}
 
 :::{applies-item} stack: ga
-{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./metricbeat setup -e -E 'cloud.id=YOUR_DEPLOYMENT_CLOUD_ID' -E 'cloud.auth=elastic:YOUR_SUPER_SECRET_PASS' <1>
@@ -534,7 +534,7 @@ If script execution is disabled on your system, you need to set the execution po
 :::
 
 :::{applies-item} serverless: ga
-{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It may take a few minutes.
+{{metricbeat}} comes with predefined assets for parsing, indexing, and visualizing your data. Run the following command to load these assets. It can take a few minutes.
 
 ```bash
 ./metricbeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>

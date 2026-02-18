@@ -139,7 +139,7 @@ Elastic Serverless Forwarder uses the configuration file to know the input sourc
               api_key: "<your-api-key>"
     ```
 
-3. Upload the configuration file you have just created to the S3 bucket you created at step 5.
+3. Upload the configuration file you created to the S3 bucket you created at step 5.
 :::
 
 :::{applies-item} serverless: ga
