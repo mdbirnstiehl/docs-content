@@ -51,7 +51,7 @@ Field naming depends on the endpoint you use.
 
 ### `logs.ecs` endpoint
 
-Data ingested into the `logs.ecs` endpoint is stored in the original ECS field names without being transformed. The fields remain as shown in the "ECS field" column in the following table.
+Data ingested into the `logs.ecs` endpoint is stored in the original ECS field names without being transformed. The fields remain as shown in the "ECS field" column in the [field naming table](#streams-wired-streams-field-name-table).
 
 ### `logs.otel` endpoint
 
@@ -63,15 +63,7 @@ When data is ingested into a wired stream, it’s automatically translated into 
 
 To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
 
-| ECS field | OTel field |
-|------------|-------------------------|
-| `message` | `body.text` |
-| `log.level` | `severity_text` |
-| `span.id` | `span_id` |
-| `trace.id` | `trace_id` |
-| `host.name` | `resource.attributes.host.name` |
-| `host.ip` | `resource.attributes.host.ip` |
-| `custom_field` | `attributes.custom_field` |
+Refer to the following table for ECS fields and corresponding OTel fields.
 
 :::
 
@@ -85,6 +77,16 @@ Data ingested into a wired stream is automatically translated into this normaliz
 
 To preserve backward-compatible querying, Streams creates aliases that mirror existing `logs-*.otel-*` data streams behavior. This allows queries to use either ECS or OTel field names interchangeably.
 
+Refer to the following table for ECS fields and corresponding OTel fields.
+
+:::
+
+::::
+
+### Field naming table [streams-wired-streams-field-name-table]
+
+The following table lists the ECS fields and the corresponding OTel fields.
+
 | ECS field | OTel field |
 |------------|-------------------------|
 | `message` | `body.text` |
@@ -94,10 +96,6 @@ To preserve backward-compatible querying, Streams creates aliases that mirror ex
 | `host.name` | `resource.attributes.host.name` |
 | `host.ip` | `resource.attributes.host.ip` |
 | `custom_field` | `attributes.custom_field` |
-
-:::
-
-::::
 
 ## Turn on wired streams [streams-wired-streams-enable]
 
