@@ -49,6 +49,7 @@ Use {{kib}} to [create a Base64-encoded API key](/deploy-manage/api-keys/elastic
 
 ::::{important}
 You can optionally restrict the privileges of your API Key; otherwise they’ll be a point in time snapshot of permissions of the authenticated user. For this tutorial the data is written to the `logs-gcp.audit-default` data streams.
+::::
 
 ## Step 1: Install the GCP integration [_step_1_install_the_gcp_integration]
 
