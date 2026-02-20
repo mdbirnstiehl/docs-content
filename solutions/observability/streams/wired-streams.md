@@ -112,7 +112,7 @@ To send data to wired streams, configure your shippers to send data to the appro
 
 ::::{tab-item} OpenTelemetry
 :::{note}
-Set the index based on your {{stack}} version:
+Set the index in the following configuration based on your {{stack}} version:
 
 - {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
@@ -136,7 +136,7 @@ service:
 
 ::::{tab-item} Filebeat
 :::{note}
-Set the index based on your {{stack}} version:
+Set the index in the following configuration based on your {{stack}} version:
 
 - {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
@@ -164,7 +164,7 @@ output.elasticsearch:
 
 ::::{tab-item} Logstash
 :::{note}
-Set the index based on your {{stack}} version:
+Set the index in the following configuration based on your {{stack}} version:
 
 - {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
@@ -196,7 +196,7 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 
 ::::{tab-item} API
 :::{note}
-Set the endpoint based on your {{stack}} version:
+Set the endpoint in the following configuration based on your {{stack}} version:
 
 - {applies_to}`stack: preview 9.2-9.3` Set the endpoint to `logs`. Only the `logs` endpoint is available in these versions.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
