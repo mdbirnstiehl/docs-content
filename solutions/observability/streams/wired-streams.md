@@ -114,8 +114,8 @@ To send data to wired streams, configure your shippers to send data to the appro
 :::{note}
 Set the index based on your {{stack}} version:
 
-- {applies_to}`stack: 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: ` {applies_to}`stack: 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
+- {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 ```yaml
@@ -138,8 +138,8 @@ service:
 :::{note}
 Set the index based on your {{stack}} version:
 
-- {applies_to}`stack: 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: ` {applies_to}`stack: 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
+- {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 ```yaml
@@ -166,8 +166,8 @@ output.elasticsearch:
 :::{note}
 Set the index based on your {{stack}} version:
 
-- {applies_to}`stack: 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: ` {applies_to}`stack: 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
+- {applies_to}`stack: preview 9.2-9.3` Set the index to `logs`. Only the `logs` endpoint is available in these versions.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the index to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 ```json
@@ -198,8 +198,8 @@ Use the **Custom Logs (Filestream)** integration to send data to wired streams:
 :::{note}
 Set the endpoint based on your {{stack}} version:
 
-- {applies_to}`stack: 9.2-9.3` Set the endpoint to `logs`. Only the `logs` endpoint is available in these versions.
-- {applies_to}`serverless: ` {applies_to}`stack: 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
+- {applies_to}`stack: preview 9.2-9.3` Set the endpoint to `logs`. Only the `logs` endpoint is available in these versions.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Set the endpoint to `logs.otel` or `logs.ecs`, depending on which endpoint you want to use.
 :::
 
 Send data to the endpoint using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Refer to the following example for more information:
