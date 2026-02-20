@@ -21,7 +21,6 @@ Wired streams use the following endpoints:
 - **`logs.ecs`**: Preserves original ECS field names without transformation
 
 :::{warning}
-:applies_to: { serverless:, stack: preview 9.4+ }
 The `/logs` endpoint is deprecated in {{stack}} 9.4. [Reenable wired streams](#streams-wired-streams-enable) to update your deployment or project to use the `logs.otel` and `logs.ecs` endpoints.
 :::
 
