@@ -20,10 +20,6 @@ Wired streams use the following endpoints:
 - **`logs.otel`**: Normalizes data to OpenTelemetry format (field mapping shown in [field naming table](#streams-wired-streams-field-naming))
 - **`logs.ecs`**: Preserves original ECS field names without transformation
 
-:::{warning}
-The `/logs` endpoint is deprecated in {{stack}} 9.4. [Reenable wired streams](#streams-wired-streams-enable) to update your deployment or project to use the `logs.otel` and `logs.ecs` endpoints.
-:::
-
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.3
@@ -33,6 +29,10 @@ Send logs to the `/logs` endpoint, which normalizes data to OpenTelemetry format
 ::::
 
 :::::
+
+:::{warning}
+The `/logs` endpoint is deprecated in {{stack}} 9.4. [Reenable wired streams](#streams-wired-streams-enable) to update your deployment or project to use the `logs.otel` and `logs.ecs` endpoints.
+:::
 
 For more on wired streams, refer to:
 - [Wired streams field naming](#streams-wired-streams-field-naming)

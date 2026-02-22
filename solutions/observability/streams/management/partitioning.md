@@ -22,8 +22,8 @@ For [wired streams](../wired-streams.md), the wired streams endpoints act as the
 
 Once you've sent your data to a wired streams endpoint, open the stream and use the **Partitioning** tab to organize and route the data into meaningful child streams. For example, you can partition your logs into child streams their source or type:
 
-- Route application logs to a `logs.myapp` child stream.
-- Route system logs to a `logs.system` child stream.
+- Route application logs to a `logs.otel.myapp` child stream.
+- Route system logs to a `logs.otel.system` child stream.
 
 For more on when to partition your data and how granular your partitioning should be, refer to [Partitioning recommendations](#streams-partitioning-recommendations).
 
@@ -50,8 +50,8 @@ For example, suppose you have a noisy firewall and a quiet custom application se
 
 ```bash
 logs
-- logs.firewall [7d]
-- logs.custom-app [30d]
+- logs.otel.firewall [7d]
+- logs.otel.custom-app [30d]
 ```
 
 ## Create partitions manually [streams-manual-partitioning]
