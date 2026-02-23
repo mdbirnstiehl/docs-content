@@ -173,7 +173,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-observability-9.2.6-features-enhancements]
 * Adds error handling to {{observability}} landing page redirect logic [#254171]({{kib-pull}}254171).
-* Support ECS-formatted errors in service details [#254138]({{kib-pull}}254138).
+* Adds support for ECS-formatted errors in service details [#254138]({{kib-pull}}254138).
 
 
 ### Fixes [elastic-observability-9.2.6-fixes]
