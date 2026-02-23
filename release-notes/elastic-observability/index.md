@@ -169,6 +169,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes **Dataset Quality** flyout rendering [#237840]({{kib-pull}}237840).
 
 
+## 9.2.6 [elastic-observability-9.2.6-release-notes]
+
+### Features and enhancements [elastic-observability-9.2.6-features-enhancements]
+* Adds error handling to {{observability}} landing page redirect logic [#254171]({{kib-pull}}254171).
+* Support ECS-formatted errors in service details [#254138]({{kib-pull}}254138).
+
+
+### Fixes [elastic-observability-9.2.6-fixes]
+* Fixes toggle state from sticking between monitors in the details flyout [#253314]({{kib-pull}}253314).
+* Fixes wildcard and space behavior in SLO filters [#251033]({{kib-pull}}251033).
+
 ## 9.2.5 [elastic-observability-9.2.5-release-notes]
 
 
@@ -182,7 +193,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes missing spans in Discover's traces view [#247689]({{kib-pull}}247689).
 * Adds more granular control over how alerts behave when data stops being reported for metric threshold rules [#247669]({{kib-pull}}247669).
 * Fixes Synthetics tasks to only update relevant monitors when maintenance windows exist [#246088]({{kib-pull}}246088).
-* 
+*
 
 ## 9.2.4 [elastic-observability-9.2.4-release-notes]
 
