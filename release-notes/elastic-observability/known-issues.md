@@ -23,6 +23,26 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Kubernetes onboarding flow with Elastic Agent fails due to Helm chart version not found
+Applies to: {{stack}} 9.3.1
+
+**Details**
+
+The Observability Onboarding Kubernetes flow with {{agent}} fails with the following error:
+
+```
+Error: INSTALLATION FAILED: chart "elastic-agent" matching 9.3.1 not found in elastic index. (try 'helm repo update'): no chart version found for elastic-agent-9.3.1
+```
+
+For more information, check:
+TODO
+
+**Workaround**
+
+TODO
+
+:::
+
 ::::{dropdown} Browser monitors with JavaScript template literals fail on private locations
 Applies to: All {{stack}} versions
 
