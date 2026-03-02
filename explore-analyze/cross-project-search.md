@@ -196,10 +196,11 @@ Because the request explicitly targets `project2` for the `metrics` index using 
 
 Refer to [the examples section](#cps-examples) for more.
 
-<!--
-### System and hidden indices
-TODO
--->
+### Dot-prefixed and system indices
+
+Indices with names that start with a dot (`.`) but are not system indices behave the same as other non-system indices in {{cps-init}}. They are resolved across the origin project and all linked projects according to the unqualified and qualified expression rules.
+
+System indices are not accessible through {{cps}} or local search.
 
 ## Tags
 
@@ -437,11 +438,34 @@ FROM logs* METADATA _project._alias | STATS COUNT(*) by _project._alias
 Include a link to the ES|QL CPS tutorial.
 -->
 
-<!--
 ## Security
 
-A high-level overview
--->
+This section gives you a high-level overview of how security works in {{cps}}.
+<!-- Refer to the [CPS Security]() section to learn in greater detail. -->
+
+In {{cps-init}}, access to a project’s data is determined by the [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) assigned to you in that project. Your access does not change based on how you perform a search: whether you query directly within a project or access it through {{cps}}, the same permissions apply.
+
+::::{note}
+{{cps-cap}} is not available when performing programmatic searches using {{es}} API keys, since they're project-scoped and they return results from the local project only.
+::::
+<!-- Link to universal API keys. -->
+
+Access control operates in two stages:
+
+* Authentication verifies the identity associated with a request (for example, a Cloud user or API key) and retrieves that identity’s role assignments in each project.
+* Authorization evaluates those roles to determine which actions and resources the request can access within each project.
+
+For example, if you have a viewer role in project 1, an admin role in project 2, and a custom role in project 3, you can access all three projects through {{cps}}. Each project enforces the permissions associated with the role you have in that project.
+
+When a {{cps}} query targets a linked project that you have access to, authorization checks are performed locally in that project to determine whether you have the required privileges to access the requested resources.
+
+**Example**
+You have read access to the `logs` index in project 1, but no access to the `logs` index in project 2.
+If you run `GET logs/_search`:
+
+* documents from the `logs` index in project 1 are returned
+* the `logs` index in project 2 is not accessible and is excluded from the results
+
 
 ## Supported APIs [cps-supported-apis]
 
