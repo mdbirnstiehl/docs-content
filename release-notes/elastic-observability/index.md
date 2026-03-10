@@ -30,7 +30,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.3.2-fixes]
 * Fixes error on burn rate alert details page for suppressed alerts [#256435]({{kib-pull}}256435).
-* Fixes asset details locator params in custom dashboards [#256412]({{kib-pull}}256412).
+* Fixes asset details locator parameters in custom dashboards [#256412]({{kib-pull}}256412).
 * Fixes `Missing required fields (transaction.sampled) in event` error [#255788]({{kib-pull}}255788).
 * Fixes alerts wildcard queries on keyword fields [#255225]({{kib-pull}}255225).
 * Fixes alert visibility and filters for grouped SLOs on details page [#254601]({{kib-pull}}254601).
