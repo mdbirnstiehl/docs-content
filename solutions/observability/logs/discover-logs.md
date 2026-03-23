@@ -59,7 +59,7 @@ The actions column provides additional information about your logs.
 
 ## View log details [view-log-details]
 
-Click the expand icon ![icon to open log details](/solutions/images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
+Select the expand icon ![icon to open log details](/solutions/images/observability-expand-icon.png "") to get an in-depth look at an individual log file.
 
 These details provide immediate feedback and context for what’s happening and where it’s happening for each log. From here, you can quickly debug errors and investigate the services where errors have occurred.
 
@@ -70,6 +70,18 @@ The following actions help you filter and focus on specific fields in the log de
 * **Filter for field present (![filter for present icon](../../images/observability-filter.png "")):** Show logs that contain the specific field.
 * **Toggle column in table (![toggle column in table icon](../../images/observability-listAdd.png "")):** Add or remove a column for the field to the main Discover table.
 
+### Content breakdown
+
+The **Content breakdown** section gives you a view of the raw log text. For each message, the breakdown displays:
+
+- **Field name** — the source field being parsed (for example, `message`)
+- **Timestamp** — the time the log event occurred
+- **Message content** — the full text of the log message
+
+From the content breakdown, you can select **Parse content in Streams** to open the related stream and extract structured fields from the message. Use this when your logs contain unstructured data that you want to query or filter on.
+
+### Stream
+The **Stream** section provides a link to the related [stream](../streams/streams.md) for the selected log. From here, you can extract fields, set data retention, and route data from one place.
 
 ## View log data set details [view-log-data-set-details]
 
