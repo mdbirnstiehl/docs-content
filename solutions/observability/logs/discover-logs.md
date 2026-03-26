@@ -96,7 +96,7 @@ From the content breakdown, you can select **Parse content in Streams** to open 
 
 ### Similar errors [discover-logs-similar-errors]
 
-The **Similar errors** section is available for logs from instrumented applications. It shows an occurrences chart for errors that share the same `service.name`, `error.culprit`, `message`, and `error.grouping_name` fields. Use this view to identify recurring errors and spot patterns across your services.
+The **Similar errors** section shows an occurrences chart for errors that share the same `service.name`, `error.culprit`, `message`, and `error.grouping_name` fields. Use this view to identify recurring errors and spot patterns across your services.
 
 Select **Open in Discover** to open a filtered view of all similar errors.
 
