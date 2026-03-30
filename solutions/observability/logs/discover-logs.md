@@ -30,11 +30,11 @@ For a contextual logs experience, set the **Solution view** for your space to **
 Viewing data in Discover logs data views requires `read` privileges for **Discover**, **Index**, and **Logs**. For more on assigning {{kib}} privileges, refer to the [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) docs.
 
 
-## Load log data [find-your-logs]
+## Load log data [load-log-data]
 
 The logs experience is available in:
 
-* **{{data-source-cap}} mode**: Select the `logs-*` or `All logs` {{data-source}} from the **Discover** main page. By default, **All logs** shows all of your logs according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* **{{data-source-cap}} mode**: Select the `logs-*` or `All logs` {{data-source}} from the **Discover** main page. By default, **All logs** shows all of your logs according to the index patterns set in the **logs sources** advanced setting. You can navigate to the **Advanced settings** from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     To focus on logs from a specific source, create a data view using the index patterns for that source. For more information, refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md#settings-create-pattern).
 
