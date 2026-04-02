@@ -17,7 +17,7 @@ products:
 
 The **Enrich** processor adds data from an existing [enrich policy](elasticsearch://reference/enrich-processor/enrich-processor.md) to incoming documents during processing. Use it to look up and append supplemental data, such as geographic coordinates from an IP address or account details from a user ID, without modifying the original source.
 
-Before using the enrich processor, you must have at least one enrich policy configured in {{es}}. Refer to [Enrich your data](elasticsearch://reference/enrich-processor/enrich-processor.md) for setup instructions.
+Before using the enrich processor, you must have at least one enrich policy configured in {{es}}. Refer to [Enrich your data](/manage-data/ingest/transform-enrich/data-enrichment.md) for setup instructions.
 
 To enrich documents:
 
