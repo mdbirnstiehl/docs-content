@@ -62,6 +62,7 @@ The following table lists all available processors. Refer to the individual proc
 | [`date`](./extract/date.md) | Parses date strings into timestamps. |
 | [`dissect`](./extract/dissect.md) | Parses structured text using delimiter-based patterns. |
 | [`drop_document`](./extract/drop.md) | Prevents indexing of a document from based on a condition. |
+| [`enrich`](./extract/enrich.md) | Adds data from an enrich policy to incoming documents. |
 | [`grok`](./extract/grok.md) | Parses unstructured text using predefined or custom patterns. |
 | [`join`](./extract/join.md) | Concatenates the values of multiple fields with a delimiter. |
 | [`lowercase`](./extract/lowercase.md) | Converts a string field to lowercase. |
