@@ -1,7 +1,7 @@
 ---
 applies_to:
   serverless: ga
-  stack: ga 9.0+
+  stack: ga 9.4+
 products:
   - id: observability
   - id: elasticsearch
