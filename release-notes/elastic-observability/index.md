@@ -116,8 +116,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.4.0-fixes]
 
-* Fixes the layout of the Elastic Inference Service pricing callout [#262780]({{kib-pull}}262780).
-* Adds the Elastic Inference Service cost callout to all relevant AI Assistant settings locations [#255588]({{kib-pull}}255588).
+* Fixes the layout of the Elastic Inference Service (EIS) pricing callout [#262780]({{kib-pull}}262780).
+* Adds the EIS cost callout to all relevant AI Assistant settings locations [#255588]({{kib-pull}}255588).
 * Fixes AI/Inference connector creation to correctly use the `location` field for provider configuration [#250838]({{kib-pull}}250838).
 * Updates the AI Insight UI description [#250137]({{kib-pull}}250137).
 * Fixes truncated inline attachments in the AI Agent [#249799]({{kib-pull}}249799).
@@ -135,7 +135,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes overlapping badge display for processor names in Streams [#251874]({{kib-pull}}251874).
 * Fixes a `too_small` validation error for AI pipeline suggestions with empty grok patterns [#251113]({{kib-pull}}251113).
 * Fixes filtering by multiline string fields in Streams [#250047]({{kib-pull}}250047).
-* Fixes query synchronization on save and adds debounce to the Streams significant events preview chart [#249833]({{kib-pull}}249833).
+* Fixes query synchronization on save and adds debounce to the Streams Significant Events preview chart [#249833]({{kib-pull}}249833).
 * Prevents editing of AI-generated significant event queries to protect their integrity [#249716]({{kib-pull}}249716).
 * Fixes child stream name validation in Streams to prevent spaces in stream names [#249384]({{kib-pull}}249384).
 * Fixes document rejection in Streams partitioning when documents arrive during routing evaluation [#247953]({{kib-pull}}247953).
