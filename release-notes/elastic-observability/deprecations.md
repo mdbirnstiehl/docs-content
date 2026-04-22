@@ -37,10 +37,6 @@ Metrics Explorer has been deprecated in favor of an improve metrics experience i
 View [#261785]({{kib-pull}}261785).
 ::::
 
-## 9.0.1 [elastic-observability-9.0.1-deprecations]
-
-There are no deprecations in Elastic {{observability}} 9.0.1.
-
 ## 9.0.0 [elastic-observability-9.0.0-deprecations]
 
 ::::{dropdown} Removed Logs Explorer
