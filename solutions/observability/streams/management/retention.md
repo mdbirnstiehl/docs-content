@@ -21,7 +21,7 @@ After selecting a stream, use the **Retention** tab to set how long your stream 
 - **Retention**: The current retention policy, including the source of the policy.
 - **Storage size**: The total data volume and number of documents in the stream.
 - **Ingestion averages**: Estimated ingestion per day and month, calculated based on the total size of all data in the stream divided by the stream's age.
-- **Data lifecycle**: {applies_to}`stack: ga 9.4+` The amount of data in each data phase (**Hot**, **Warm**, **Cold**, **Frozen**, **Delete**).
+- **Data lifecycle**: {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` The amount of data in each data phase (**Hot**, **Warm**, **Cold**, **Frozen**, **Delete**).
 - **{{ilm-init}} policy data tiers**: {applies_to}`stack: preview =9.1, ga 9.2-9.3` The amount of data in each data tier (**Hot**, **Warm**, **Cold**).
 - **Ingestion over time**: Estimated ingestion volume over time based on the number of documents over that time, multiplied by the average document size in the backing index.
 
@@ -110,10 +110,10 @@ The following phases are available:
 : The index is rarely updated or queried, and slower query performance is acceptable. Set the minimum age for data to move into this phase. Options include enabling read-only access, [downsampling](#streams-retention-downsampling), and [searchable snapshots](#streams-retention-searchable-snapshots).
 
 **Frozen**
-: The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository. A snapshot repository is required — select **Create repository** if one doesn't exist. All phases share the same snapshot repository.
+: The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a [snapshot repository](#streams-retention-searchable-snapshots).
 
 **Delete**
-: The index is no longer needed and can be removed after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [searchable snapshots](#streams-retention-searchable-snapshots).
+: Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [searchable snapshots](#streams-retention-searchable-snapshots).
 
 For more information on ILM phases and available actions, refer to [Index lifecycle](../../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
