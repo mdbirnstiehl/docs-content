@@ -90,6 +90,7 @@ If the policy you want doesn't exist, create a new {{ilm-init}} policy. Refer to
 ## Modify data lifecycle
 ```{applies_to}
 stack: ga 9.4+
+serverless: unavailable
 ```
 
 When a stream follows an {{ilm-init}} policy, the **Data lifecycle** panel on the **Retention** tab displays the phases defined in that policy as a visual bar. Each phase represents a stage in the data lifecycle, from active indexing to eventual deletion. Data moves between phases based on the minimum age you configure for each phase.
