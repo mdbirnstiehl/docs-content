@@ -43,6 +43,8 @@ You have the following options when setting your data retention:
 
 - [**Inherit from index template or parent stream**](#streams-retention-inherit-from-template): Use the data retention configuration that is set in a classic stream's index template or a wired stream's parent stream.
 - [**Set a specific retention period**](#streams-retention-dsl): You can set your stream to retain data for a specific number of days. Setting a specific or indefinite retention period stores data in the hot phase for best indexing and search performance.
+- [**Follow an ILM policy**](#streams-retention-ilm): {applies_to}`stack: preview =9.1, ga 9.2+` Select an existing ILM policy that uses phases for your data (hot, warm, cold) to allow more control when managing storage, performance, and cost as your data ages.
+
 
 ### Inherit from index template or parent stream [streams-retention-inherit-from-template]
 If you enable **Inherit from index template** or **parent stream**, the stream uses the retention settings from its index template (for classic streams) or parent stream (for wired streams). When this option is enabled, you don’t need to specify a custom retention period or policy.
