@@ -97,9 +97,9 @@ serverless: unavailable
 
 When a stream follows an {{ilm-init}} policy, the **Data lifecycle** panel on the **Retention** tab displays the phases defined in that policy as a visual bar. Each phase represents a stage in the data lifecycle, from active indexing to eventual deletion. Data moves between phases based on the minimum age you configure for each phase.
 
-To edit an existing phase, select the phase (**Hot**, **Warm**, **Cold**, **Frozen**, or **Delete**) in the **Edit data phases** panel, and select {icon}`pencil`.
+To edit an existing phase, select the phase (**Hot**, **Warm**, **Cold**, **Frozen**, or **Delete**) in the **Edit data phases** panel, and click {icon}`pencil`.
 
-To add a new phase, select **Add data phase**.
+To add a new phase, click **Add data phase**.
 
 The following phases are available:
 
@@ -118,7 +118,7 @@ The following phases are available:
 **Delete**
 : Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [searchable snapshots](#streams-retention-searchable-snapshots).
 
-For more information on ILM phases and available actions, refer to [Index lifecycle](../../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
+For more information on {{ilm-init}} phases and available actions, refer to [Index lifecycle](../../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
 ### Downsampling [streams-retention-downsampling]
 
