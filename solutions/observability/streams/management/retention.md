@@ -97,11 +97,14 @@ serverless: unavailable
 
 When a stream follows an {{ilm-init}} policy, the **Data lifecycle** panel on the **Retention** tab displays the phases defined in that policy as a visual bar. Each phase represents a stage in the data lifecycle, from active indexing to eventual deletion. Data moves between phases based on the minimum age you configure for each phase.
 
-To edit an existing phase, select the phase (**Hot**, **Warm**, **Cold**, **Frozen**, or **Delete**) in the **Edit data phases** panel, and click {icon}`pencil`.
+To edit or add a phase:
 
-To add a new phase, click **Add data phase**.
+- To edit an existing phase, select the phase (**Hot**, **Warm**, **Cold**, **Frozen**, or **Delete**) in the **Data lifecycle** panel, and click {icon}`pencil`.
+- To add a new phase, click **Add data phase** and select the phase you want to add.
 
-The following phases are available:
+This opens the **Edit data phases** window, where you can configure or update your phases.
+
+The following phases and options are available:
 
 **Hot**
 : The index is actively updated and queried. This is the default phase for all data. Options include enabling read-only access and [downsampling](#streams-retention-downsampling).
@@ -113,7 +116,7 @@ The following phases are available:
 : The index is rarely updated or queried, and slower query performance is acceptable. Set the minimum age for data to move into this phase. Options include enabling read-only access, [downsampling](#streams-retention-downsampling), and [searchable snapshots](#streams-retention-searchable-snapshots).
 
 **Frozen**
-: The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a [snapshot repository](#streams-retention-searchable-snapshots).
+: The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a [snapshot repository](#streams-retention-searchable-snapshots). The frozen phase requires a snapshot repository.
 
 **Delete**
 : Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [searchable snapshots](#streams-retention-searchable-snapshots).
