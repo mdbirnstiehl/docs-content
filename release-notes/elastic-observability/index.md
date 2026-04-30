@@ -220,7 +220,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes loss of UI state in signal-specific Discover flyout tabs when refreshing a query [#248203]({{kib-pull}}248203).
 * Fixes broken breadcrumbs and sidebar navigation for Data Visualizer and AIOps within solution views [#248167]({{kib-pull}}248167).
 * Fixes double scrollbars appearing in fullscreen flyouts [#247744]({{kib-pull}}247744).
-* Fixes links to Stack Management and Observability rules that routed to the wrong destination, causing the navigation menu to disappear [#262903]({{kib-pull}}262903).
 
 ## 9.3.3 [elastic-observability-9.3.3-release-notes]
 
