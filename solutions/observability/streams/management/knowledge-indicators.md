@@ -2,7 +2,7 @@
 navigation_title: Knowledge Indicators
 applies_to:
   serverless: preview
-  stack: preview
+  stack: preview 9.4+
 products:
   - id: observability
   - id: elasticsearch
@@ -21,6 +21,10 @@ Knowledge Indicators (KIs) are structured facts that Elastic extracts from your 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like Rules, topology maps, AI agent investigations, and dashboards.
 
 To access Knowledge Indicators, open **Significant Events** from the Streams UI and select the **Knowledge Indicators** tab.
+
+:::{note}
+This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+:::
 
 ## How extraction works [streams-ki-extraction]
 
