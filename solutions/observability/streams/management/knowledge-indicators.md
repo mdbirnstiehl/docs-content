@@ -20,6 +20,8 @@ Knowledge Indicators (KIs) are structured facts that Elastic extracts from your 
 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like Rules, topology maps, AI agent investigations, and dashboards.
 
+To access Knowledge Indicators, open **Significant Events** from the Streams UI and select the **Knowledge Indicators** tab.
+
 ## How extraction works [streams-ki-extraction]
 
 The extraction pipeline samples a small batch of logs from a stream and processes them through a combination of LLM analysis and deterministic code generators. It accumulates its findings across multiple iterations, entirely configuration-free.
