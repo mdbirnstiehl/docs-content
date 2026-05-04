@@ -27,7 +27,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 * Removes the confirmation modal when switching to AI Agent mode [#264839]({{kib-pull}}264839).
 * Adds the `observability.investigation` skill to the Elastic Agent, providing structured investigation methodology across all Observability tools for service health, dependency analysis, and log and trace correlation [#262293]({{kib-pull}}262293).
-* Adds AI Agent as the default Observability chat experience; users can return to the classic AI Assistant through **GenAI Settings** [#260570]({{kib-pull}}260570).
+* Adds AI Agent as the default Observability chat experience. AI Assistant has been deprecated. Users can return to AI Assistant through **GenAI Settings** [#260570]({{kib-pull}}260570).
 * Adds a continuous Knowledge Indicator extraction workflow to Streams **Significant Events Discovery** that automatically identifies stream features on a configurable schedule [#260322]({{kib-pull}}260322).
 * Consolidates LLM connector listing through the inference plugin for consistent AI connector management [#258530]({{kib-pull}}258530).
 * Adds a Streams exploration skill to the AI Agent Builder [#258330]({{kib-pull}}258330).
