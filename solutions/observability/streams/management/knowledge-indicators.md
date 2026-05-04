@@ -36,15 +36,17 @@ To access the Significant Events page and generate KIs, you need to enable the f
 
 ## Generate Knowledge Indicators [streams-ki-generate]
 
-You can trigger KI extraction on demand or set it to run automatically at a specific interval.
+You can trigger KI extraction on demand or set up continuous extraction at a specific interval.
 
-**On demand**: From the **Significant Events** page, select the streams you want to generate KIs for and click **Generate**.
+On demand
+:   From the **Significant Events** page, select the streams you want to generate KIs for and click **Generate**.
 
-**Automatic**: Continuous extraction is disabled by default. To enable it:
+Continuous extraction
+:   When enabled, continuous extraction runs automatically on managed streams at the interval you configure. Continuous extraction is off by default. To enable it:
 
-1. From the **Streams** main page, navigate to **Significant Events** -> **Settings**.
-1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
-1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
+    1. From the **Streams** main page, navigate to **Significant Events** -> **Settings**.
+   1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
+   1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
 
 ## How extraction works [streams-ki-extraction]
 
