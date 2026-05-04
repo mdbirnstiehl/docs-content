@@ -1,5 +1,6 @@
 ---
 navigation_title: Knowledge Indicators
+description: Learn how Knowledge Indicators automatically extract structured facts about services, infrastructure, and dependencies from raw log data in Streams.
 applies_to:
   serverless: preview
   stack: preview 9.4+
@@ -47,7 +48,7 @@ You can trigger KI extraction on demand or set it to run automatically at a spec
 
 ## How extraction works [streams-ki-extraction]
 
-The extraction pipeline samples a small batch of logs from a stream and processes them through a combination of LLM analysis and deterministic code generators. It accumulates its findings across multiple iterations, entirely configuration-free.
+The extraction pipeline samples a small batch of logs from a stream and processes them through a combination of large language model (LLM) analysis and deterministic code generators. It accumulates its findings across multiple iterations, entirely configuration-free.
 
 The pipeline runs multiple iterations, each time fetching a small sample of documents using a mix of random and entity-filtered documents to ensure full coverage of the system. KIs found in one iteration are fed back as exclusions into the next, so each round focuses on what the previous one missed — ensuring quieter, less-represented services aren't crowded out by noisier ones.
 
@@ -86,7 +87,7 @@ Sampled documents are sent to an LLM that identifies the following feature types
 | Infrastructure | Environment context: Kubernetes, cloud provider, OS |
 | Technology | Languages, frameworks, libraries, databases |
 | Dependency | Relationships between components |
-| Schema | Log format conventions: ECS, OTel, custom |
+| Schema | Log format conventions: Elastic Common Schema (ECS), OTel, custom |
 
 Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 for each KI. Features intentionally excluded by users (false positives) are also tracked and carried forward to prevent re-identification in future runs.
 
@@ -115,7 +116,7 @@ Feature KIs carry a full data model:
 - **`properties`**: stable key-value pairs used to deduplicate findings across multiple runs
 - **`confidence`**: 0–100. LLM-identified KIs score based on evidence quality. Deterministic KIs always score 100.
 - **`evidence`**: 2–5 supporting log excerpts that justify the KI's existence
-- **`filter`**: an optional StreamLang condition scoping the KI to specific documents
+- **`filter`**: an optional [StreamLang](./streamlang.md) condition scoping the KI to specific documents
 
 Example dependency KI:
 
