@@ -16,15 +16,34 @@ products:
 
 # Knowledge Indicators [streams-knowledge-indicators]
 
+:::{note}
+This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) and can incur additional costs.
+:::
+
 Knowledge Indicators (KIs) are structured facts that Elastic extracts from your raw log data automatically without requiring schemas, service catalogs, or manual configuration. When you run extraction against a log stream, Elastic analyzes the raw data and returns facts about your environment: which services are running, the underlying infrastructure they rely on, how they depend on each other, and the log schemas they use.
 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like Rules, topology maps, AI agent investigations, and dashboards.
 
-To access Knowledge Indicators, open **Significant Events** from the Streams UI and select the **Knowledge Indicators** tab.
+To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
 
-:::{note}
-This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
+:::{admonition} Required settings
+To access the Significant Events page and generate KIs, you need to enable the following Kibana settings:
+- `observability:streamsEnableSignificantEvents`
+- `observability:streamsEnableSignificantEventsDiscovery`
 :::
+
+
+## Generate Knowledge Indicators [streams-ki-generate]
+
+You can trigger KI extraction on demand or set it to run automatically at a specific interval.
+
+**On demand**: From the **Significant Events** page, select the streams you want to generate KIs for and click **Generate**.
+
+**Automatic**: Continuous extraction is disabled by default. To enable it:
+
+1. From the **Streams** main page, navigate to **Significant Events** -> **Settings**.
+1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
+1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
 
 ## How extraction works [streams-ki-extraction]
 
