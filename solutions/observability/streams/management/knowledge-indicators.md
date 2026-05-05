@@ -17,29 +17,25 @@ products:
 
 # Knowledge Indicators [streams-knowledge-indicators]
 
-:::{note}
-This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) and can incur additional costs.
-:::
-
 Knowledge Indicators (KIs) are structured facts that Elastic extracts from your raw log data automatically without requiring schemas, service catalogs, or manual configuration. When you run extraction against a log stream, Elastic analyzes the raw data and returns facts about your environment: which services are running, the underlying infrastructure they rely on, how they depend on each other, and the log schemas they use.
 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like Rules, topology maps, AI agent investigations, and dashboards.
 
 To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
 
-:::{admonition} Required settings
-To access the Significant Events page and generate KIs, you need to enable the following Kibana settings:
-- `observability:streamsEnableSignificantEvents`
-- `observability:streamsEnableSignificantEventsDiscovery`
+:::{admonition} Requirements
+To use this feature, you need:
+
+- A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md). Using one may incur additional costs.
+- The `observability:streamsEnableSignificantEvents` {{kib}} settings enabled.
 :::
 
-
-## Generate Knowledge Indicators [streams-ki-generate]
+## Generate KIs [streams-ki-generate]
 
 You can trigger KI extraction on demand or set up continuous extraction at a specific interval.
 
 On demand
-:   From the **Significant Events** page, select the streams you want to generate KIs for and click **Generate**.
+:   From the **Significant Events** page, select the streams you want to generate KIs for and select **Generate**.
 
 Continuous extraction
 :   When enabled, continuous extraction runs automatically on managed streams at the interval you configure. Continuous extraction is off by default. To enable it:
@@ -48,7 +44,7 @@ Continuous extraction
    1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
    1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
 
-## How extraction works [streams-ki-extraction]
+## How KI extraction works [streams-ki-extraction]
 
 The extraction pipeline samples a small batch of logs from a stream and processes them through a combination of large language model (LLM) analysis and deterministic code generators. It accumulates its findings across multiple iterations, entirely configuration-free.
 
@@ -113,12 +109,12 @@ Feature KIs are descriptive and explain the contents of the stream: what service
 
 Feature KIs carry a full data model:
 
-- **`type` / `subtype`**: the category of the fact (Entity, Infrastructure, Technology, Dependency, Schema)
-- **`title` / `description`**: a human-readable summary
-- **`properties`**: stable key-value pairs used to deduplicate findings across multiple runs
+- **`type` / `subtype`**: The category of the fact (Entity, Infrastructure, Technology, Dependency, Schema)
+- **`title` / `description`**: A human-readable summary
+- **`properties`**: Stable key-value pairs used to deduplicate findings across multiple runs
 - **`confidence`**: 0–100. LLM-identified KIs score based on evidence quality. Deterministic KIs always score 100.
 - **`evidence`**: 2–5 supporting log excerpts that justify the KI's existence
-- **`filter`**: an optional [StreamLang](./streamlang.md) condition scoping the KI to specific documents
+- **`filter`**: An optional [StreamLang](./streamlang.md) condition scoping the KI to specific documents
 
 Example dependency KI:
 
@@ -168,9 +164,9 @@ Example query KI:
 
 KIs serve as the contextual foundation for several capabilities:
 
-**Rules**: Query KIs automatically generate active Rules to surface signals without manual configuration.
+**Rules**: Query KIs automatically generate active rules to surface signals without manual configuration.
 
-**Topology graphs**: Dependency KIs construct an infrastructure graph inferred entirely from log data — no distributed tracing or manual configuration required. During an incident, the graph immediately shows which upstream services are affected when a specific database or service goes down.
+**Topology graphs**: Dependency KIs construct an infrastructure graph inferred entirely from log data. No distributed tracing or manual configuration is required. During an incident, the graph immediately shows which upstream services are affected when a specific database or service goes down.
 
 **AI agent investigations**: Instead of reconstructing basic facts during every incident, an AI agent begins with your system's actual topology and known failure modes. It identifies the relevant streams, runs the applicable queries, and formulates a specific hypothesis using the available KI context.
 
@@ -178,10 +174,10 @@ KIs serve as the contextual foundation for several capabilities:
 
 **Grok patterns**: KIs inform Grok pattern generation when you introduce new streams.
 
-## Lifecycle and maintenance [streams-ki-lifecycle]
+## KI lifecycle and maintenance [streams-ki-lifecycle]
 
 KIs auto-expire after 7 days if not observed in subsequent extraction runs. KIs for decommissioned services are automatically removed without manual cleanup; if a service comes back online, its KIs are re-extracted automatically.
 
 Users can mark individual Feature KIs as false positives. The system carries those exclusions forward into future runs to prevent re-identification.
 
-Because KI extraction focuses on a specific classification task — analyzing around 20 log samples to identify services, infrastructure, and dependencies — it does not require a large frontier model. A fast, cost-effective model handles this classification without multi-step reasoning.
+Because KI extraction focuses on a specific classification task, analyzing around 20 log samples to identify services, infrastructure, and dependencies, it does not require a large frontier model. A fast, cost-effective model handles this classification without multi-step reasoning.
