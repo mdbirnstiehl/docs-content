@@ -50,7 +50,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds the `get_trace_change_points` tool to the AI Agent for identifying performance change points in traces [#247810]({{kib-pull}}247810).
 * Adds log and metric change point analysis tools to the AI Agent [#242423]({{kib-pull}}242423).
 * Adds a **Partitioning** tab to classic streams with support for query-based stream routing [#261162]({{kib-pull}}261162).
-* Supports inline editing and deletion of query streams from the **Partitioning** tab [#260968]({{kib-pull}}260968).
 * Adds a **Create enrich policy** link to the Streams enrich processor form [#260800]({{kib-pull}}260800).
 * Enables users to iteratively refine AI-generated partition suggestions in Streams by providing natural language guidance [#260264]({{kib-pull}}260264).
 * Adds an `enrich` processor to Streams for enriching log data using Elasticsearch enrich policies [#256971]({{kib-pull}}256971).
@@ -129,7 +128,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an error in Streams when generating patterns from invalid AI suggestions [#260325]({{kib-pull}}260325).
 * Adds support for Cross-Cluster Replication (CCR) and clusters without security enabled in Streams [#259175]({{kib-pull}}259175).
 * Fixes AI pipeline suggestions in Streams that were using incorrect field names on ECS and OTel streams [#258139]({{kib-pull}}258139).
-* Fixes deletion of wired streams that have sibling query streams [#257626]({{kib-pull}}257626).
 * Marks {{esql}} rule execution errors as user-triggered in Streams rules to prevent unnecessary Task Manager retries [#255011]({{kib-pull}}255011).
 * Fixes time range refresh in Streams to apply the updated time range correctly [#253295]({{kib-pull}}253295).
 * Fixes overlapping badge display for processor names in Streams [#251874]({{kib-pull}}251874).
