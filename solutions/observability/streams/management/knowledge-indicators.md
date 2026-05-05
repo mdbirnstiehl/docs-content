@@ -26,7 +26,7 @@ To access Knowledge Indicators, open **Significant Events** from the Streams mai
 :::{admonition} Requirements
 To use this feature, you need:
 
-- A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md). Using one may incur additional costs.
+- A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md). Using one can incur additional costs.
 - The `observability:streamsEnableSignificantEvents` {{kib}} settings enabled.
 :::
 
@@ -40,7 +40,7 @@ On demand
 Continuous extraction
 :   When enabled, continuous extraction runs automatically on managed streams at the interval you configure. Continuous extraction is off by default. To enable it:
 
-    1. From the **Streams** main page, navigate to **Significant Events** -> **Settings**.
+    1. From the **Streams** main page, navigate to **Significant Events** → **Settings**.
    1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
    1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
 
@@ -72,7 +72,7 @@ Similarly, from a Java service log:
 The pipeline extracts:
 
 - **Entity**: `fraud-check` (a Spring Boot service)
-- **Dependency**: `fraud-check` → `policy-lookup` (via an outbound HTTP call)
+- **Dependency**: `fraud-check` → `policy-lookup` (through an outbound HTTP call)
 - **Technology**: Java, Spring Boot
 
 ### LLM analysis [streams-ki-llm]
@@ -176,7 +176,7 @@ KIs serve as the contextual foundation for several capabilities:
 
 ## KI lifecycle and maintenance [streams-ki-lifecycle]
 
-KIs auto-expire after 7 days if not observed in subsequent extraction runs. KIs for decommissioned services are automatically removed without manual cleanup; if a service comes back online, its KIs are re-extracted automatically.
+KIs auto-expire after 7 days if not observed in subsequent extraction runs. KIs for decommissioned services are automatically removed without manual cleanup. If a service comes back online, its KIs are re-extracted automatically.
 
 Users can mark individual Feature KIs as false positives. The system carries those exclusions forward into future runs to prevent re-identification.
 
