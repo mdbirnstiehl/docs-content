@@ -27,7 +27,7 @@ To access Knowledge Indicators, open **Significant Events** from the Streams mai
 To use this feature, you need:
 
 - A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which can incur additional costs.
-- The `observability:streamsEnableSignificantEvents` {{kib}} settings enabled.
+- The `observability:streamsEnableSignificantEvents` {{kib}} setting enabled.
 :::
 
 ## Generate KIs [streams-ki-generate]
