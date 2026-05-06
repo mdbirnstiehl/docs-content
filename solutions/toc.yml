@@ -527,8 +527,8 @@ toc:
       - file: observability/data-set-quality-monitoring.md
       - file: observability/ai/observability-ai.md
         children:
-          - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/agent-builder-observability.md
+          - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/automatic-import.md
           - file: observability/ai/llm-performance-matrix.md
       - file: observability/cross-project-search.md
@@ -567,14 +567,14 @@ toc:
             children:
               - file: security/ai/ease/ease-alerts.md
               - file: security/ai/ease/ease-upgrade.md
-          - file: security/ai/ai-assistant.md
-            children:
-              - file: security/ai/ai-assistant-knowledge-base.md
-              - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/agent-builder/agent-builder.md
             children:
               - file: security/ai/agent-builder/skills-model.md
               - file: security/ai/agent-builder/skills-use-cases.md
+          - file: security/ai/ai-assistant.md
+            children:
+              - file: security/ai/ai-assistant-knowledge-base.md
+              - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/attack-discovery.md
             children:
               - file: security/ai/triage-attack-discovery-findings.md
