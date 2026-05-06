@@ -35,15 +35,15 @@ Use the following components to monitor the health of your data and identify and
 
 Streams uses the following ES|QL queries to calculate the quality score for a stream:
 
-- All documents (including failures): `FROM <stream-name>, <stream-name>::failures | STATS doc_count = COUNT(*)`
+- All documents (including failed documents): `FROM <stream-name>, <stream-name>::failures | STATS doc_count = COUNT(*)`
 - Failed documents only: `FROM <stream-name>::failures | STATS failed_doc_count = COUNT(*)`
 - Degraded documents: `FROM <stream-name> METADATA _ignored | WHERE _ignored IS NOT NULL | STATS degraded_doc_count = COUNT(*)`
 
 Streams calculates data quality as follows:
 
-* **Good:** Both the **Degraded documents** percentage and the **Failed documents only** percentage are 0.
-* **Degraded:** Either the **Degraded documents** percentage or the **Failed documents only** percentage are greater than 0 and less than or equal to 3.
-* **Poor:** Either the **Degraded documents** percentage or the **Failed documents only** percentage are greater than 3.
+* **Good:** Both the **Degraded documents** percentage and the **Failed documents** percentage are 0.
+* **Degraded:** Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 0 and less than or equal to 3.
+* **Poor:** Either the **Degraded documents** percentage or the **Failed documents** percentage are greater than 3.
 
 ## Failure store [streams-data-quality-failure]
 
