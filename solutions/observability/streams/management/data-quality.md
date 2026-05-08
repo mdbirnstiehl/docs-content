@@ -15,7 +15,7 @@ products:
 
 # Manage data quality [streams-data-quality]
 
-From the **Streams** page, use the **Data quality** menu to filter your streams by data quality status, then select a stream to examine it more closely. After selecting a stream, use the **Data quality** tab to find failed and degraded documents in your stream.
+From the **Streams** page, use the **Data quality** column to filter your streams by data quality status, then select a stream to examine it more closely. After selecting a stream, use the **Data quality** tab to find failed and degraded documents in your stream.
 
 Use the following components to monitor the health of your data and identify and fix issues:
 
@@ -33,7 +33,7 @@ Use the following components to monitor the health of your data and identify and
 
 ## Data quality calculation [streams-data-quality-calculation]
 
-Streams uses the following ES|QL queries to calculate the quality score for a stream:
+Streams uses the following {{esql}} queries to calculate the quality score for a stream:
 
 - All documents (including failed documents): `FROM <stream-name>, <stream-name>::failures | STATS doc_count = COUNT(*)`
 - Failed documents only: `FROM <stream-name>::failures | STATS failed_doc_count = COUNT(*)`
@@ -66,6 +66,4 @@ To get notified when the percentage of degraded documents in a stream exceeds a 
 
 1. Open the **Data quality** tab for the stream you want to monitor.
 2. Select **Create rule** ({icon}`bell`).
-3. Define the conditions for your rule.
-
-For more information, refer to [Create a degraded docs rule](../../incident-management/create-a-degraded-docs-rule.md).
+3. [Define the conditions](../../incident-management/create-a-degraded-docs-rule.md#degraded-docs-rule-conditions)) for your rule.
