@@ -239,10 +239,32 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 
 ## View wired streams in Discover [streams-wired-streams-discover]
 
+:::::{applies-switch}
+
+::::{applies-item} stack: preview 9.4+
+
+Each wired stream automatically gets an {{esql}} view named `$.<streamName>` — for example, `$.logs.otel`. Each view includes data from the parent stream and all its child streams, letting you query across partitioned data without targeting each child stream individually.
+
+When you open a wired stream in Discover, the query uses the view automatically: `FROM $.logs.otel`.
+
+To query a wired stream and all its children using {{esql}}:
+
+```esql
+FROM logs.otel, logs.otel.*
+```
+
+::::
+
+::::{applies-item} { serverless: preview, stack: preview 9.2-9.3 }
+
 To view wired log streams in Discover:
 
 1. Manually [create a data view](../../../explore-analyze/find-and-organize/data-views.md#settings-create-pattern) for the wired streams index pattern (`logs,logs.*`).
 1. add the wireds streams index pattern (`logs,logs.*`) to the `observability:logSources` {{kib}} advanced setting, which you can open from the navigation menu or by using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+::::
+
+:::::
 
 ## Next steps
 
