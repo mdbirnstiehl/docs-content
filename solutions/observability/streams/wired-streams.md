@@ -243,9 +243,9 @@ POST /logs.otel/_bulk # Set to `logs.otel` or `logs.ecs` (serverless or stack 9.
 
 ::::{applies-item} stack: preview 9.4+
 
-Each wired stream automatically gets an {{esql}} view named `$.<streamName>` — for example, `$.logs.otel`. Each view includes data from the parent stream and all its child streams, letting you query across partitioned data without targeting each child stream individually.
+Each wired stream automatically gets an {{esql}} view, for example, `logs.otel`. Each view includes data from the parent stream and all its child streams, letting you query across partitioned data without targeting each child stream individually.
 
-When you open a wired stream in Discover, the query uses the view automatically: `FROM $.logs.otel`.
+When you open a wired stream in Discover, the query uses the view automatically: `FROM logs.otel`.
 
 To query a wired stream and all its children using {{esql}}:
 
