@@ -53,7 +53,7 @@ A [failure store](../../../../manage-data/data-store/data-streams/failure-store.
 For example, for a stream called `my-stream`, Streams fetches all documents from the `my-stream::failures` index from within the specified time range in the date picker.
 
 ### Required permissions
-:::{include} ../../../_snippets/failure-store-permissions.md
+:::{include} ../../_snippets/failure-store-permissions.md
 :::
 
 ### Turn on failure stores
