@@ -118,7 +118,7 @@ Dashboard tools enable agents to create and manage [dashboards](/explore-analyze
 stack: ga 9.4+
 ```
 
-Streams tools provide capabilities for exploring and managing [Streams](/explore-analyze/streams/streams.md).
+Streams tools provide capabilities for exploring and managing [Streams](/manage-data/streams/streams.md).
 
 `platform.streams.list_streams` {applies_to}`stack: ga 9.4+`
 :   Lists all streams the current user has access to, returning each stream's name, type, and description.

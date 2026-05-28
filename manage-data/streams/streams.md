@@ -103,7 +103,7 @@ Space settings only affect visibility. Set permissions to manage and edit Stream
 
 Open Streams from the following places in {{kib}}:
 
-- Select **Streams** from the navigation menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
+- Select **Streams** from the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 - Open the data stream for a specific document from **Discover**. To do this, expand the details flyout for a document that's stored in a data stream, and select **Stream** or an action associated with the document's data stream. Streams then opens filtered to the selected data stream.
 
