@@ -33,7 +33,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 serverless: ga
 stack: preview =9.1, ga 9.2+
 ```
-The [**Streams**](/solutions/observability/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
+The [**Streams**](/explore-analyze/streams/streams.md) page provides a centralized interface for managing your data in {{kib}}. It consolidates common data management tasks and eliminates the need for manual configuration of multiple applications and components. A stream maps directly to an {{es}} data stream, for example `logs-myapp-default`. Any changes that you make on the **Streams** page are automatically propagated to the associated data stream.
 
 :::{image} /manage-data/images/data-stream-management-streams.png
 :alt: The Streams page
@@ -42,9 +42,9 @@ The [**Streams**](/solutions/observability/streams/streams.md) page provides a c
 
 
 You can perform the following data management tasks on the **Streams** page:
-* [define parsing and field extraction logic](/solutions/observability/streams/management/extract.md)
-* [configure data retention policies](/solutions/observability/streams/management/retention.md)
-* [manually adjust index settings](/solutions/observability/streams/management/advanced.md)
-* [manage and update field mappings](/solutions/observability/streams/management/schema.md)
-* [identify failed and degraded documents](/solutions/observability/streams/management/data-quality.md)
-* [partition data into child streams](/solutions/observability/streams/management/partitioning.md) {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview`
+* [define parsing and field extraction logic](/explore-analyze/streams/management/extract.md)
+* [configure data retention policies](/explore-analyze/streams/management/retention.md)
+* [manually adjust index settings](/explore-analyze/streams/management/advanced.md)
+* [manage and update field mappings](/explore-analyze/streams/management/schema.md)
+* [identify failed and degraded documents](/explore-analyze/streams/management/data-quality.md)
+* [partition data into child streams](/explore-analyze/streams/management/partitioning.md) {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview`
