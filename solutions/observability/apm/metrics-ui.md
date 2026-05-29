@@ -33,16 +33,13 @@ stack: ga 9.3
 serverless: ga
 ```
 
-When migrating a service to OpenTelemetry instrumentation, you may have date ranges that contain both classic {{product.apm}} and OpenTelemetry data. The **Metrics** tab shows callouts to help you navigate this transition period.ß
+When migrating a service to OpenTelemetry instrumentation, you may have date ranges that contain both classic {{product.apm}} and OpenTelemetry data. The **Metrics** tab shows callouts to help you navigate this transition period.
 
 **Instrumentation change detected**
 :   When the **Metrics** tab detects a change in instrumentation, it shows: "We have detected a change on `<timestamp>` in the instrumentation of your service." It also shows the current instrumentation type and time period, and provides the date range for the previous instrumentation period so you can switch to it.
 
 **Overlapping instrumentation types**
-:   If classic {{product.apm}} and OpenTelemetry data overlap in the selected time range, the **Metrics** tab shows: "This service has overlapping data from multiple instrumentation types."
-
-**No data found**
-:   If the selected time range contains no metrics data, the **Metrics** tab shows: "No metrics data found for the selected time range. Try adjusting the time range."
+:   If classic {{product.apm}} and OpenTelemetry data overlap in the selected time range, the **Metrics** tab shows: "This service has overlapping data from multiple instrumentation types." It provides date ranges for each instrumentation type so you can click to switch to a specific period.
 
 ## JVM metrics
 
