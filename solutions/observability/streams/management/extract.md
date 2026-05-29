@@ -15,7 +15,7 @@ products:
 ---
 # Process your documents [streams-extract-fields]
 
-After selecting a stream, use the **Processing** tab to add [processors](#streams-extract-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
+After selecting a stream, use the **Processing** tab to add [processors](#streams-add-processors) and [conditions](#streams-add-processor-conditions) that modify your documents and extract meaningful fields, so you can filter and analyze your data more effectively.
 
 For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
 
@@ -51,7 +51,7 @@ Setting up processors is generally a multi-step process. For example, you might 
 1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
 1. Select **Regenerate** to have Streams regenerate the suggested pipeline. Change the LLM that Streams uses to generate suggestions from the {icon}`controls` menu.
 
-#### How does **Suggest a pipeline** work? [streams-pipeline-generation]
+**How does **Suggest a pipeline** work?**
 
 :::{include} ../../../_snippets/streams-suggestions.md
 :::
@@ -60,7 +60,7 @@ Setting up processors is generally a multi-step process. For example, you might 
 ::::{step} Manually add processors
 :anchor: streams-add-processors-manually
 
-If you know which processors you want to use, you can add them manually:
+If you know which processors you want to use, you can add them manually. Refer to the [Streamlang reference](./streamlang.md) for supported processor and configuration details.
 
 1. Select **Create processor**. You can also let Streams suggest processors by selecting [Suggest a pipeline](#streams-generate-pipeline-suggestions).
 1. Select a processor from the **Processor** menu.
@@ -177,8 +177,6 @@ After adding all desired processors and conditions, select **Save changes**. Aft
 ::::
 :::::
 
-Refer to the [Streamlang reference](./streamlang.md) for supported processor and configuration details.
-
 :::{note}
 Applied changes aren't retroactive and only affect *future ingested data*.
 :::
@@ -194,7 +192,7 @@ To modify an existing processor, open the actions menu {icon}`boxes_vertical` ne
 * **Duplicate**: Create another processor with the same configuration to use as a template.
 * **Delete**: Remove the processor permanently.
 
-### Switch between interactive and YAML editing modes [streams-editing-modes]
+## Switch between interactive and YAML editing modes [streams-editing-modes]
 
 The Streams processing UI provides an [interactive mode](#streams-editing-interactive-mode) and a [YAML mode](#streams-editing-yaml-mode) for editing processors and conditions.
 
@@ -206,14 +204,14 @@ To switch modes, select the appropriate tab from the top of the processing page.
 
 Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
 
-#### Interactive mode [streams-editing-interactive-mode]
+### Interactive mode [streams-editing-interactive-mode]
 
 **Interactive** mode provides a form-based interface for creating and editing processors. This mode works best for:
 
 - Users who prefer a guided, visual approach
 - Configurations that don't require deeply nested conditions
 
-#### YAML mode [streams-editing-yaml-mode]
+### YAML mode [streams-editing-yaml-mode]
 ```{applies_to}
 stack: ga 9.3+
 ```
