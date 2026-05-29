@@ -174,12 +174,13 @@ Use the information in the failure message to find and troubleshoot the mapping 
 
 ::::{step} Save changes
 After adding all desired processors and conditions, select **Save changes**. After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
-::::
-:::::
 
 :::{note}
 Applied changes aren't retroactive and only affect *future ingested data*.
 :::
+
+::::
+:::::
 
 ## Modify an existing processor [streams-processor-actions]
 
