@@ -14,9 +14,11 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
-# Why process your documents with Streams? [streams-extract-fields]
+# Process your documents with Streams? [streams-extract-fields]
 
-Most log data arrives as unstructured text. To filter, search, and analyze it effectively, you need to extract fields from that raw content. The Streams **Processing** tab provides a single place to build and manage your document processing pipeline:
+Most log data arrives as unstructured text. To filter, search, and analyze it effectively, you need to extract fields from that raw content. For example, extracted fields let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue.
+
+The Streams **Processing** tab provides a single place to build and manage your document processing pipeline:
 
 - **[Add processors and conditions](#streams-add-processors)**: Use the Streams UI without needing to manually configure pipeline JSON or Grok syntax.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**: Let Streams analyze sample documents and suggests pipeline patterns, so you're refining instead of writing from scratch.
