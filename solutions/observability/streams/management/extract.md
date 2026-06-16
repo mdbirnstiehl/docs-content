@@ -14,7 +14,7 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
-# Process your documents with Streams? [streams-extract-fields]
+# Process your documents with Streams [streams-extract-fields]
 
 Most log data arrives as unstructured text. To filter, search, and analyze it effectively, you need to extract fields from that raw content. For example, extracted fields let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue.
 
