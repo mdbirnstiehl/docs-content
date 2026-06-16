@@ -119,7 +119,7 @@ If you edit the stream after previewing your changes, keep the following in mind
 ::::::{step} Detect and resolve failures and mapping conflicts
 :anchor: streams-detect-failures
 
-Streams helps you catch issues before you save:
+Streams helps you catch issues before you apply your processors:
 
 - **Failures**: A processor couldn't parse or transform a document, usually due to a mismatched pattern or missing field.
 - **Mapping conflicts**: A processor produced a field type that conflicts with the existing index mapping.
