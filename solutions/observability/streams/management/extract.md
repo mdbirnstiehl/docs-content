@@ -36,6 +36,10 @@ To add a processor from the **Processing** tab:
 
 Use any combination of the following options to build your processing pipeline:
 
+- **Suggest a pipeline**: Let Streams analyze your sample data and generate a complete processor pipeline using AI.
+- **Manually add processors**: Choose and configure individual processors yourself when you know which transformations you need.
+- **Add conditions**: Attach Boolean expressions to define when to run processors.
+
 :::::{tab-set}
 
 ::::{tab-item} Suggest a pipeline
@@ -113,6 +117,11 @@ If you edit the stream after previewing your changes, keep the following in mind
 ::::::{step} Detect and resolve failures and mapping conflicts
 :anchor: streams-detect-failures
 
+Streams helps you catch issues before you save:
+
+- **Failures**: A processor couldn't parse or transform a document, usually due to a mismatched pattern or missing field.
+- **Mapping conflicts**: A processor produced a field type that conflicts with the existing index mapping.
+
 ### Detect and resolve failures [streams-detect-failures-section]
 
 Documents can fail processing for various reasons. Streams helps you identify and resolve these issues before deploying changes.
@@ -169,14 +178,14 @@ To switch modes, select the appropriate tab from the top of the processing page.
 
 Streams defaults to interactive mode unless the configuration can't be represented in interactive mode (for example, when nesting levels are too deep).
 
-### Interactive mode [streams-editing-interactive-mode]
+### When to use Interactive mode [streams-editing-interactive-mode]
 
 **Interactive** mode provides a form-based interface for creating and editing processors. This mode works best for:
 
 - Users who prefer a guided, visual approach
 - Configurations that don't require deeply nested conditions
 
-### YAML mode [streams-editing-yaml-mode]
+### When to use YAML mode [streams-editing-yaml-mode]
 ```{applies_to}
 stack: ga 9.3+
 ```
