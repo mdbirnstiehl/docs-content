@@ -1,4 +1,5 @@
 ---
+navigation_title: Process your documents
 applies_to:
   serverless: ga
   stack: preview =9.1, ga 9.2+
@@ -13,15 +14,11 @@ products:
   - id: cloud-kubernetes
   - id: elastic-stack
 ---
-# Process your documents [streams-extract-fields]
+# Why process your documents with Streams? [streams-extract-fields]
 
-After selecting a stream, use the **Processing** tab to add [processors and conditions](#streams-add-processors) that modify your unstructured documents and extract meaningful fields, so you can filter and analyze your data more effectively.
+Most log data arrives as unstructured text. To filter, search, and analyze it effectively, you need to extract fields from that raw content. The Streams **Processing** tab provides a single place to build and manage your document processing pipeline:
 
-For example, in [Discover](../../../../explore-analyze/discover.md), extracted fields might let you filter for log messages with an `ERROR` log level that occurred during a specific time period to help diagnose an issue. Without extracting the log level and timestamp fields from your messages, those filters wouldn't return meaningful results.
-
-## Why process your documents with Streams?
-
-- **[Add processors](#streams-add-processors)**: Use the Streams UI without needing to manually configure pipeline JSON or Grok syntax.
+- **[Add processors and conditions](#streams-add-processors)**: Use the Streams UI without needing to manually configure pipeline JSON or Grok syntax.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**: Let Streams analyze sample documents and suggests pipeline patterns, so you're refining instead of writing from scratch.
 - **[Preview changes](#streams-preview-changes)**: Use the data preview to view which fields your pattern extracts per document, so you can verify field extraction before saving.
 - **[Detect and resolve processing issues](#streams-detect-failures)**: Identify which processor or condition is causing documents to fail during processing.
@@ -29,7 +26,7 @@ For example, in [Discover](../../../../explore-analyze/discover.md), extracted f
 
 ## Add and configure processors [streams-add-processors]
 
-Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors to transform your data, without requiring you to switch interfaces and manually update pipelines.
+Streams uses [{{es}} ingest pipelines](../../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) made up of processors and conditions to transform your data, without requiring you to switch interfaces and manually update pipelines.
 
 To add a processor from the **Processing** tab:
 
@@ -66,7 +63,7 @@ Setting up processors is generally a multi-step process. For example, you might 
 
 ::::{tab-item} Manually add processors
 
-If you know which processors you want to use, you can add them manually. Refer to the [Streamlang reference](./streamlang.md) for supported processor and configuration details.
+If you know which processors you want to use, you can add them manually from the Streams UI. Refer to the [Streamlang reference](./streamlang.md) for supported processors and configuration details.
 
 1. Select **Create processor**. You can also let Streams suggest processors by selecting [Suggest a pipeline](#streams-generate-pipeline-suggestions).
 1. Select a processor from the **Processor** menu.
@@ -104,10 +101,6 @@ After adding processors and conditions, the **Data preview** tab simulates proce
 
 When you add or edit processors, the **Data preview** tab updates automatically.
 
-:::{note}
-To avoid unexpected results, it's best to add processors rather than remove or reorder existing ones.
-:::
-
 The **Data preview** tab loads 100 documents from your existing data and runs your changes against them.
 For any newly created processors and conditions, the preview results are reliable, and you can freely create and reorder during the preview.
 
@@ -115,21 +108,12 @@ If you edit the stream after previewing your changes, keep the following in mind
 
 - Adding processors to the end of the list works as expected.
 - Editing or reordering existing processors can cause inaccurate results. Because the pipeline might have already processed the documents used for sampling, **Data preview** cannot accurately simulate changes to existing data.
-- Adding a new processor and moving it before an existing processor can cause inaccurate results. **Data preview** only simulates the new processor, not the existing ones, so the simulation may not accurately reflect changes to existing data.
 ::::::
 
-::::::{step} View processor statistics and detected fields
-:anchor: streams-stats-and-detected-fields
-
-Once saved, the processor displays its success rate and the fields it added.
-
-:::{image} ../../../images/logs-streams-field-stats.png
-:screenshot:
-:::
-::::::
-
-::::::{step} Detect and resolve failures
+::::::{step} Detect and resolve failures and mapping conflicts
 :anchor: streams-detect-failures
+
+### Detect and resolve failures [streams-detect-failures-section]
 
 Documents can fail processing for various reasons. Streams helps you identify and resolve these issues before deploying changes.
 
@@ -151,12 +135,10 @@ Streams displays failures at the bottom of the process editor. Some failures mig
 :::{image} ../../../images/logs-streams-processor-failures.png
 :screenshot:
 :::
-::::::
 
-::::::{step} Detect mapping conflicts
-:anchor: streams-processing-mapping-conflicts
+### Detect mapping conflicts [streams-processing-mapping-conflicts]
 
-As part of processing, Streams simulates your changes end-to-end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
+As part of processing, Streams also simulates your changes end-to-end to check for mapping conflicts. If it detects a conflict, Streams marks the processor as failed and displays a message like the following:
 
 :::{image} ../../../images/logs-streams-mapping-conflicts.png
 :screenshot:
@@ -166,25 +148,14 @@ Use the information in the failure message to find and troubleshoot the mapping 
 ::::::
 
 ::::::{step} Save changes
-After adding all desired processors and conditions, select **Save changes**. After creating your processor, Streams parses all future data ingested into the stream into structured fields accordingly.
+After adding all of your processors and conditions and addressing any issues, select **Save changes**. Streams then parses all future data ingested into the stream according to your pipeline.
 
 :::{note}
-Applied changes aren't retroactive and only affect *future ingested data*.
+Applied changes aren't retroactive and only affect future ingested data.
 :::
 
 ::::::
 :::::::
-
-## Modify an existing processor [streams-processor-actions]
-
-To modify an existing processor, open the actions menu {icon}`boxes_vertical` next to it to see the available options:
-
-* **Move up** or **Move down**: Change the order of the processor.
-* **Add description**: Change the processor description from its metadata to a description of your choice.
-* **Remove description**: For processors with an added description, use this option to return the description to the metadata.
-* **Edit**: Modify the processor configuration.
-* **Duplicate**: Create another processor with the same configuration to use as a template.
-* **Delete**: Remove the processor permanently.
 
 ## Switch between interactive and YAML editing modes [streams-editing-modes]
 
@@ -217,7 +188,15 @@ stack: ga 9.3+
 
 Refer to the [Streamlang reference](./streamlang.md) for the complete syntax, condition operators, and examples.
 
-## Advanced: How and where do these changes get applied to the underlying data stream? [streams-applied-changes]
+## Known limitations [streams-known-limitations]
+
+- Streams does not support all processors. Refer to the [Streamlang reference](./streamlang.md) for supported processors.
+- The data preview simulation might not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
+- Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./extract/manual-pipeline-configuration.md) that supports Painless scripting and all ingest processors.
+
+## Advanced: How Streams applies processing changes to the underlying data stream [streams-applied-changes]
+
+::::{dropdown} How Streams applies processing changes
 
 When you save processors, Streams appends processing to the best-matching ingest pipeline for the data stream. It either chooses the best-matching pipeline ending in `@custom` in your data stream, or it adds one for you.
 
@@ -247,13 +226,6 @@ Streams then adds a pipeline processor to the end of that `@custom` pipeline. Th
 
 Streams then creates and manages the `<data_stream_name>@stream.processing` pipeline, adding the [processors](#streams-add-processors) you configured in the UI.
 
-### User interaction with pipelines
-
 Do not manually modify the `<data_stream_name>@stream.processing` pipeline created by Streams.
 You can still add your own processors manually to the `@custom` pipeline if needed. Adding processors before the pipeline processor created by Streams might cause unexpected behavior.
-
-## Known limitations [streams-known-limitations]
-
-- Streams does not support all processors. Refer to the [Streamlang reference](./streamlang.md) for supported processors.
-- The data preview simulation might not accurately reflect the changes to the existing data when editing existing processors or re-ordering them.
-- Streams can't properly handle arrays. While it supports basic actions like appending or renaming, it can't access individual array elements. For classic streams, the workaround is to use the [manual pipeline configuration](./extract/manual-pipeline-configuration.md) that supports Painless scripting and all ingest processors.
+::::
