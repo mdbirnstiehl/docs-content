@@ -1,5 +1,6 @@
 ---
 navigation_title: Use cases
+description: Explore vector search use cases in Elasticsearch, including RAG, recommendations, image search, and hybrid retrieval.
 applies_to:
   stack:
   serverless:

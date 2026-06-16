@@ -1,5 +1,6 @@
 ---
 navigation_title: "Tutorial: Manual dense and sparse workflows"
+description: Set up semantic search with deployed NLP models using ingest pipelines for dense or sparse vector embeddings.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html
 applies_to:

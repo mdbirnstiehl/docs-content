@@ -7,7 +7,7 @@ applies_to:
   serverless:
 products:
   - id: elasticsearch
-description: An introduction to vectors and knn search in Elasticsearch.
+description: Learn how to index pre-generated dense vector embeddings and search them with kNN queries in Elasticsearch.
 ---
 
 # Bring your own dense vectors to {{es}} [bring-your-own-vectors]

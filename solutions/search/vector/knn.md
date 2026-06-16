@@ -1,4 +1,5 @@
 ---
+description: Find semantically similar documents using k-nearest neighbor (kNN) vector search in Elasticsearch.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-knn-search.html
