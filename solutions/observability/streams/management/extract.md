@@ -39,7 +39,7 @@ To add a processor from the **Processing** tab:
 Use any combination of the following options to build your processing pipeline:
 
 - **Suggest a pipeline**: Let Streams analyze your sample data and generate a complete processor pipeline using AI.
-- **Manually add processors**: Choose and configure individual processors yourself when you know which transformations you need.
+- **Manually add processors**: Select and configure individual processors yourself when you know which transformations you need.
 - **Add conditions**: Attach Boolean expressions to define when to run processors.
 
 :::::{tab-set}
@@ -59,7 +59,7 @@ Setting up processors is generally a multi-step process. For example, you might 
 
 1. From the **Processing** tab, select **Suggest a pipeline**.
 1. Review the suggested processors, and either **Accept** or **Reject** the suggestions.
-1. Select **Regenerate** to have Streams regenerate the suggested pipeline. Change the LLM that Streams uses to generate suggestions from the {icon}`controls` menu.
+1. Select **Regenerate** to have Streams regenerate the suggested pipeline. Change the large language model (LLM) that Streams uses to generate suggestions from the {icon}`controls` menu.
 
 :::{dropdown} How does Suggest a pipeline work?
 :::{include} ../../../_snippets/streams-suggestions.md
@@ -79,13 +79,13 @@ If you know which processors you want to use, you can add them manually from the
    :::
 
 1. Configure the processor and select **Create** to save the processor.
-1. Optional: Enable **Ignore failures** if you want document processing to continue even when this processor fails.
+1. Optional: Turn on **Ignore failures** if you want document processing to continue even when this processor fails.
 1. Optional: For dissect, Grok, and rename processors, enable **Ignore missing fields** if you want processing to continue when a source field is missing.
 ::::
 
 ::::{tab-item} Add conditions
 
-You can add conditions, Boolean expressions that are evaluated for each document, and attach processors that only run when those conditions are met.
+You can add conditions—Boolean expressions evaluated for each document—and attach processors that run only when those conditions are met.
 
 To add a condition:
 
