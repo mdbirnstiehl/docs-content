@@ -20,10 +20,6 @@ Query streams are virtual, read-only streams defined by an ES|QL query. Unlike c
 
 Use query streams to create persistent, named views of your data that you can attach assets to, organize hierarchically, and reference by name in ES|QL queries.
 
-:::{note}
-Query streams require the `observability:streamsEnableQueryStreams` advanced setting to be enabled. <!-- TODO: confirm the exact enablement path for stack vs serverless -->
-:::
-
 ## Root and nested query streams [streams-query-streams-types]
 
 Query streams can be **root-level** or **nested**:
