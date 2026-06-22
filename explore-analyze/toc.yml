@@ -399,6 +399,7 @@ toc:
           - file: alerting/alerts/alerting-troubleshooting.md
             children:
               - file: alerting/alerts/alerting-common-issues.md
+              - file: alerting/alerts/troubleshoot-rule-behavior.md
               - file: alerting/alerts/event-log-index.md
               - file: alerting/alerts/testing-connectors.md
           - file: alerting/alerts/maintenance-windows.md
