@@ -14,6 +14,7 @@ jobs:
     if: |
       github.event.label.name == 'Team:Ingest' ||
       github.event.label.name == 'Team:Experience' ||
+      github.event.label.name == 'Team:SKI' ||
       github.event.label.name == 'Team:Admin' ||
       github.event.label.name == 'Team:Developer' ||
       github.event.label.name == 'Team:DocsEng' ||
@@ -24,8 +25,7 @@ jobs:
     env:
       PROJECT_ID_MAP: |
         {
-          "Team:Ingest":      "649",
-          "Team:Experience":  "1034",
+          "Team:SKI":         "1034",
           "Team:Admin":       "1927",
           "Team:Developer":   "726",
           "Team:DocsEng":     "1625",
@@ -35,12 +35,29 @@ jobs:
           "Team:Security":    "1034"
         }
     steps:
+      - name: Remove the retired team label
+        if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: ${{ github.event.label.name }}
+
       - name: Remove needs-team label
         uses: actions-ecosystem/action-remove-labels@v1
         with:
           labels: needs-team
 
+      # Adding Team:SKI re-triggers this workflow with that label, which
+      # then routes the issue to the board. Use the PAT (not GITHUB_TOKEN)
+      # because labels added by GITHUB_TOKEN don't start a new run.
+      - name: Add the Team:SKI label
+        if: github.event.label.name == 'Team:Ingest' || github.event.label.name == 'Team:Experience'
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.ADD_TO_BOARD_TOKEN }}
+          labels: Team:SKI
+
       - name: Add issue to the right project
+        if: github.event.label.name != 'Team:Ingest' && github.event.label.name != 'Team:Experience'
         uses: actions/add-to-project@244f685bbc3b7adfa8466e08b698b5577571133e
         with:
           project-url: https://github.com/orgs/elastic/projects/${{ fromJson(env.PROJECT_ID_MAP)[github.event.label.name] }}
