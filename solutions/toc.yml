@@ -489,6 +489,13 @@ toc:
         - file: observability/streams/management/schema.md
         - file: observability/streams/management/data-quality.md
         - hidden: observability/streams/management/significant-events.md
+        - hidden: observability/streams/management/significant-events/index.md
+          children:
+            - hidden: observability/streams/management/significant-events/how-it-works/detection.md
+            - hidden: observability/streams/management/significant-events/how-it-works/discovery.md
+            - hidden: observability/streams/management/significant-events/how-it-works/knowledge-indicators.md
+            - hidden: observability/streams/management/significant-events/how-it-works/data-model.md
+            - hidden: observability/streams/management/significant-events/operator-guide.md
         - file: observability/streams/management/advanced.md
         - file: observability/streams/management/knowledge-indicators.md
         - file: observability/streams/wired-streams.md
