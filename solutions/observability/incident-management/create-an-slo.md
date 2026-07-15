@@ -22,12 +22,6 @@ products:
 ::::
 
 
-:::{tip}
-:applies_to: { stack: preview 9.5+, serverless: preview }
-
-To track reliability across multiple services or at a platform level, use a [composite SLO](/solutions/observability/incident-management/create-a-composite-slo.md) instead.
-:::
-
 To create an SLO, find **SLOs** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md):
 
 * If you’re creating your first SLO, you’ll see an introductory page. Click the **Create SLO** button.
@@ -265,3 +259,9 @@ After you’ve created your SLO, you can monitor it from the *SLOs* page in Obse
 :alt: Using the Add panel button to add an SLO Overview widget to a dashboard
 :screenshot:
 :::
+
+## Next steps [slo-create-next-steps]
+
+* [Create an SLO burn rate rule](/solutions/observability/incident-management/create-an-slo-burn-rate-rule.md)
+* [Triage SLO burn rate breaches](/solutions/observability/incident-management/triage-slo-burn-rate-breaches.md)
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` [Create a composite SLO](/solutions/observability/incident-management/create-a-composite-slo.md)
