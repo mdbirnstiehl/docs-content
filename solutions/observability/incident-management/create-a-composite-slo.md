@@ -10,7 +10,13 @@ products:
 
 # Composite service level objectives (SLOs) [observability-create-a-composite-slo]
 
-A composite SLO aggregates multiple individual SLOs into a single health indicator using a weighted average. Use composite SLOs to track reliability at the system or platform level. For example, you could create a "Checkout Flow Health" composite that combines SLOs for your payment service, cart service, and inventory service.
+A composite SLO aggregates multiple individual SLOs into a single health indicator using a weighted average. Use composite SLOs to:
+
+* Track reliability at the system or platform level instead of per service
+* Define service importance using weights so the composite score reflects your priorities
+* Detect platform-wide reliability degradation early through multi-window burn-rate alerts across all member SLOs
+
+For example, you could create a "Checkout Flow Health" composite SLO that combines SLOs for your payment service, cart service, and inventory service.
 
 ::::{important}
 **For Observability serverless projects**, the **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
