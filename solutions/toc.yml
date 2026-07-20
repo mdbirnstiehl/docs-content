@@ -536,6 +536,12 @@ toc:
           - file: observability/ai/observability-ai-assistant.md
           - file: observability/ai/automatic-import.md
           - file: observability/ai/llm-performance-matrix.md
+      - hidden: observability/nightshift/index.md
+        children:
+          - hidden: observability/nightshift/nightshift-landing-page.md
+          - hidden: observability/nightshift/nightshift-investigations.md
+          - hidden: observability/nightshift/nightshift-memory.md
+          - hidden: observability/nightshift/nightshift-code-intelligence.md
       - file: observability/cross-project-search.md
       - file: observability/observability-serverless-feature-tiers.md
       - file: observability/apis.md
