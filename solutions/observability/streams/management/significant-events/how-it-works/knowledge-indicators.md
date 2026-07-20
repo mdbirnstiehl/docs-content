@@ -30,7 +30,8 @@ To access Knowledge Indicators, open **Significant Events** from the Streams mai
 To use this feature, you need:
 
 - A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which can incur additional costs.
-- The `observability:streamsEnableSignificantEvents` Kibana setting enabled.
+- The `observability:streamsEnableSignificantEvents` {{product.kibana}} setting enabled.
+- The `observability:streamsEnableSignificantEventsDiscovery` {{product.kibana}} setting enabled.
 :::
 
 ## Generate KIs [sig-events-ki-generate]
@@ -93,10 +94,10 @@ Sampled documents are sent to an LLM that identifies the following feature types
 | Type | What it captures |
 |------|-----------------|
 | Entity | Distinct system components: services, applications, jobs |
-| Infrastructure | Environment context: Kubernetes, cloud provider, OS |
+| Infrastructure | Environment context: {{k8s}}, cloud provider, OS |
 | Technology | Languages, frameworks, libraries, databases |
 | Dependency | Relationships between components |
-| Schema | Log format conventions: Elastic Common Schema (ECS), OTel, custom |
+| Schema | Log format conventions: {{product.ecs}}, OTel, custom |
 
 Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 for each KI. Features intentionally excluded by users (false positives) are also tracked and carried forward to prevent re-identification in future runs.
 
@@ -191,13 +192,13 @@ FROM logs-mystream,logs-mystream.*
 
 ### Downstream path: from Query KIs to alerting rules [sig-events-ki-downstream]
 
-When you promote a Query KI, it becomes a Kibana alerting rule of type `streams.rules.esql`. Each promoted rule runs its ES\|QL query on a per-rule schedule and writes results to the `.alerts-streams.alerts-default` index. The number of promoted Query KIs is the main driver of alerting query load on your cluster.
+When you promote a Query KI, it becomes a {{kib}} alerting rule of type `streams.rules.esql`. Each promoted rule runs its ES\|QL query on a per-rule schedule and writes results to the `.alerts-streams.alerts-default` index. The number of promoted Query KIs is the main driver of alerting query load on your cluster.
 
 The Significant Events pipeline picks up from there: a detection workflow runs the `change_point` aggregation over alert firing patterns and writes significant transitions to `.significant_events-detections`. The discovery workflow then processes those detections with an AI agent. See [Detection](./detection.md) for the full flow.
 
 ## Continuous extraction [sig-events-ki-continuous]
 
-When continuous extraction is enabled, a Kibana Workflow runs every 10 minutes and processes up to 5 eligible streams per run. A stream is eligible if:
+When continuous extraction is enabled, a {{kib}} Workflow runs every 10 minutes and processes up to 5 eligible streams per run. A stream is eligible if:
 
 - It is a wired or classic stream
 - It does not match any configured exclusion glob pattern
@@ -218,7 +219,7 @@ Toggling continuous extraction off cancels any in-flight extraction tasks and fo
 | `observability:streamsContinuousKiExtractionIntervalHours` | `12` | Minimum hours between extraction runs for a single stream |
 | `observability:streamsContinuousKiExtractionExcludedStreamPatterns` | `""` | Comma-separated glob patterns for streams to skip |
 
-These settings are only modifiable through the Significant Events Settings page, not through Kibana Advanced Settings.
+These settings are only modifiable through the Significant Events Settings page, not through {{kib}} Advanced Settings.
 
 ## KI lifecycle and maintenance [sig-events-ki-lifecycle]
 

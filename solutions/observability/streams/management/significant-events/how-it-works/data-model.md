@@ -42,13 +42,13 @@ Once an operator sets an override, the system detects the divergence on the next
 
 ## Mapping notes [sig-events-mapping]
 
-`.alerts-streams.alerts-default` uses `dynamic: false`. Only Kibana alerting framework fields (`kibana.alert.*`) are explicitly indexed with typed mappings. The original source event fields are stored on each alert document but are not indexed, which prevents cross-stream mapping conflicts. ES\|QL queries against the alerts index can only filter on alerting framework fields, not on original event field values.
+`.alerts-streams.alerts-default` uses `dynamic: false`. Only {{product.kibana}} alerting framework fields (`kibana.alert.*`) are explicitly indexed with typed mappings. The original source event fields are stored on each alert document but are not indexed, which prevents cross-stream mapping conflicts. ES\|QL queries against the alerts index can only filter on alerting framework fields, not on original event field values.
 
-`.significant_events-detections` stores immutable records. Each document represents a single observed transition for a rule. The detection workflow never updates or deletes detection documents; it only adds new ones when a new transition is observed. The discovery workflow marks processed detections by writing a separate marker document with a `processed_by` field rather than modifying the original detection record.
+`.significant_events-detections` stores immutable records. Each document represents a single observed transition for a rule. The detection workflow never updates or deletes detection documents; it only appends new ones when a new transition is observed. The discovery workflow stamps processed detections `kind: handled` after the Investigator accounts for them, preventing re-processing in future cycles.
 
 ## Tracing a signal [sig-events-traceability]
 
-You can trace a Significant Event backwards through the pipeline using {{esql}}:
+You can trace a Significant Event backwards through the pipeline using ES|QL:
 
 1. Start with a Significant Event from `.significant_events-events` and note its `discovery_slug`.
 2. Query `.significant_events-discoveries` for documents with that `discovery_slug` to see the full discovery history and the detections it was based on.

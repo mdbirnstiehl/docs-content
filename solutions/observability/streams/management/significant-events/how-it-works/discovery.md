@@ -19,7 +19,7 @@ products:
 
 Discovery is the fourth phase of the Significant Events pipeline. Two AI agents run sequentially: the Investigator correlates active detections across streams and rules, and the Judge evaluates candidate discoveries and promotes the most significant into events.
 
-Both agents run as Kibana Workflows using the Agent Builder platform.
+Both agents run as {{kib}} Workflows using the Agent Builder platform.
 
 ## The Investigator [sig-events-investigator]
 
@@ -30,20 +30,20 @@ The Investigator workflow scans `.significant_events-detections` for unprocessed
 The workflow queries the detections index for change-point detections that:
 
 - Fall within the last 24 hours (`now-24h`)
-- Have not yet been processed (no `processed_by` marker document)
+- Are not yet `kind: handled`
 - Represent the most recent detection per rule (results are collapsed by `rule_uuid`)
 
 Results are sorted by timestamp descending and p-value ascending, so the most recent and most statistically significant detections are prioritized. The batch is capped at 10 rules per invocation. If more unprocessed detections exist after a cycle, they are picked up in the next run.
 
-For each rule in the batch, the workflow also collects the full backlog of unprocessed detection documents (not just the collapsed newest), so that all of them can be stamped as processed once the agent accounts for that rule.
+For each rule in the batch, the workflow also collects the full backlog of unhandled detection documents (not just the collapsed newest), so that all of them can be stamped once the agent accounts for that rule.
 
 ### What the agent receives and returns
 
 The Investigator agent receives the detection batch, which includes for each detection: `detection_id`, `rule_name`, `rule_uuid`, `stream_name`, `change_point_type`, and `p_value`. The agent writes discovery records directly to `.significant_events-discoveries` via an internal tool.
 
-The agent returns a list of `written_rule_uuids` — the `rule_uuid` of every rule it accounted for in this cycle. The workflow uses this list to stamp all corresponding detection documents with a `processed_by` marker, preventing them from being re-processed in future cycles.
+The agent returns a list of `written_rule_uuids` — the `rule_uuid` of every rule it accounted for in this cycle. The workflow uses this list to stamp all corresponding detection documents `kind: handled`, preventing them from being re-processed in future cycles.
 
-A detection is not re-processed if a `processed_by` marker already exists for it, even if the marker was written by a different execution.
+A detection is not re-processed if it is already `kind: handled`, even if the stamp was written by a different execution.
 
 ### Concurrency
 

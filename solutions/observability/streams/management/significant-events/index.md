@@ -17,61 +17,46 @@ products:
 
 # Significant Events [streams-sig-events-overview]
 
-<!-- NEEDS: high-level architecture diagram showing what runs where (Kibana, Elasticsearch, Workflows, Agent Builder, EIS connector) and data flow — not state-machine or YAML internals. Per engineering spec, this is a required element of this page. -->
+Significant Events continuously converts raw log data into a ranked feed of incidents. The pipeline moves from broad to narrow: many alerting rule executions produce fewer statistical detections, which an AI agent correlates into even fewer discoveries, which a judge reviews and surfaces as Significant Events.
 
-Significant Events continuously converts raw log data into a ranked feed of incidents. The pipeline moves from broad to narrow: many alerting rule executions produce fewer statistical detections, which an AI agent correlates into even fewer discoveries, which a judge reviews and promotes into the Significant Events visible in the UI.
+For example: you onboard a stream, Significant Events extracts what's in it ("this stream contains a Python gRPC service called `recommendationservice` running on GKE"), generates targeted detection rules ("detect gRPC connection failures"), and runs those rules continuously. Results flow through discovery and surface as correlated Significant Events across your entire environment.
 
-Four steps use LLMs. Everything in between — rule execution, statistical change detection, state tracking — runs deterministically.
-
-## How the pipeline works [sig-events-pipeline]
-
-The pipeline has four sequential phases:
-
-| Phase | What happens | Output |
-|---|---|---|
-| 1. Knowledge extraction | An LLM analyzes log samples and generates Knowledge Indicators (KIs) describing services, infrastructure, and failure patterns | KIs stored in `.kibana_streams_features-*` |
-| 2. Rule generation | An LLM generates ES\|QL alerting rules from Query KIs and promotes them to the alerting framework | Rules stored as stream assets |
-| 3. Detection | Alerting rules fire on a per-rule schedule; a `change_point` aggregation identifies statistically significant changes in alert firing patterns per rule | Alerts in `.alerts-streams.alerts-default`; detection records in `.significant_events-detections` |
-| 4. Discovery and triage | An AI Investigator agent correlates active detections across streams into discoveries; an AI Judge agent reviews discoveries and promotes the most significant into events | Discoveries in `.significant_events-discoveries`; events in `.significant_events-events` |
-
-Phases 1 and 2 run on-demand or on a continuous schedule you control. Phases 3 and 4 run continuously in the background once Significant Events is enabled.
-
-### LLM call sites
-
-The pipeline makes LLM calls at exactly four points:
-
-1. **Feature identification** — analyzes log samples to extract structured KIs
-2. **Query generation** — produces ES\|QL alerting rules from identified features
-3. **Investigator** — correlates active detections across rules and streams into discoveries
-4. **Judge** — reviews discoveries and decides which become Significant Events
-
-Everything between these four points — rule execution, the `change_point` aggregation, state tracking, index writes — is deterministic.
-
-## Prerequisites [sig-events-prerequisites]
+## Before you get started [sig-events-prerequisites]
 
 Significant Events requires an **Enterprise license** or an active Enterprise trial.
 
 To use Significant Events you also need:
 
-- The `observability:streamsEnableSignificantEvents` {{product.kibana}} setting enabled.
-- The `observability:streamsEnableSignificantEventsDiscovery` {{product.kibana}} setting enabled (required for Discovery, rule generation, and the end-to-end pipeline).
+- The `observability:streamsEnableSignificantEvents` {{kib}} setting enabled.
+- The `observability:streamsEnableSignificantEventsDiscovery` {{kib}} setting enabled (required for Discovery, rule generation, and the end-to-end pipeline).
 - A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which routes LLM calls and incurs additional costs.
 
-## What runs where [sig-events-components]
+## How the pipeline works [sig-events-pipeline]
 
-| Component | Runs on | Trigger | Reads | Writes |
-|---|---|---|---|---|
-| KI feature identification | Kibana (Task Manager + Workflows) | On-demand or continuous extraction | Stream log data | `.kibana_streams_features-*` |
-| KI query generation | Kibana (Workflow) | On-demand after features exist | Feature KIs | Query KI assets on stream |
-| Alerting rule execution | Kibana alerting → Elasticsearch | Per-rule schedule | Stream data via ES\|QL | `.alerts-streams.alerts-default` |
-| Detection workflow | Kibana Workflows | Scheduled | `.alerts-streams.alerts-default` | `.significant_events-detections` |
-| Discovery workflow | Kibana Workflows + Agent Builder | Scheduled | `.significant_events-detections` + KIs | `.significant_events-discoveries` |
-| Triage workflow | Kibana Workflows + Agent Builder | Scheduled | `.significant_events-discoveries` | `.significant_events-events` |
+The pipeline runs in sequential phases that build off of the output of the previous phase. KI extraction and rule generation prepare your streams for detection and run on your schedule. Detection and discovery run continuously in the background after you enable Significant Events.
 
-## In this section [sig-events-nav]
+### 1. Knowledge indicator extraction [sig-events-phase-ki]
 
-- [Detection](./how-it-works/detection.md) — how alerting rules and change detection work
-- [Discovery](./how-it-works/discovery.md) — how the Investigator and Judge agents operate
-- [Knowledge Indicators](./how-it-works/knowledge-indicators.md) — KI extraction, Query KIs, and downstream rule promotion
-- [Data model](./how-it-works/data-model.md) — index layout and ES\|QL traceability
+An LLM analyzes log samples from your streams and identifies services, infrastructure, and failure patterns as Knowledge Indicators (KIs).
+
+### 2. Rule generation [sig-events-phase-rules]
+
+An LLM converts query KIs into {{esql}} alerting rules and promotes them to the alerting framework. Generated rules are stored as stream assets.
+
+### 3. Rule execution and detections [sig-events-phase-detection]
+
+Promoted alerting rules run against stream data on a per-rule schedule. A detection workflow identifies statistically significant transitions or changes in alert firing patterns that signal something meaningful has happened. Significant transitions are written as detection records.
+
+### 4. Discovery [sig-events-phase-discovery]
+
+Two LLM agents run in sequence, the investigator agent and the judge agent. The investigator agent reads unprocessed detection records, correlates them across rules and streams, and writes discovery records. The judge agent then evaluates each discovery and promotes the most significant into Significant Events.
+
+## Further reading [sig-events-nav]
+
+Refer to the following pages for more information on Significant Events.
+
 - [Operator guide](./operator-guide.md) — system impact, cost drivers, and operational procedures
+- [Detection](./how-it-works/detection.md) — how alerting rules and change detection work
+- [Discovery](./how-it-works/discovery.md) — how the investigator and judge agents operate
+- [Knowledge Indicators](./how-it-works/knowledge-indicators.md) — KI extraction, Query KIs, and downstream rule promotion
+- [Data model](./how-it-works/data-model.md) — index layout and ES|QL traceability
