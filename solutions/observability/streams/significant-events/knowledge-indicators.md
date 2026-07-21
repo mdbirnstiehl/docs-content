@@ -1,10 +1,9 @@
 ---
 navigation_title: Knowledge Indicators
-# NOTE: This page supersedes management/knowledge-indicators.md. A redirect from the old URL will be needed.
 description: Knowledge Indicators automatically extract structured facts about services, infrastructure, and dependencies from raw log data in Streams, and generate ES|QL alerting rules that feed the Significant Events pipeline.
 applies_to:
   serverless: preview
-  stack: preview 9.5+
+  stack: preview 9.4+
 products:
   - id: observability
   - id: elasticsearch
@@ -22,7 +21,7 @@ Knowledge Indicators (KIs) are structured facts that Elastic extracts from your 
 
 Rather than a static configuration, this knowledge accumulates over time, automatically expires when a service disappears, and feeds directly into downstream capabilities like the Significant Events detection pipeline, topology maps, AI agent investigations, and dashboards.
 
-KIs feed the Significant Events pipeline. See the [Significant Events overview](../index.md) for how KIs connect to detection, discovery, and triage.
+KIs feed the Significant Events pipeline. See [How Significant Events works](../significant-events/how-it-works.md) for how KIs connect to detection, discovery, and triage.
 
 To access Knowledge Indicators, open **Significant Events** from the Streams main page and select the **Knowledge Indicators** tab.
 
@@ -44,7 +43,7 @@ On demand
 Continuous extraction
 :   When enabled, continuous extraction runs automatically on managed streams at the interval you configure. Continuous extraction is off by default. To enable it:
 
-    1. From the **Streams** main page, navigate to **Significant Events** → **Settings**.
+    1. From the **Streams** main page, select **Significant Events** → **Settings**.
     1. Under **Continuous KI extraction**, turn on **Enable continuous KI extraction**.
     1. Set the **Extraction interval** in hours, and list any **Excluded streams** to skip during continuous extraction.
 
@@ -52,7 +51,7 @@ Continuous extraction
 
 The extraction pipeline samples a small batch of logs from a stream and processes them through a combination of large language model (LLM) analysis and deterministic code generators. It accumulates its findings across multiple iterations, entirely configuration-free.
 
-The pipeline runs up to 5 iterations. Each iteration fetches a batch of up to 20 documents assembled from three prioritized buckets:
+The pipeline runs up to five iterations. Each iteration fetches a batch of up to 20 documents assembled from three prioritized buckets:
 
 | Bucket | Share | Strategy |
 |---|---|---|
@@ -99,7 +98,7 @@ Sampled documents are sent to an LLM that identifies the following feature types
 | Dependency | Relationships between components |
 | Schema | Log format conventions: {{product.ecs}}, OTel, custom |
 
-Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 for each KI. Features intentionally excluded by users (false positives) are also tracked and carried forward to prevent re-identification in future runs.
+Every feature must include stable identifying properties and cite direct evidence from the sampled logs. The LLM assigns a confidence score from 0–100 for each KI. The pipeline also tracks features excluded by users (false positives) and carries them forward to prevent re-identification in future runs.
 
 ### Deterministic generators [sig-events-ki-generators]
 
@@ -107,7 +106,7 @@ In parallel with LLM analysis, a set of deterministic code-based generators inde
 
 ### Merging results [sig-events-ki-merge]
 
-LLM results and computed features are merged and deduplicated. Known KIs reuse their existing UUIDs, new discoveries get fresh ones, and user-excluded features are dropped. Surviving KIs are saved with an active status and an expiration date set seven days out.
+LLM results and computed features are merged and deduplicated. Known KIs reuse their existing UUIDs, new discoveries get fresh ones, and the pipeline drops user-excluded features. Surviving KIs are saved with an active status and an expiration date set seven days out.
 
 Extraction runs entirely as a background task and never blocks ingestion.
 
@@ -156,7 +155,7 @@ The `properties` field keeps Feature KIs stable across multiple pipeline runs. W
 
 ### Query KIs [sig-events-ki-query]
 
-Query KIs are actionable. They are ready-to-run ES\|QL queries targeting notable conditions like connection exhaustion, out-of-memory errors, or fatal exceptions. Each comes with a severity score from 0 to 100.
+Query KIs are actionable. They are ready-to-run {{esql}} queries targeting notable conditions like connection exhaustion, out-of-memory errors, or fatal exceptions. Each comes with a severity score from 0 to 100.
 
 Example query KI:
 
@@ -172,9 +171,9 @@ Example query KI:
 }
 ```
 
-Query KIs are generated in two ES\|QL forms depending on what the LLM determines is most useful for detection:
+Query KIs are generated in two {{esql}} forms depending on what the LLM determines is most useful for detection:
 
-**Match queries** filter for specific log events — errors, exceptions, failure messages. The KQL expression is wrapped in a standard ES\|QL envelope:
+**Match queries** filter for specific log events — errors, exceptions, failure messages. The KQL expression is wrapped in a standard {{esql}} envelope:
 
 ```esql
 FROM logs-mystream,logs-mystream.* METADATA _id, _source
@@ -188,17 +187,15 @@ FROM logs-mystream,logs-mystream.*
 | STATS error_count = COUNT(*) WHERE level == "ERROR" BY service.name, @timestamp
 ```
 
-<!-- NEEDS: confirm the STATS query shape and envelope with engineering — the WHERE-based form is confirmed in source; the STATS form is referenced in design docs but not yet finalized. Provide a validated example before publishing. -->
+### Downstream path: from query KIs to alerting rules [sig-events-ki-downstream]
 
-### Downstream path: from Query KIs to alerting rules [sig-events-ki-downstream]
-
-When you promote a Query KI, it becomes a {{kib}} alerting rule of type `streams.rules.esql`. Each promoted rule runs its ES\|QL query on a per-rule schedule and writes results to the `.alerts-streams.alerts-default` index. The number of promoted Query KIs is the main driver of alerting query load on your cluster.
+When you promote a query KI, it becomes a {{kib}} alerting rule of type `streams.rules.esql`. Each promoted rule runs its {{esql}} query on a per-rule schedule and writes results to the `.alerts-streams.alerts-default` index. The number of promoted query KIs is the main driver of alerting query load on your cluster.
 
 The Significant Events pipeline picks up from there: a detection workflow runs the `change_point` aggregation over alert firing patterns and writes significant transitions to `.significant_events-detections`. The discovery workflow then processes those detections with an AI agent. See [Detection](./detection.md) for the full flow.
 
 ## Continuous extraction [sig-events-ki-continuous]
 
-When continuous extraction is enabled, a {{kib}} Workflow runs every 10 minutes and processes up to 5 eligible streams per run. A stream is eligible if:
+When continuous extraction is enabled, a {{kib}} Workflow runs every 10 minutes and processes up to five eligible streams per run. A stream is eligible if:
 
 - It is a wired or classic stream
 - It does not match any configured exclusion glob pattern
@@ -207,7 +204,7 @@ When continuous extraction is enabled, a {{kib}} Workflow runs every 10 minutes 
 
 Streams that have never been processed are always prioritized. Among remaining candidates, streams with the oldest last-completed extraction run are processed first.
 
-The continuous extraction workflow has a 9-minute timeout (1 minute shorter than the 10-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
+The continuous extraction workflow has a nine-minute timeout (one minute shorter than the 10-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
 
 Toggling continuous extraction off cancels any in-flight extraction tasks and force-deletes the workflow. Re-enabling it creates a fresh workflow from the latest definition. The workflow state is not preserved between enable/disable cycles.
 

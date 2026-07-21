@@ -17,7 +17,7 @@ products:
 
 # Operator guide [sig-events-operator]
 
-Use this guide to understand how Significant Events effects your cluster and how to manage it.
+Use this guide to understand how Significant Events affects your cluster and how to manage it.
 
 - [What runs where](#sig-events-op-components): which components run on {{kib}}, {{es}}, and Workflows
 - [System impact](#sig-events-op-impact): query load, pipeline lag, memory, and storage growth
@@ -26,6 +26,8 @@ Use this guide to understand how Significant Events effects your cluster and how
 - [Recovery procedures](#sig-events-op-recovery): symptoms and actions for common degraded states
 
 ## What runs where [sig-events-op-components]
+
+The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
 
 | Component | Runs on | Trigger | Reads | Writes |
 |---|---|---|---|---|
@@ -37,15 +39,15 @@ Use this guide to understand how Significant Events effects your cluster and how
 
 ## System impact [sig-events-op-impact]
 
-These are observable signals, not hard guarantees.
+The following sections describe the query load, pipeline lag, memory, and storage growth you can expect when running Significant Events. These are observable signals, not hard guarantees.
 
 **Alerting rule query load**
 
-One ES\|QL alerting rule runs per promoted query KI. Each rule fires on its own schedule. A `change_point` aggregation runs across all active rules' alert results on each detection cycle. Alert volume in `.alerts-streams.alerts-default` grows proportionally to the number of promoted rules and the rate at which they fire.
+One {{esql}} alerting rule runs per promoted query KI. Each rule fires on its own schedule. A `change_point` aggregation runs across all active rules' alert results on each detection cycle. Alert volume in `.alerts-streams.alerts-default` grows proportionally to the number of promoted rules and the rate at which they fire.
 
 **Pipeline lag**
 
-The following table provides illustrative estimates based on workflow schedules.
+The following table provides illustrative estimates of how long each phase takes from trigger to output, based on workflow schedules:
 
 | Phase | Typical lag |
 |---|---|
@@ -56,11 +58,11 @@ The following table provides illustrative estimates based on workflow schedules.
 
 **{{kib}} memory**
 
-Agent runs add memory pressure. Observe {{kib}} memory under realistic load. No committed sizing numbers exist until you measure your specific workload.
+Agent runs add memory pressure. Observe {{kib}} memory under realistic load. Exact memory requirements depend on your workload. Measure under realistic load before committing to a configuration.
 
 **Ingest assumptions**
 
-Streams must have recent log data for KI extraction to produce useful results. Empty streams or streams with very sparse data produce weak KIs, which produces weak query KIs, which produces fewer promoted rules.
+Streams must have recent log data for KI extraction to produce useful results. Empty streams or streams with very sparse data produce weak KIs, which produce weak query KIs, which produce fewer promoted rules.
 
 **Storage growth**
 
@@ -72,7 +74,7 @@ Significant Events writes to the following data streams:
 | `.significant_events-discoveries` | Investigator + Judge | Append-only; one document per discovery state change |
 | `.significant_events-events` | Judge | Append-only; one document per Significant Event state change |
 
-The `.significant_events-*` data streams use Data Stream Lifecycle (DSL) with a default 90-day retention. You can override retention per stream using the DSL API. See [Data model](./how-it-works/data-model.md) for the full index layout and traceability guidance.
+The `.significant_events-*` data streams use Data Stream Lifecycle (DSL) with a default 90-day retention. You can override retention per stream using the DSL API. See [Data model](./data-model.md) for the full index layout and traceability guidance.
 
 ## Cost drivers [sig-events-op-costs]
 
@@ -101,8 +103,8 @@ Set `observability:streamsEnableSignificantEvents` to `false` in {{kib}} setting
 
 To stop continuous extraction without disabling Significant Events:
 
-1. Navigate to **Significant Events** → **Settings**.
-2. Under **Continuous KI extraction**, turn off **Enable continuous KI onboarding**.
+1. Select **Significant Events** → **Settings**.
+2. Under **Continuous KI extraction**, turn off **Enable continuous KI extraction**.
 
 Disabling continuous extraction cancels all in-flight feature identification tasks and force-deletes the continuous extraction workflow. Already-extracted KIs are not deleted. Manually-triggered extractions continue to work.
 
@@ -113,7 +115,7 @@ Disabling continuous extraction cancels all in-flight feature identification tas
 
 **Symptom**: Continuous extraction appears to be running continuously or processing streams more frequently than expected.
 
-**Action**: Check the continuous extraction setting. If enabled, verify the **Extraction interval** is set to an appropriate value (default is 12 hours). Check the number of streams eligible for extraction — more streams means more runs per cycle.
+**Action**: Check the continuous extraction setting. If enabled, check the number of streams eligible for extraction — more streams means more runs per cycle.
 
 ### High LLM cost
 
@@ -122,10 +124,15 @@ Disabling continuous extraction cancels all in-flight feature identification tas
 **Action**:
 
 1. Disable continuous extraction first — this is the primary cost multiplier.
-2. Check how many streams are eligible for continuous extraction. Use the **Excluded streams** setting to narrow the scope.
+2. Check how many streams are eligible for continuous extraction.
 
 ### Incidents not clearing
 
 **Symptom**: A Significant Event remains open after the underlying condition appears to have resolved.
 
 **Action**: This is expected behavior. The judge agent must independently verify that the underlying condition has resolved. Detections clearing alone is not sufficient.
+
+## Learn more [sig-events-operator-learn-more]
+
+- [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
+- [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work

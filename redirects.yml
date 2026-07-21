@@ -958,3 +958,6 @@ redirects:
     to: 'reference/fleet/managed-content.md'
     anchors:
       'managed-integrations-content':
+
+  # Knowledge Indicators moved from Streams management to Significant Events
+  'solutions/observability/streams/management/knowledge-indicators.md': '!solutions/observability/streams/significant-events/knowledge-indicators.md'
