@@ -35,56 +35,6 @@ To use Significant Events you also need:
 
 The pipeline runs in sequential phases that build on the output of the previous phase. KI extraction and rule generation prepare your streams for detection and run on your schedule. Detection and discovery run continuously in the background after you enable Significant Events.
 
-```mermaid
-flowchart LR
-    LLM(["Generative AI<br/>connector"])
-
-    subgraph KB["Kibana"]
-        direction TB
-        KI["KI extraction<br/>Task Manager + Workflow"]
-        RG["Rule generation<br/>Workflow"]
-        RE["Rule execution<br/>Alerting framework"]
-        DW["Detection<br/>Workflows · cron 1m"]
-        DA["Discovery agent<br/>Workflows + Agent Builder"]
-        JA["Judge agent<br/>Workflows + Agent Builder"]
-    end
-
-    subgraph ES["Elasticsearch"]
-        direction TB
-        LOGS[("Stream logs")]
-        FEAT[(".kibana_streams_features-*")]
-        ALRT[(".alerts-streams.alerts-default")]
-        DETS[("detections")]
-        DISC[("discoveries")]
-        EVTS[("events")]
-    end
-
-    LOGS -->|samples| KI
-    KI --> FEAT
-    FEAT -->|queries| KI
-    FEAT --> RG
-    RG -->|promote rules| RE
-    RE --> ALRT
-    ALRT --> DW
-    DW --> DETS
-    DETS --> DA
-    DA --> DISC
-    DISC --> JA
-    JA --> EVTS
-
-    KI -.->|LLM| LLM
-    RG -.->|LLM| LLM
-    DA -.->|LLM| LLM
-    JA -.->|LLM| LLM
-
-    classDef llm fill:#5c3fa3,color:#fff,stroke:none
-    classDef det fill:#1d6b47,color:#fff,stroke:none
-    class KI,RG,DA,JA llm
-    class RE,DW det
-```
-
-Purple nodes make LLM calls via the Generative AI connector. Green nodes are deterministic — no LLM involved. Cylinders = {{product.elasticsearch}} storage.
-
 ### 1. Knowledge indicator extraction [sig-events-phase-ki]
 
 An LLM analyzes log samples from your streams and extracts services, infrastructure, dependencies, and failure patterns as Knowledge Indicators (KIs). Deterministic generators run in parallel to produce dataset statistics, log patterns, and error samples.
