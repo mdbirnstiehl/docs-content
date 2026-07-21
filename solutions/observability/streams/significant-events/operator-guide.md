@@ -74,7 +74,7 @@ Significant Events writes to the following data streams:
 | `.significant_events-discoveries` | Investigator + Judge | Append-only; one document per discovery state change |
 | `.significant_events-events` | Judge | Append-only; one document per Significant Event state change |
 
-The `.significant_events-*` data streams use Data Stream Lifecycle (DSL) with a default 90-day retention. You can override retention per stream using the DSL API. See [Data model](./data-model.md) for the full index layout and traceability guidance.
+The `.significant_events-*` data streams use Data Stream Lifecycle (DSL) with a default 90-day retention. You can override retention per stream using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
 
 ## Cost drivers [sig-events-op-costs]
 

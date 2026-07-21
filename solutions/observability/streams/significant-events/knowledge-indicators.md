@@ -125,7 +125,7 @@ Feature KIs carry a full data model:
 - **`properties`**: Stable key-value pairs used to deduplicate findings across multiple runs
 - **`confidence`**: 0–100. LLM-identified KIs score based on evidence quality. Deterministic KIs always score 100.
 - **`evidence`**: 2–5 supporting log excerpts that justify the KI's existence
-- **`filter`**: An optional [StreamLang](../../streamlang.md) condition scoping the KI to specific documents
+- **`filter`**: An optional [StreamLang](../management/streamlang.md) condition scoping the KI to specific documents
 
 Example dependency KI:
 
@@ -191,7 +191,7 @@ FROM logs-mystream,logs-mystream.*
 
 When you promote a query KI, it becomes a {{kib}} alerting rule of type `streams.rules.esql`. Each promoted rule runs its {{esql}} query on a per-rule schedule and writes results to the `.alerts-streams.alerts-default` index. The number of promoted query KIs is the main driver of alerting query load on your cluster.
 
-The Significant Events pipeline picks up from there: a detection workflow runs the `change_point` aggregation over alert firing patterns and writes significant transitions to `.significant_events-detections`. The discovery workflow then processes those detections with an AI agent. See [Detection](./detection.md) for the full flow.
+The Significant Events pipeline picks up from there: a detection workflow runs the `change_point` aggregation over alert firing patterns and writes significant transitions to `.significant_events-detections`. The discovery workflow then processes those detections with an AI agent.
 
 ## Continuous extraction [sig-events-ki-continuous]
 
