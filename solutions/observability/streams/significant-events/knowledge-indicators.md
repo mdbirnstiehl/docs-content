@@ -29,8 +29,7 @@ To access Knowledge Indicators, open **Significant Events** from the Streams mai
 To use this feature, you need:
 
 - A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which can incur additional costs.
-- The `observability:streamsEnableSignificantEvents` {{product.kibana}} setting enabled.
-- The `observability:streamsEnableSignificantEventsDiscovery` {{product.kibana}} setting enabled.
+- The `observability:streamsSigEventsScheduledDiscoveryEnabled` {{kib}} setting enabled.
 :::
 
 ## Generate KIs [sig-events-ki-generate]
@@ -173,11 +172,11 @@ Example query KI:
 
 Query KIs are generated in two {{esql}} forms depending on what the LLM determines is most useful for detection:
 
-**Match queries** filter for specific log events — errors, exceptions, failure messages. The KQL expression is wrapped in a standard {{esql}} envelope:
+**Match queries** filter for specific log events — errors, exceptions, failure messages:
 
 ```esql
 FROM logs-mystream,logs-mystream.* METADATA _id, _source
-| WHERE KQL("message: \"connection refused\" AND service.name: \"api_gateway\"")
+| WHERE message : "connection refused" AND service.name == "api_gateway"
 ```
 
 **Stats queries** aggregate metrics over time — rates, counts, or derived values — useful when the signal is a change in volume rather than the presence of a specific event:
@@ -189,7 +188,7 @@ FROM logs-mystream,logs-mystream.*
 
 ### Downstream path: from query KIs to alerting rules [sig-events-ki-downstream]
 
-When you promote a query KI, it becomes a {{kib}} alerting rule of type `streams.rules.esql`. Each promoted rule runs its {{esql}} query on a per-rule schedule and writes results to the `.alerts-streams.alerts-default` index. The number of promoted query KIs is the main driver of alerting query load on your cluster.
+When you promote a query KI, it becomes a {{kib}} alerting rule. Each promoted rule runs its {{esql}} query on a per-rule schedule and writes results to `.rule-events`. The number of promoted query KIs is the main driver of alerting query load on your cluster.
 
 The Significant Events pipeline picks up from there: a detection workflow runs the `change_point` aggregation over alert firing patterns and writes significant transitions to `.significant_events-detections`. The discovery workflow then processes those detections with an AI agent.
 
