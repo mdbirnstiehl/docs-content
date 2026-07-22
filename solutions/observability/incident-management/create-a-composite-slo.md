@@ -19,7 +19,7 @@ A composite SLO aggregates multiple individual SLOs into a single health indicat
 For example, you could create a "Checkout Flow Health" composite SLO that combines SLOs for your payment service, cart service, and inventory service.
 
 ::::{important}
-**For Observability serverless projects**, the **Editor** role or higher is required to create SLOs. To learn more, refer to [Assign user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability serverless projects**, the [**SLO Editor** custom role](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md#slo-all-access) is required to create SLOs.
 
 **For {{product.elastic-stack}}**, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](/solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 ::::
