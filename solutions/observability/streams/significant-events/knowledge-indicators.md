@@ -195,7 +195,7 @@ The Significant Events pipeline picks up from there: a detection workflow runs t
 
 ## Continuous extraction [sig-events-ki-continuous]
 
-When continuous extraction is enabled, a {{kib}} Workflow runs every 10 minutes and processes up to five eligible streams per run. A stream is eligible if:
+When continuous extraction is enabled, a {{kib}} Workflow runs every 35 minutes and processes up to five eligible streams per run. A stream is eligible if:
 
 - It is a wired or classic stream
 - It does not match any configured exclusion glob pattern
@@ -204,7 +204,7 @@ When continuous extraction is enabled, a {{kib}} Workflow runs every 10 minutes 
 
 Streams that have never been processed are always prioritized. Among remaining candidates, streams with the oldest last-completed extraction run are processed first.
 
-The continuous extraction workflow has a nine-minute timeout (one minute shorter than the 10-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
+The continuous extraction workflow has a 34-minute timeout (one minute shorter than the 35-minute schedule, to prevent overlapping runs). If multiple runs would overlap, excess triggers are silently dropped.
 
 Toggling continuous extraction off cancels any in-flight extraction tasks and force-deletes the workflow. Re-enabling it creates a fresh workflow from the latest definition. The workflow state is not preserved between enable/disable cycles.
 
@@ -220,6 +220,6 @@ These settings are only modifiable through the Significant Events Settings page,
 
 ## KI lifecycle and maintenance [sig-events-ki-lifecycle]
 
-KIs auto-expire after 7 days if not observed in subsequent extraction runs. KIs for decommissioned services are automatically removed without manual cleanup. If a service comes back online, its KIs are re-extracted automatically.
+KIs auto-expire after 30 days if not observed in subsequent extraction runs. KIs for decommissioned services are automatically removed without manual cleanup. If a service comes back online, its KIs are re-extracted automatically.
 
 Users can mark individual Feature KIs as false positives. The system carries those exclusions forward into future runs to prevent re-identification.

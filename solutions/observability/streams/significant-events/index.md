@@ -27,8 +27,7 @@ Significant Events requires an **Enterprise license** or an active Enterprise tr
 
 To use Significant Events you also need:
 
-- The `observability:streamsEnableSignificantEvents` {{kib}} setting enabled.
-- The `observability:streamsEnableSignificantEventsDiscovery` {{kib}} setting enabled (required for Discovery, rule generation, and the end-to-end pipeline).
+- The `observability:streamsSigEventsScheduledDiscoveryEnabled` {{kib}} setting enabled (required for the detection, discovery, and triage workflows).
 - A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which routes LLM calls and incurs additional costs.
 
 ## How the pipeline works [sig-events-pipeline]

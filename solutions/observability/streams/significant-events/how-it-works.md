@@ -34,18 +34,18 @@ flowchart TD
         KI["KI extraction<br/>Task Manager + Workflow"]
         RG["Rule generation<br/>Workflow"]
         RE["Rule execution<br/>Alerting framework"]
-        DW["Detection<br/>Workflows · cron 1m"]
+        DW["Detection<br/>Workflows · cron 10m"]
         DA["Discovery agent<br/>Workflows + Agent Builder"]
         JA["Judge agent<br/>Workflows + Agent Builder"]
     end
 
     subgraph ES["Elasticsearch"]
         LOGS[("stream logs")]
-        FEAT[(".kibana_streams_features-*")]
-        ALRT[(".alerts-streams.alerts-default")]
-        DETS[("detections")]
-        DISC[("discoveries")]
-        EVTS[("significant events")]
+        FEAT[(".significant_events-knowledge_indicators")]
+        ALRT[(".rule-events")]
+        DETS[(".significant_events-detections")]
+        DISC[(".significant_events-discoveries")]
+        EVTS[(".significant_events-events")]
     end
 
     LOGS -->|samples| KI
@@ -86,30 +86,28 @@ KIs cover five types: Entity, Infrastructure, Technology, Dependency, and Schema
 
 ### KI lifecycle
 
-KIs are written to `.kibana_streams_features-*`, deduplicated on `(type, subtype, properties)`, and expire after 7 days if not re-observed. See [KI lifecycles](./knowledge-indicators.md#sig-events-ki-lifecycle) for lifecycle and continuous extraction details.
+KIs are written to `.significant_events-knowledge_indicators`, deduplicated on `(type, subtype, properties)`, and expire after 30 days if not re-observed. See [KI lifecycles](./knowledge-indicators.md#sig-events-ki-lifecycle) for lifecycle and continuous extraction details.
 
 ## Phase 2: Rule generation [sig-events-hiw-rules]
 
-Once KIs exist for a stream, the LLM generates detection rules using them as input. Rules are expressed as KQL wrapped in {{esql}}:
+Once KIs exist for a stream, the LLM generates detection rules using them as input. Rules are expressed as native {{esql}} expressions targeting the stream's index pattern:
 
 ```
-FROM {stream},{stream}.* METADATA _id, _source | WHERE KQL("{kql_expression}")
+FROM {stream},{stream}.* METADATA _id | WHERE <esql_expression>
 ```
 
 The LLM operates in a reasoning loop: it calls `get_stream_features` to retrieve KIs for the stream, analyzes what entities and technologies are present, then calls `add_queries` to submit a batch of rules. This means rules are scoped to the specific services and failure modes present in each stream.
 
 ## Phase 3: Rule execution [sig-events-hiw-execution]
 
-Each promoted rule runs as a {{kib}} alerting rule of type `streams.rules.esql`. On each execution cycle, the rule:
+Each promoted rule runs as a {{kib}} alerting rule on a per-rule schedule. On each execution cycle, the rule:
 
 1. Builds an {{esql}} query from the stored rule parameters.
-2. Queries the stream with a two-minute lookback window to ensure no events fall through the gap between runs.
+2. Queries the stream with a lookback window of 2× the rule interval to ensure no events fall through the gap between runs.
 3. Excludes document IDs seen in previous executions.
-4. Writes matching rows to `.alerts-streams.alerts-default`.
+4. Writes matching rows to `.rule-events`.
 
 **Execution cap**: Each rule execution writes at most 1,000 alert documents. Matching events beyond this limit are dropped.
-
-**Space behavior**: Alerts are not space-aware. Alert documents are written across all spaces.
 
 ## Phase 4: Discovery [sig-events-hiw-discovery]
 
@@ -121,7 +119,7 @@ Discovery converts raw alert signals into confirmed Significant Events. It runs 
 
 ### Detection [sig-events-hiw-detection]
 
-The Detection Workflow reads `.alerts-streams.alerts-default` and runs `change_point` analysis grouped per alerting rule. When a rule's alert pattern enters a genuinely anomalous state, the workflow appends a detection document to the detections index. The index is append-only — `detection`, `quiet`, and `handled` document kinds track anomaly state over time. Current state per rule is the latest document.
+The Detection Workflow reads `.rule-events` and runs `change_point` analysis grouped per alerting rule. When a rule's alert pattern enters a genuinely anomalous state, the workflow appends a detection document to the detections index. The index is append-only — `detection`, `quiet`, and `handled` document kinds track anomaly state over time. Current state per rule is the latest document.
 
 Change point detection is per-rule: a stream can have many independent rules, and one rule recovering does not collapse the signal from others still anomalous on the same stream.
 
@@ -141,15 +139,13 @@ The two-agent design is intended to prevent a single agent that both investigate
 
 | What to query | {{esql}} target |
 |---|---|
-| Knowledge Indicators | `FROM .kibana_streams_features-*` |
-| Alert documents (rule execution results) | `FROM .alerts-streams.alerts-default` |
-| Detection state per rule | `FROM detections` |
-| Discovery hypotheses | `FROM discoveries` |
-| Significant Events | `FROM events` |
+| Knowledge Indicators | `FROM .significant_events-knowledge_indicators` |
+| Alert documents (rule execution results) | `FROM .rule-events` |
+| Detection state per rule | `FROM .significant_events-detections` |
+| Discovery hypotheses | `FROM .significant_events-discoveries` |
+| Significant Events | `FROM .significant_events-events` |
 
 **Traceability**: The `kibana.alert.rule.uuid` in alert documents links back to the rule definition stored in the stream. The `kibana.alert.rule.tags` array always includes the stream name, so you can filter the alerts index by stream without a join. Across the discovery phase, `discovery_slug` is the durable cross-index key linking discoveries to events. To trace a Significant Event back to its origin, follow `discovery_slug` from the events index to the discoveries index, then use `detections[].detection_id` to reach the detection document, and `kibana.alert.rule.uuid` to reach the alerting rule.
-
-**{{esql}} constraint**: `.alerts-streams.alerts-default` uses `dynamic: false`. Only `kibana.alert.*` fields are explicitly indexed and support typed {{esql}} operations. The `original_source.*` fields are stored but not indexed with typed mappings. They can be retrieved but not used in typed filters or aggregations.
 
 ## Learn more [sig-events-hiw-learn-more]
 
