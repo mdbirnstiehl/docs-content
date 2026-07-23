@@ -132,5 +132,6 @@ Disabling continuous extraction cancels all in-flight feature identification tas
 
 ## Learn more [sig-events-operator-learn-more]
 
+- [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work

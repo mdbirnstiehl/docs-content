@@ -149,5 +149,6 @@ The two-agent design is intended to prevent a single agent that both investigate
 
 ## Learn more [sig-events-hiw-learn-more]
 
+- [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
 - [Operator guide](./operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
