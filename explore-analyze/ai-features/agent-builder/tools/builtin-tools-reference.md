@@ -200,7 +200,7 @@ In 9.5, the individual stream read tools were consolidated into `inspect_streams
 :   Updates a stream's configuration, including its processing pipeline, description, retention lifecycle, field mappings, and failure store. Requires user confirmation before applying changes.
 
 `platform.streams.create_partition` {applies_to}`stack: preview 9.5`
-:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/management/partitioning.md) and [wired streams](/solutions/observability/streams/streams.md) are in technical preview. Requires user confirmation.
+:   Creates a child stream (partition) under a parent wired stream, using a routing condition to select the documents it receives. [Partitioning](/solutions/observability/streams/organize-your-data.md) and [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired) are in technical preview. Requires user confirmation.
 
 `platform.streams.delete_stream` {applies_to}`stack: preview 9.5`
 :   Permanently deletes a stream and all of its child streams. This action cannot be undone and requires user confirmation.
