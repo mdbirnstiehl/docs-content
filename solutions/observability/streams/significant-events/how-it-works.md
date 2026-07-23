@@ -119,7 +119,7 @@ Discovery converts raw alert signals into confirmed Significant Events. It runs 
 
 ### Detection [sig-events-hiw-detection]
 
-The Detection Workflow reads `.rule-events` and runs `change_point` analysis grouped per alerting rule. When a rule's alert pattern enters a genuinely anomalous state, the workflow appends a detection document to the detections index. The index is append-only — `detection`, `quiet`, and `handled` document kinds track anomaly state over time. Current state per rule is the latest document.
+The Detection Workflow reads `.rule-events` and runs `change_point` analysis grouped per alerting rule. When a rule's alert pattern enters a genuinely anomalous state, the workflow appends a detection document to the detections index. Current state per rule is the latest document.
 
 Change point detection is per-rule: a stream can have many independent rules, and one rule recovering does not collapse the signal from others still anomalous on the same stream.
 
@@ -142,10 +142,9 @@ The two-agent design is intended to prevent a single agent that both investigate
 | Knowledge Indicators | `FROM .significant_events-knowledge_indicators` |
 | Alert documents (rule execution results) | `FROM .rule-events` |
 | Detection state per rule | `FROM .significant_events-detections` |
-| Discovery hypotheses | `FROM .significant_events-discoveries` |
 | Significant Events | `FROM .significant_events-events` |
 
-**Traceability**: The `kibana.alert.rule.uuid` in alert documents links back to the rule definition stored in the stream. The `kibana.alert.rule.tags` array always includes the stream name, so you can filter the alerts index by stream without a join. Across the discovery phase, `discovery_slug` is the durable cross-index key linking discoveries to events. To trace a Significant Event back to its origin, follow `discovery_slug` from the events index to the discoveries index, then use `detections[].detection_id` to reach the detection document, and `kibana.alert.rule.uuid` to reach the alerting rule.
+**Traceability**: To trace a Significant Event back to its origin, use `event_id` as the durable key linking events to detections. From the events index, use `signals[].metadata.detection_id` to reach the detection document in `.significant_events-detections`, and `signals[].metadata.rule_uuid` to reach the alerting rule in `.rule-events`.
 
 ## Learn more [sig-events-hiw-learn-more]
 
