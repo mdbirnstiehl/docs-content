@@ -124,7 +124,7 @@ Feature KIs carry a full data model:
 - **`properties`**: Stable key-value pairs used to deduplicate findings across multiple runs
 - **`confidence`**: 0–100. LLM-identified KIs score based on evidence quality. Deterministic KIs always score 100.
 - **`evidence`**: 2–5 supporting log excerpts that justify the KI's existence
-- **`filter`**: An optional [StreamLang](../management/streamlang.md) condition scoping the KI to specific documents
+- **`filter`**: An optional [StreamLang](../streamlang.md) condition scoping the KI to specific documents
 
 Example dependency KI:
 

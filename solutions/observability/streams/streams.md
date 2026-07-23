@@ -128,10 +128,10 @@ When documents fail during ingestion, Streams preserves them in a [failure store
 
 :::::
 
-- [**Retention**](./management/retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
-- [**Partitioning**](./management/partitioning.md): {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` Route data into child streams.
-- [**Processing**](./management/extract.md): Parse and extract information from documents into dedicated fields.
-- [**Schema**](./management/schema.md): Manage field mappings.
-- [**Data quality**](./management/data-quality.md): Get information about failed and degraded documents in your stream.
-- [**Advanced**](./management/advanced.md): Review and manually modify underlying {{es}} components of your stream.
+- [**Retention**](./configure-retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
+- [**Partitioning**](./organize-your-data.md): {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Route data into child streams.
+- [**Processing**](./parse-and-process.md): Parse and extract information from documents into dedicated fields.
+- [**Schema**](./map-fields.md): Manage field mappings.
+- [**Data quality**](./manage-data-quality.md): Get information about failed and degraded documents in your stream.
+- [**Advanced**](./advanced.md): Review and manually modify underlying {{es}} components of your stream.
 - [**Knowledge Indicators**](./significant-events/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
