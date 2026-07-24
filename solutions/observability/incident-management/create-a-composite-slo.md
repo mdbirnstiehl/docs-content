@@ -14,7 +14,7 @@ A composite SLO aggregates multiple individual SLOs into a single health indicat
 
 * Track reliability at the system or platform level instead of per service
 * Define service importance using weights so the composite score reflects your priorities
-* Detect platform-wide reliability degradation early through multi-window burn-rate alerts across all member SLOs
+* Detect platform-wide reliability degradation early through burn-rate alerts across all member SLOs
 
 For example, you could create a "Checkout Flow Health" composite SLO that combines SLOs for your payment service, cart service, and inventory service.
 
