@@ -17,9 +17,9 @@ products:
 
 # Configure data retention with Streams [streams-configure-retention]
 
-Managing data retention across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
+Managing data retention across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle (DSL), index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
 
-The **Retention** tab provides a single place to manage lifecycle policies for your streams:
+The **Data lifecycle** tab provides a single place to manage lifecycle policies for your streams:
 
 - **Set retention periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
 - **Parent retention cascades to child streams**: For wired streams, parent stream retention policies automatically apply to child streams. Override at the child level when a specific child stream needs different retention settings.
@@ -37,11 +37,11 @@ For more information, refer to [Granting privileges for data streams and aliases
 
 ## Configure retention [streams-configure-retention-steps]
 
-Follow these steps to review your stream's storage footprint, choose a retention method, and apply the policy.
+Follow these steps to review your stream's storage footprint, select a retention method, and apply the policy.
 
 :::::::{stepper}
 
-::::::{step} Open the Retention tab
+::::::{step} Open the Data lifecycle tab
 1. Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select your stream from the list.
 1. Go to the **Data lifecycle** tab.
@@ -51,10 +51,10 @@ Follow these steps to review your stream's storage footprint, choose a retention
 
 Before setting a retention policy, review the following panels to understand your data's footprint:
 
-- **Storage size**: Total data volume and document count for the stream.
+- **Storage size**: Total data volume and document count for the stream, including data across all tiers.
 - **Ingestion averages**: Estimated ingestion per day and per month, based on total stream size divided by stream age.
 - **Data lifecycle** or **{{ilm-init}} policy data tiers**: The amount of data in each phase (Hot, Warm, Cold, Frozen) so you can see where data is accumulating.
-- **Ingestion over time**: A chart of estimated ingestion volume over time to help spot trends or spikes.
+- **Ingestion over time**: A chart of estimated ingestion volume over time to help spot trends or spikes. For streams with an active frozen phase, volume is split by tier.
 
 Use this information to decide how long you need to retain data and which retention method best fits your cost and compliance requirements.
 
@@ -63,7 +63,7 @@ For more information on data retention, refer to [Data stream lifecycle](../../.
 
 ::::::{step} Choose and configure a retention method
 
-Select **Edit retention method** to open the configuration options, then choose one of the following methods:
+Select {icon}`controls` **Edit lifecycle method** to open the configuration options, then select one of the following methods:
 
 - **Inherit retention**: Use retention settings from the stream's index template (classic streams) or parent stream (wired streams).
     - **Classic streams**: This preserves existing data streams' behavior while still benefiting from Streams' other features.
@@ -77,19 +77,20 @@ Select **Edit retention method** to open the configuration options, then choose 
 
 To use the retention settings from the stream's index template (classic streams) or parent stream (wired streams) without setting a custom period or policy:
 
-1. Select **Edit retention method**.
+1. Select {icon}`controls` **Edit lifecycle method**.
 1. Turn on **Inherit from index template** or **parent stream**.
 
-For wired streams, you can override retention for a specific child stream by opening that stream's **Retention** tab and configuring a different method. The child stream will then use its own policy instead of inheriting from the parent.
+For wired streams, you can override retention for a specific child stream by opening that stream's **Data lifecycle** tab and configuring a different method. The child stream will then use its own policy instead of inheriting from the parent.
 ::::
 
 ::::{tab-item} Set a retention period
 To set a specific retention period:
 
-1. Select **Edit retention method**.
-1. Turn off **Inherit from index template** or **parent stream**, if enabled.
-1. Select **Custom period**.
-1. Set the number of days you want to retain data.
+1. Select {icon}`controls` **Edit lifecycle method**.
+1. Turn off **Inherit from index template** or **parent stream** if enabled.
+1. Select **Data stream lifecycle**.
+1. From the **Data stream lifecycle** panel, select **Add data phase** → **Delete phase**.
+1. Set the delete phase to the number of days you want to retain data and select **Apply**.
 
 To define a global default retention policy for serverless projects, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
@@ -105,11 +106,11 @@ Select an existing {{ilm-init}} policy to automate how data moves through phases
 
 To follow an existing policy:
 
-1. Select **Edit retention method**.
+1. Select {icon}`controls` **Edit lifecycle method**.
 1. Turn off **Inherit from index template** or **parent stream**, if enabled.
-1. Select **{{ilm-init}} policy**, then choose a pre-defined policy from the list.
+1. Select **{{ilm-init}} policy**, then select a predefined policy from the list.
 
-After selecting a policy, you can [configure data lifecycle phases](#streams-configure-data-lifecycle-phases) directly from the **Retention** tab.
+After selecting a policy, you can [configure data lifecycle phases](#streams-configure-data-lifecycle-phases) directly from the **Data lifecycle** tab.
 
 If the policy you need doesn't exist, refer to [Configure a lifecycle policy](../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) to create one.
 ::::
@@ -126,12 +127,12 @@ If the policy you need doesn't exist, refer to [Configure a lifecycle policy](..
 stack: ga 9.4+
 ```
 
-When a stream follows an {{ilm-init}} policy, the **Data lifecycle** panel shows the phases defined in that policy as a visual bar. You can edit existing phases or add new ones directly from the **Retention** tab:
+The **Data lifecycle** tab shows your stream's phases as a visual timeline. From here, you can edit existing phases or add new ones:
 
-- To edit an existing phase, select the phase in the **Data lifecycle** panel and select the edit icon ({icon}`pencil`).
+- To edit an existing phase, select the phase from the **Data phases** timeline and select **Edit**.
 - To add a phase, select **Add data phase**, then choose a phase.
 
-This opens the **Edit data phases** window where you can configure or update your phases. The following phases are available:
+This opens **Edit data phases**, where you can configure or update your phases. {applies_to}`stack: ga 9.5+` For streams using a DSL, you can add **Frozen** and **Delete** phases. For streams using an {{ilm-init}}, you can add any of the following phases:
 
 **Hot**
 :   The index is actively updated and queried. This is the default phase for all data. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
@@ -143,7 +144,9 @@ This opens the **Edit data phases** window where you can configure or update you
 :   The index is rarely updated or queried, and slower query performance is acceptable. Set the minimum age for data to move into this phase. Options include enabling read-only access, [downsampling](#streams-configure-retention-downsampling), and [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
 
 **Frozen**
-:   The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository. The frozen phase requires a snapshot repository.
+:   The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository.
+
+    {applies_to}`stack: ga 9.5+` For streams using a DSL, you need to set a default snapshot repository before adding a frozen phase. If no default repository is set, you'll be prompted to set one. After setting it, select {icon}`refresh` to resume.
 
 **Delete**
 :   Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
@@ -152,7 +155,7 @@ For more information, refer to [{{ilm}} phases and actions](../../../manage-data
 
 ### {{search-snaps-cap}} [streams-configure-retention-searchable-snapshots]
 
-{{search-snaps-cap}} let you search infrequently accessed, read-only data directly from a snapshot repository without needing replica shards, significantly reducing storage costs. A local data cache is kept to allow fast repeat access. They are best suited for historical data that requires infrequent access or archival.
+{{search-snaps-cap}} let you search infrequently accessed, read-only data directly from a snapshot repository without needing replica shards, significantly reducing storage costs. A local data cache speeds up repeat access. They are best suited for historical data that requires infrequent access or archival.
 
 {{search-snaps-cap}} are available in the Cold and Frozen phases.
 
@@ -168,8 +171,8 @@ For more information, refer to [Downsampling concepts](../../../manage-data/data
 
 ## Set failure store retention [streams-configure-failure-store-retention]
 
-When a document fails to ingest because of a processor error or a mapping conflict, it is written to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of being dropped. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
+When a document fails to ingest because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
 
-You can enable and configure failure store retention directly from the **Retention** tab. Select **Enable failure store** to turn it on and set the retention period for failed documents.
+You can enable and configure failure store retention directly from the **Data lifecycle** tab. Select **Enable failure store** to turn it on and set the retention period for failed documents.
 
 To review and resolve ingestion failures, refer to [Manage data quality](./manage-data-quality.md).
