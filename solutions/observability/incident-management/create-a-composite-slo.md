@@ -94,7 +94,7 @@ Your composite SLO appears on the **Composite SLOs** tab of the **SLOs** page. E
 * **Healthy members**: The number of member SLOs currently meeting their targets. For example, 3 of 25.
 * **Objective**: The composite SLO's target percentage, set independently from the targets of individual member SLOs.
 * **SLI value**: The weighted average of all member SLI values.
-* **Historical status**: A graphical representation of the the composite SLOs history.
+* **Historical status**: A graphical representation of the composite SLO's history.
 * **Budget remaining**: How much error budget remains until the composite SLO violates its target.
 * **Active alerts**: The number of active alerts across the underlying member SLOs.
 * **Burn rate**: The rate at which the composite SLO is consuming its error budget, shown over 5-minute, 1-hour, and 1-day windows.
