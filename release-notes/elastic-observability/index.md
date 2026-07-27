@@ -32,7 +32,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a Service Map skill to the AI Agent for contextual service topology analysis [#263537]({{kib-pull}}263537).
 * Adds a `uri_parts` processor to Streams, parsing URI strings into ECS-aligned fields at write time [#265608]({{kib-pull}}265608).
 * Adds partitioning support to query-based Streams [#264765]({{kib-pull}}264765).
-* Adds a frozen phase configuration to the Streams data lifecycle UI, allowing users to add, edit, and remove a frozen phase directly from the **Data retention** page. [#275706]({{kib-pull}}275706) [#274580]({{kib-pull}}274580).
+* Renames the Streams **Retention** tab to **Data lifecycle** [#269476]({{kib-pull}}269476).
+* Adds a frozen phase configuration to the Streams **Data lifecycle** UI, allowing users to add, edit, and remove a frozen phase directly from the **Data lifecycle** page [#275706]({{kib-pull}}275706) [#274580]({{kib-pull}}274580).
 * Replaces the data retention modal in Streams with flyouts for editing the successful and failed data lifecycle [#273767]({{kib-pull}}273767) [#273872]({{kib-pull}}273872).
 * Enables attachments for all stream types by default [#265145]({{kib-pull}}265145).
 * Adds name validation for query stream creation [#264695]({{kib-pull}}264695).
