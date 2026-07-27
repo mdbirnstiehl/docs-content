@@ -147,7 +147,7 @@ After selecting a policy, you can [configure data lifecycle phases](#streams-con
 
 1. Select **Edit retention method**.
 1. Turn off **Inherit from index template** or **parent stream**, if enabled.
-1. Select **{{ilm-init}} policy**, then choose a pre-defined policy from the list.
+1. Select **{{ilm-init}} policy**, then choose a predefined policy from the list.
 
 After selecting a policy, you can [configure data lifecycle phases](#streams-configure-data-lifecycle-phases) directly from the **Retention** tab.
 
@@ -207,7 +207,7 @@ For more information, refer to [Downsampling concepts](../../../manage-data/data
 
 ## Set failure store retention [streams-configure-failure-store-retention]
 
-When a document fails to ingest because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
+When a document fails to be ingested because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
 
 You can enable and configure failure store retention directly from the **Data lifecycle** tab (**Retention** in earlier versions). Select **Enable failure store** to turn it on and set the retention period for failed documents.
 
