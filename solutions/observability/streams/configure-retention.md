@@ -182,7 +182,7 @@ This opens **Edit data phases**, where you can configure or update your phases. 
 **Frozen**
 :   The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository.
 
-    {applies_to}`stack: ga 9.5+` For streams using a DSL, you need to set a default snapshot repository before adding a frozen phase. If no default repository is set, you'll be prompted to set one. After setting it, select {icon}`refresh` to resume.
+    {applies_to}`stack: ga 9.5+` For streams using a DSL, you need to set a default snapshot repository and the [appropriate subscription]({{subscriptions}}) before adding a frozen phase. If no default repository is set, you'll be prompted to set one. After setting it, select {icon}`refresh` to resume.
 
 **Delete**
 :   Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
