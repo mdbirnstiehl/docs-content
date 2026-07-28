@@ -17,13 +17,13 @@ products:
 
 # Configure data retention with Streams [streams-configure-retention]
 
-Managing data retention across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle (DSL), index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
+Managing data lifecycle across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle (DSL), index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
 
 The **Data lifecycle** tab (**Retention** prior to Stack v9.5) provides a single place to manage lifecycle policies for your streams:
 
 - **Set retention periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
 - **Parent retention cascades to child streams**: For wired streams, parent stream retention policies automatically apply to child streams. Override at the child level when a specific child stream needs different retention settings.
-- **Monitor storage in one view**: See storage size, ingestion averages, and tier distribution so you can align retention periods with storage costs and compliance requirements.
+- **Monitor storage in one view**: See storage size, ingestion averages, and phase distribution so you can align retention periods with storage costs and compliance requirements.
 - **Reduce storage with downsampling**: For time series data, replace high-resolution metrics with statistical summaries as data ages. This reduces storage costs and lets you retain data longer, with some loss of temporal precision.
 
 ## Before you get started [streams-configure-retention-permissions]
@@ -37,7 +37,7 @@ For more information, refer to [Granting privileges for data streams and aliases
 
 ## Configure retention [streams-configure-retention-steps]
 
-Follow these steps to review your stream's storage footprint, select a retention method, and apply the policy.
+Follow these steps to review your stream's storage footprint, select a lifecycle method, and apply the policy.
 
 ### Step 1: Open the Data lifecycle tab
 
@@ -49,10 +49,10 @@ Follow these steps to review your stream's storage footprint, select a retention
 
 Before setting a retention policy, review the following panels to understand your data's footprint:
 
-- **Storage size**: Total data volume and document count for the stream, including data across all tiers.
+- **Storage size**: Total data volume and document count for the stream, including data across all phases.
 - **Ingestion averages**: Estimated ingestion per day and per month, based on total stream size divided by stream age.
 - **Data lifecycle** or **{{ilm-init}} policy data tiers**: The amount of data in each phase (Hot, Warm, Cold, Frozen) so you can see where data is accumulating.
-- **Ingestion over time**: A chart of estimated ingestion volume over time to help spot trends or spikes. For streams with an active frozen phase, volume is split by tier.
+- **Ingestion over time**: A chart of estimated ingestion volume over time to help spot trends or spikes. For streams with an active frozen phase, volume is split by phase.
 
 Use this information to decide how long you need to retain data and which retention method best fits your cost and compliance requirements.
 
