@@ -17,7 +17,7 @@ products:
 
 # Configure data retention with Streams [streams-configure-retention]
 
-Managing data lifecycle across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle (DSL), index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
+Managing data lifecycle across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
 
 The **Data lifecycle** tab (**Retention** prior to Stack v9.5) provides a single place to manage lifecycle policies for your streams:
 
@@ -168,7 +168,7 @@ The **Data lifecycle** tab (**Retention** in earlier versions) shows your stream
 - To edit an existing phase, select the phase from the **Data phases** timeline and select **Edit**.
 - To add a phase, select **Add data phase**, then choose a phase.
 
-This opens **Edit data phases**, where you can configure or update your phases. {applies_to}`stack: ga 9.5+` For streams using a DSL, you can add **Frozen** and **Delete** phases. For streams using an {{ilm-init}}, you can add any of the following phases:
+This opens **Edit data phases**, where you can configure or update your phases. {applies_to}`stack: ga 9.5+` For streams using a data stream lifecycle, you can add **Frozen** and **Delete** phases. For streams using an {{ilm-init}}, you can add any of the following phases:
 
 **Hot**
 :   The index is actively updated and queried. This is the default phase for all data. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
@@ -182,7 +182,7 @@ This opens **Edit data phases**, where you can configure or update your phases. 
 **Frozen**
 :   The index is no longer updated and is queried rarely. Optimized for long-term retention at the lowest possible cost. Set the minimum age for data to move into this phase and configure a snapshot repository.
 
-    {applies_to}`stack: ga 9.5+` For streams using a DSL, you need to set a default snapshot repository and the [appropriate subscription]({{subscriptions}}) before adding a frozen phase. If no default repository is set, you'll be prompted to set one. After setting it, select {icon}`refresh` to resume.
+    {applies_to}`stack: ga 9.5+` For streams using a data stream lifecycle, you need to set a default snapshot repository and the [appropriate subscription]({{subscriptions}}) before adding a frozen phase. If no default repository is set, you'll be prompted to set one. After setting it, select {icon}`refresh` to resume.
 
 **Delete**
 :   Remove the index after a specified period of time. Set how long data is stored before deletion and optionally delete any associated [{{search-snaps}}](#streams-configure-retention-searchable-snapshots).
