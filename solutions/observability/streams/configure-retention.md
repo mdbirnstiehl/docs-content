@@ -15,27 +15,27 @@ products:
   - id: elastic-stack
 ---
 
-# Configure data retention with Streams [streams-configure-retention]
+# Configure data lifecycle with Streams [streams-configure-retention]
 
 Managing data lifecycle across multiple indexes typically requires configuring {{ilm}} ({{ilm-init}}), data stream lifecycle, index templates, and index settings, each in a different place. Streams replaces this with a single UI so you can control storage and meet regulatory or compliance requirements.
 
 The **Data lifecycle** tab (**Retention** prior to Stack v9.5) provides a single place to manage lifecycle policies for your streams:
 
-- **Set retention periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
-- **Parent retention cascades to child streams**: For wired streams, parent stream retention policies automatically apply to child streams. Override at the child level when a specific child stream needs different retention settings.
-- **Monitor storage in one view**: See storage size, ingestion averages, and phase distribution so you can align retention periods with storage costs and compliance requirements.
+- **Set lifecycle periods per stream**: Configure how long each stream retains data without touching {{ilm-init}} policies, index templates, or index settings directly.
+- **Parent lifecycle settings cascade to child streams**: For wired streams, parent stream lifecycle policies automatically apply to child streams. Override at the child level when a specific child stream needs different lifecycle settings.
+- **Monitor storage in one view**: See storage size, ingestion averages, and phase distribution so you can align lifecycle periods with storage costs and compliance requirements.
 - **Reduce storage with downsampling**: For time series data, replace high-resolution metrics with statistical summaries as data ages. This reduces storage costs and lets you retain data longer, with some loss of temporal precision.
 
 ## Before you get started [streams-configure-retention-permissions]
 
-To edit data retention in {{stack}}, you need the following data stream level privileges:
+To edit data lifecycle in {{stack}}, you need the following data stream level privileges:
 
 - `manage_data_stream_lifecycle`
 - `manage_ilm`
 
 For more information, refer to [Granting privileges for data streams and aliases](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md).
 
-## Configure retention [streams-configure-retention-steps]
+## Configure data lifecycle [streams-configure-retention-steps]
 
 Follow these steps to review your stream's storage footprint, select a lifecycle method, and apply the policy.
 
@@ -47,39 +47,39 @@ Follow these steps to review your stream's storage footprint, select a lifecycle
 
 ### Step 2: Review storage and ingestion data
 
-Before setting a retention policy, review the following panels to understand your data's footprint:
+Before setting a lifecycle policy, review the following panels to understand your data's footprint:
 
 - **Storage size**: Total data volume and document count for the stream, including data across all phases.
 - **Ingestion averages**: Estimated ingestion per day and per month, based on total stream size divided by stream age.
 - **Data lifecycle** or **{{ilm-init}} policy data tiers**: The amount of data in each phase (Hot, Warm, Cold, Frozen) so you can see where data is accumulating.
 - **Ingestion over time**: A chart of estimated ingestion volume over time to help spot trends or spikes. For streams with an active frozen phase, volume is split by phase.
 
-Use this information to decide how long you need to retain data and which retention method best fits your cost and compliance requirements.
+Use this information to decide how long you need to retain data and which lifecycle method best fits your cost and compliance requirements.
 
-For more information on data retention, refer to [Data stream lifecycle](../../../manage-data/lifecycle/data-stream.md).
+For more information on data lifecycle, refer to [Data stream lifecycle](../../../manage-data/lifecycle/data-stream.md).
 
-### Step 3: Choose and configure a retention method
+### Step 3: Choose and configure a lifecycle method
 
 Select {icon}`controls` **Edit lifecycle method** to open the configuration options, then select one of the following methods:
 
-- [**Inherit retention**](#streams-configure-retention-inherit): Use retention settings from the stream's index template (classic streams) or parent stream (wired streams).
+- [**Inherit lifecycle**](#streams-configure-retention-inherit): Use lifecycle settings from the stream's index template (classic streams) or parent stream (wired streams).
     - **Classic streams**: This preserves existing data streams' behavior while still benefiting from Streams' other features.
     - **Wired streams**: Child streams automatically inherit lifecycle settings and updates from their parent stream.
-- [**Set a retention period**](#streams-configure-retention-period): Define a minimum number of days before data is deleted. Data stays in the hot phase for best performance. Recommended when retention is specific to a single stream.
-- [**Follow an {{ilm-init}} policy**](#streams-configure-retention-ilm): Apply an existing {{ilm-init}} policy to automate how data moves through lifecycle phases as it ages. Recommended when you want to share a policy across multiple streams.
+- [**Set a lifecycle period**](#streams-configure-retention-period): Define a minimum number of days before data is deleted. Data stays in the hot phase for best performance. Recommended when a lifecycle period is specific to a single stream.
+- [**Follow an {{ilm-init}} policy**](#streams-configure-retention-ilm): Apply an existing {{ilm-init}} policy to automate how data moves through lifecycle phases as it ages. Recommended when you want to share an {{ilm-init}} policy across multiple streams.
 
-#### Inherit retention [streams-configure-retention-inherit]
+#### Inherit lifecycle [streams-configure-retention-inherit]
 
-To use the retention settings from the stream's index template (classic streams) or parent stream (wired streams) without setting a custom period or policy:
+To use the lifecycle settings from the stream's index template (classic streams) or parent stream (wired streams) without setting a custom period or policy:
 
 ::::{applies-switch}
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
 
 1. Select {icon}`controls` **Edit lifecycle method**.
-1. Turn on **Inherit from index template** or **parent stream**.
+1. Turn on **Inherit lifecycle from index template** or **parent stream**.
 
-For wired streams, you can override retention for a specific child stream by opening that stream's **Data lifecycle** tab and configuring a different method. The child stream will then use its own policy instead of inheriting from the parent.
+For wired streams, you can override lifecycle settings for a specific child stream by opening that stream's **Data lifecycle** tab and configuring a different method. The child stream will then use its own policy instead of inheriting from the parent.
 
 :::
 
@@ -93,21 +93,21 @@ For wired streams, you can override retention for a specific child stream by ope
 
 ::::
 
-#### Set a retention period [streams-configure-retention-period]
+#### Set a lifecycle period [streams-configure-retention-period]
 
-To set a specific retention period:
+To set a specific lifecycle period:
 
 ::::{applies-switch}
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
 
 1. Select {icon}`controls` **Edit lifecycle method**.
-1. Turn off **Inherit from index template** or **parent stream** if enabled.
+1. Turn off **Inherit lifecycle from index template** or **parent stream** if enabled.
 1. Select **Data stream lifecycle**.
 1. From the **Data stream lifecycle** panel, select **Add data phase** → **Delete phase**.
 1. Set the delete phase to the number of days you want to retain data and select **Apply**.
 
-To define a global default retention policy for serverless projects, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+To define a global default lifecycle policy for serverless projects, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 :::
 
 :::{applies-item} { "stack": "ga 9.1-9.4" }
@@ -127,7 +127,7 @@ serverless: unavailable
 stack: preview =9.1, ga 9.2+
 ```
 
-Select an existing {{ilm-init}} policy to automate how data moves through phases (Hot, Warm, Cold, Frozen) as it ages. {{ilm-init}} policies let you standardize data retention across Streams and other data streams.
+Select an existing {{ilm-init}} policy to automate how data moves through phases (Hot, Warm, Cold, Frozen) as it ages. {{ilm-init}} policies let you standardize data lifecycle across Streams and other data streams.
 
 To follow an existing policy:
 
@@ -205,10 +205,10 @@ Downsampling is available in the Hot, Warm, and Cold phases and only applies to 
 
 For more information, refer to [Downsampling concepts](../../../manage-data/data-store/data-streams/downsampling-concepts.md).
 
-## Set failure store retention [streams-configure-failure-store-retention]
+## Set failure store lifecycle [streams-configure-failure-store-retention]
 
 When a document fails to be ingested because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
 
-You can enable and configure failure store retention directly from the **Data lifecycle** tab (**Retention** in earlier versions). Select **Enable failure store** to turn it on and set the retention period for failed documents.
+You can enable and configure failure store lifecycle directly from the **Data lifecycle** tab (**Retention** in earlier versions). Select **Enable failure store** to turn it on and set the lifecycle period for failed documents.
 
 To review and resolve ingestion failures, refer to [Manage data quality](./manage-data-quality.md).
