@@ -205,10 +205,27 @@ Downsampling is available in the Hot, Warm, and Cold phases and only applies to 
 
 For more information, refer to [Downsampling concepts](../../../manage-data/data-store/data-streams/downsampling-concepts.md).
 
-## Set failure store lifecycle [streams-configure-failure-store-retention]
+## Set failed data lifecycle [streams-configure-failure-store-retention]
 
 When a document fails to be ingested because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
 
-You can enable and configure failure store lifecycle directly from the **Data lifecycle** tab (**Retention** in earlier versions). Select **Enable failure store** to turn it on and set the lifecycle period for failed documents.
+::::{applies-switch}
+
+:::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+
+1. Under **Failed data**, select {icon}`controls` **Edit failed data lifecycle**.
+1. Turn off **Inherit lifecycle from index template** or **parent stream** if enabled.
+1. From the **Data stream lifecycle** panel, select **Add **Add delete phase**.
+1. Set the delete phase to the number of days you want to retain data and select **Apply**.
+
+:::
+
+:::{applies-item} { "stack": "ga 9.1-9.4" }
+
+You can enable and configure failure store lifecycle directly from the **Retention** tab. Select **Enable failure store** to turn it on and set the lifecycle period for failed documents.
+
+:::
+
+::::
 
 To review and resolve ingestion failures, refer to [Manage data quality](./manage-data-quality.md).
