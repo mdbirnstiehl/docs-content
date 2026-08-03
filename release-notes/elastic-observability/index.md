@@ -79,6 +79,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a query inspector to alert rules for reviewing the {{es}} queries executed during rule evaluation [#262354]({{kib-pull}}262354).
 * Moves the **Rules** page into **{{stack-manage-app}}** [#269568]({{kib-pull}}269568).
 * Updates the **Add data** API Endpoints section to display the managed {{es}} bulk endpoint when Managed Inputs is available, with appropriate API key creation for each endpoint type [#275817]({{kib-pull}}275817).
+* Integrates OpenTelemetry collector capability into {{agent}}. The EDOT Collector is no longer a separate product. You can deploy {{agent}} and run it in OpenTelemetry mode to collect and forward traces, metrics, and logs to Elastic {{observability}}. Configuration and components are unchanged. The EDOT Cloud Forwarder has been renamed to the Elastic Cloud Forwarder.
 * Makes {{k8s}} onboarding OpenTelemetry-first [#275012]({{kib-pull}}275012) [#271387]({{kib-pull}}271387).
 * Adds an Amazon CloudWatch (OpenTelemetry) quickstart tile to the **Cloud** category in **Add data** [#273736]({{kib-pull}}273736).
 * Adds support for the `OTEL_AGENT_NAMES` environment variable for identifying OpenTelemetry agent names, consistent with `EDOT_AGENT_NAMES` [#266630]({{kib-pull}}266630).
