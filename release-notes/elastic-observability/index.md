@@ -29,7 +29,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds an **Import from another stream** action to the Streams **Data lifecycle** tab, allowing users to copy a lifecycle configuration from another stream [#275948]({{kib-pull}}275948).
 
 ### Fixes [elastic-observability-9.5.1-fixes]
-* Fixes a 500 error when downloading agent policies that reuse objects by reference, caused by an `Unresolved alias` YAML serialization error [#280669]({{kib-pull}}280669).
+* Fixes an error when downloading agent policies that reuse objects by reference, caused by an `Unresolved alias` YAML serialization error [#280669]({{kib-pull}}280669).
 * Fixes Synthetics remote monitor Cross-Cluster Search queries to correctly scope to the target cluster [#278141]({{kib-pull}}278141).
 
 ## 9.5.0 [elastic-observability-9.5.0-release-notes]
