@@ -24,7 +24,6 @@ products:
 * [Change {{agent}} monitoring settings](#change-agent-monitoring)
 * [Send {{agent}} monitoring data to a remote {{es}} cluster](#external-elasticsearch-monitoring)
 * [{{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules)
-* [Use alerting rule templates](#agent-alerting-templates)
 * [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting)
 
 Agent monitoring is turned on by default in the agent policy unless you turn it off. Want to turn off agent monitoring to stop collecting logs and metrics? See [Change {{agent}} monitoring settings](#change-agent-monitoring).
