@@ -24,6 +24,7 @@ products:
 * [Change {{agent}} monitoring settings](#change-agent-monitoring)
 * [Send {{agent}} monitoring data to a remote {{es}} cluster](#external-elasticsearch-monitoring)
 * [{{agent}} out-of-the-box alert rules](#agent-out-of-the-box-alert-rules)
+* [Use alerting rule templates](#agent-alerting-templates)
 * [Enable alerts and ML jobs based on {{fleet}} and {{agent}} status](#fleet-alerting)
 
 Agent monitoring is turned on by default in the agent policy unless you turn it off. Want to turn off agent monitoring to stop collecting logs and metrics? See [Change {{agent}} monitoring settings](#change-agent-monitoring).
@@ -264,14 +265,14 @@ stack: ga 9.2+
 ```
 
 {{agent}} provides [out-of-the-box alert rules](/reference/fleet/alert-templates.md) to simplify monitoring the health of agents.
-Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.  
+Built-in alerts are the best approach for many monitoring use cases, and offer a quicker and easier alternative to manual configuration required in earlier versions.
 
 ## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status  [fleet-alerting]
 ```{applies_to}
 stack: ga 9.0-9.1
 ```
 :::{tip}
-For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md). 
+For versions 9.2.0 and later, {{agent}} includes out-of-the-box alert rules for the most common health checks. Check out [Elastic Agent built-in alerts](/reference/fleet/alert-templates.md).
 :::
 
 You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerting.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
@@ -313,6 +314,26 @@ Data stream
     * `fleet.agent.version` - A keyword field containing the version number
     * `fleet.agent.count` - A count of agents on the specified version
 
+
+Data stream
+:   `logs-elastic_agent.status_change`
+
+    ```{applies_to}
+    stack: ga 9.3+
+    ```
+
+    This data stream contains agent status changes (for example, `online`, `offline`, `updating`, `unenrolled`) and can be used to produce custom alerts. Some {{agent}} integrations also ship with [alerting rule templates](/reference/fleet/alerting-rule-templates.md) that use this data stream.
+
+    **Fields**
+
+    * `@timestamp` — time the status change was recorded
+    * `agent.id` — unique identifier of the agent
+    * `status` — the agent's current status (`online`, `offline`, `error`, `degraded`, `inactive`, `enrolling`, `unenrolling`, `unenrolled`, `updating`, `uninstalled`, `orphaned`)
+    * `policy_id` — the policy the agent is enrolled in
+    * `policy_namespace` — the namespace of the agent policy
+    * `hostname` — hostname of the agent's host
+    * `space_id` — {{kib}} space or spaces the agent belongs to
+    * `agentless` — `true` if the agent runs in an agentless policy
 
 
 ### Example: Enable an alert for offline {{agent}}s [fleet-alerting-example]
