@@ -30,6 +30,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 
 ### Fixes [elastic-observability-9.5.3-fixes]
+* Fixes SLO dashboard embeddable panels (**SLO Overview**, **SLO Alerts**, **Error Budget**, and **Burn Rate**) not rendering when the `observability:enableInspectEsQueries` advanced setting is enabled or when {{kib}} runs in dev mode [#286626]({{kib-pull}}286626).
+* Fixes error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip [#288209]({{kib-pull}}288209).
 * Fixes YAML conversion for {{fleet}} agent policies whose advanced YAML settings field contains only comments, preventing agents from being stuck on outdated policies [#288430]({{kib-pull}}288430).
 * Relabels the top-level **Alerting** privilege section in **Roles** to **Alerting V2** and marks each Alerting V2 sub-privilege as experimental [#288163]({{kib-pull}}288163).
 * Fixes stale `secret_references` accumulating in {{fleet}} package policies after credential rotation [#287642]({{kib-pull}}287642).
