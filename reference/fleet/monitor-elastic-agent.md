@@ -325,14 +325,14 @@ Data stream
 
     **Fields**
 
-    * `@timestamp` — time the status change was recorded
-    * `agent.id` — unique identifier of the agent
-    * `status` — the agent's current status (`online`, `offline`, `error`, `degraded`, `inactive`, `enrolling`, `unenrolling`, `unenrolled`, `updating`, `uninstalled`, `orphaned`)
-    * `policy_id` — the policy the agent is enrolled in
-    * `policy_namespace` — the namespace of the agent policy
-    * `hostname` — hostname of the agent's host
-    * `space_id` — {{kib}} space or spaces the agent belongs to
-    * `agentless` — `true` if the agent runs in an agentless policy
+    * `@timestamp` — The time the status change was recorded
+    * `agent.id` — The unique identifier of the agent
+    * `status` — The agent's current status (`online`, `offline`, `error`, `degraded`, `inactive`, `enrolling`, `unenrolling`, `unenrolled`, `updating`, `uninstalled`, `orphaned`)
+    * `policy_id` — The policy the agent is enrolled in
+    * `policy_namespace` — The namespace of the agent policy
+    * `hostname` — The hostname of the agent's host
+    * `space_id` — The {{kib}} space or spaces the agent belongs to
+    * `agentless` — Is `true` if the agent runs in an agentless policy
 
 
 ### Example: Enable an alert for offline {{agent}}s [fleet-alerting-example]
