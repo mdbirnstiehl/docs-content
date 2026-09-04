@@ -74,7 +74,7 @@ The {{fleet}} UI provides the ability to remotely generate and gather an {{agent
 
 :::{note}
 :applies_to: stack: ga 9.5+
-When OTel-based {{es}} monitoring is active, the bundle also includes `elastic-agent-metrics.ndjson.zst` (capped at 20 MB). This file contains raw collector metric snapshots useful for diagnosing OTel monitoring pipeline issues.
+When OTel-based {{es}} monitoring is active, the bundle also includes `elastic-agent-metrics.ndjson` (capped at 20 MB). This file contains raw collector metric snapshots useful for diagnosing OTel monitoring pipeline issues.
 :::
 
 :::{warning}
