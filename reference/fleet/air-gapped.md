@@ -343,7 +343,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
         * `<artifact_type>` is in the format `beats/elastic-agent`, `fleet-server`, `endpoint-dev`, and so on.
         * `<artifict_name>` is in the format `elastic-agent`, `endpoint-security`, or `fleet-server` and so on.
-        * `arch-package-type` is in the format `linux-x86_64`, `linux-arm64`, `windows_x86_64`, `darwin_x86_64`, or darwin_aarch64`.
+        * `arch-package-type` is in the format `linux-x86_64`, `linux-arm64`, `windows_x86_64`, `darwin_x86_64`, or `darwin_aarch64`.
         * If you’re using the DEB package manager:
 
             * The 64bit variant has the format `<artifact_name>-<version>-amd64.deb`.
