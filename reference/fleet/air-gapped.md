@@ -229,10 +229,10 @@ To make binaries available in an air-gapped environment, you can host your own c
 
         To generate the full set of `curl` commands for all supported architectures and package types, save the following script and run it with your stack version as the argument:
 
-        ```shell
+        ```shell subs=true
         #!/bin/sh
 
-        VERSION="${1:-9.0.0}"
+        VERSION="${1:-{{version.stack}}}"
 
         ARCHITECTURES="linux-x86_64 linux-arm64 windows-x86_64 darwin-x86_64 darwin-aarch64"
 
