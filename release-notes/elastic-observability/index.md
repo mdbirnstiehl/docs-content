@@ -29,7 +29,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ### Fixes [elastic-observability-9.5.5-fixes]
 * Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
 * Fixes a race that creates the SLO summary temporary index with the wrong `service.name` mapping, causing new SLOs to be missing from filters [#286871]({{kib-pull}}286871).
-* Fixes bulk tag updates on alerts writing to alerts in other spaces [#285874]({{kib-pull}}285874).
 
 ## 9.5.4 [elastic-observability-9.5.4-release-notes]
 
