@@ -133,6 +133,6 @@ Already-extracted KIs are not deleted, and manually-triggered extractions contin
 ## Learn more [sig-events-operator-learn-more]
 
 - [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
-- [Nightshift overview](../../nightshift/nightshift.md): Get an overview of Nightshift, requirements, and how to get started
+- [Elastic Nightshift AI SRE overview](../../nightshift/nightshift.md): Get an overview of Elastic Nightshift AI SRE, requirements, and how to get started
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
