@@ -10,7 +10,7 @@ products:
 
 # Nightshift
 
-Nightshift is an AI SRE built into Elastic {{observability}}. It learns how your systems work, watches your alerts, investigates problems, and delivers findings.
+Nightshift is an AI SRE built into Elastic {{observability}}. It helps monitor your systems, watches your alerts and significant events, investigates likely causes, and helps remediate incidents.
 
 Nightshift is made up of the following engines, which work together to learn your systems, detect problems, and investigate them:
 
