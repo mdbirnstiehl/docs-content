@@ -85,9 +85,9 @@ Continuous extraction is the largest cost multiplier. When enabled, feature iden
 
 ### Daily run limits [sig-events-op-cost-limits]
 
-Deployment-wide daily run limits cap how many scheduled runs each activity — discovery, investigation, and knowledge indicator extraction — can start per UTC day, so scheduled automation can't consume an unbounded token budget. When a limit is reached, new scheduled runs in that category can be denied until the UTC day resets. The limits apply only to scheduled automation: manual runs are never limited.
+Deployment-wide daily run limits cap how many scheduled runs each activity can start per UTC day, so scheduled automation can't consume an unbounded token budget. When a limit is reached, new scheduled runs in that category can be denied until the UTC day resets. The limits apply only to scheduled automation: manual runs are never limited.
 
-<!-- Billing policy still needs to be defined/documented -->
+<!-- Billing policy needs to be defined/documented -->
 
 ## Pause and resume [sig-events-op-disable]
 
@@ -133,5 +133,6 @@ Already-extracted KIs are not deleted, and manually-triggered extractions contin
 ## Learn more [sig-events-operator-learn-more]
 
 - [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
+- [Nightshift overview](./nightshift.md): Get an overview of Nightshift, requirements, and how to get started
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
