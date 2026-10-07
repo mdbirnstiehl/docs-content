@@ -1,7 +1,7 @@
 ---
 applies_to:
-  stack: experimental 9.5
-  serverless: experimental
+  serverless:
+    observability: preview
 description: Nightshift memory is a persistent knowledge base that agents read before investigating incidents and write to as they learn.
 products:
   - id: observability
@@ -10,9 +10,13 @@ products:
 
 # Memory [nightshift-memory]
 
-Nightshift **Memory** is a persistent knowledge base that agents read before investigating incidents. Rather than rebuilding knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated wiki of facts about your systems with information about services, deployment processes, infrastructure, known failure patterns, and more. Both agents and users can add memory articles, and each added page reduces the need for external queries for the next similar incident.
+Nightshift **Memory** is a persistent knowledge base that agents read before investigating incidents. Rather than rebuilding knowledge from raw telemetry on every [investigation](./investigations.md), Nightshift maintains a curated set of facts about your systems with information about services, deployment processes, infrastructure, known failure patterns, and more. You can add entries to memory, and investigations use them. Investigations don't write back to memory yet.
 
-To review or edit existing memory pages or create new ones, go to **Streams** → **Significant Events** → **Memory**.
+:::{note}
+Nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
+:::
+
+You can review and edit what Nightshift knows about your systems from the Nightshift UI, so you can correct anything that's wrong and add knowledge Nightshift can't discover on its own.
 
 ## What memory stores [nightshift-memory-what]
 
@@ -20,7 +24,8 @@ Memory is organized into wiki pages. Each page covers a topic relevant to your e
 
 ## How memory is built [nightshift-memory-how-built]
 
-You can manually create memory pages from the **Memory** tab under **Significant Events** or through the [onboarding interview](#nightshift-memory-onboarding). You can also run the following workflows from the **Workflow actions** {icon}`boxes_vertical` menu:
+<!-- DRAFT NOTE: The wiki-page/workflows model below predates the Deductive memory (Cortex) cutover. Whether these workflows and the onboarding interview survive, and whether decision trees are shown to users, is still being decided (nightshift-program#1565). Verify before publishing. -->
+You can manually create memory pages from the Nightshift UI or through the [onboarding interview](#nightshift-memory-onboarding). You can also run the following workflows from the **Workflow actions** {icon}`boxes_vertical` menu:
 
 - [Synthesize Memory](#nightshift-memory-synthesis)
 - [Consolidate Memory](#nightshift-memory-consolidation)
@@ -63,7 +68,7 @@ After each run, **Detect Gaps** creates a structured overview page that lists co
 
 The onboarding interview is a conversational agent that creates memory pages with knowledge about your specific environment at setup time. The agent asks targeted questions about your system to fill in gaps required for investigations.
 
-To start the onboarding interview, open **Significant Events** and select **Tell us about your system**. Before asking questions, the interview reads the current gap overview and focuses on the highest-priority gaps, so it's best to run the Detect Gaps workflow before starting the interview. The agent skips information that is already covered in memory.
+To start the onboarding interview, select **Tell us about your system** in the Nightshift UI. Before asking questions, the interview reads the current gap overview and focuses on the highest-priority gaps, so it's best to run the Detect Gaps workflow before starting the interview. The agent skips information that is already covered in memory.
 
 ## How agents use memory [nightshift-memory-usage]
 

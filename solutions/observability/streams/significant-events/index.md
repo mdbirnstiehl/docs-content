@@ -2,17 +2,12 @@
 navigation_title: Significant Events
 description: Significant Events automatically correlates signals from your log streams into prioritized incidents using a combination of deterministic detection and AI-powered investigation.
 applies_to:
-  serverless: experimental
-  stack: experimental 9.5+
+  serverless:
+    observability: preview
 products:
   - id: observability
-  - id: elasticsearch
   - id: kibana
   - id: cloud-serverless
-  - id: cloud-hosted
-  - id: cloud-enterprise
-  - id: cloud-kubernetes
-  - id: elastic-stack
 ---
 
 # Significant Events [streams-sig-events-overview]
@@ -25,7 +20,7 @@ For example: you onboard a stream, Significant Events extracts what's in it ("th
 
 Significant Events requires an **Enterprise license** or an active Enterprise trial.
 
-To use Significant Events you also need a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md), which routes LLM calls.
+Significant Events uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) for LLM calls. You don't need to configure an LLM connector or select a model.
 
 ## How the pipeline works [sig-events-pipeline]
 
@@ -45,7 +40,7 @@ Promoted rules execute on a specified schedule against stream logs and record a 
 
 ### 4. Discovery [sig-events-phase-discovery]
 
-Two agents run in sequence. The [Discovery agent](./how-it-works.md#sig-events-hiw-discovery-agent) reads detection records, correlates signals across rules and streams, and writes discovery records. The [Judge agent](./how-it-works.md#sig-events-hiw-triage) independently verifies each discovery and sets its status to open, closed, or dismissed.
+The [Discovery agent](./how-it-works.md#sig-events-hiw-discovery-agent) reads detection records, correlates signals across rules and streams, verifies its own findings, and sets each event's status to open, closed, or dismissed. Significant events are also written as alerts, so you can manage and route them like any other Elastic alert.
 
 ## Learn more [sig-events-nav]
 

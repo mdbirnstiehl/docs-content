@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: experimental 9.5
-  serverless: experimental
-description: Nightshift provides automated on-call assistance and alert triage for Elastic Observability.
+  serverless:
+    observability: preview
+description: Nightshift provides automated investigations and on-call assistance for Elastic Observability, triggered by your alerts.
 products:
   - id: observability
   - id: cloud-serverless
@@ -10,67 +10,43 @@ products:
 
 # Nightshift
 
-Nightshift is an AI-powered observability feature built into Elastic. It monitors your systems, discovers Significant Events, investigates likely causes, and helps your team remediate incidents.
+Nightshift is an AI SRE built into Elastic {{observability}}. It learns how your systems work, watches your alerts, investigates problems, and delivers findings where your team already works, such as Slack.
 
-Nightshift works by:
+Nightshift is built from the following engines:
 
-1. **Extracting Knowledge Indicators (KIs)**: Nightshift reads your stream data and extracts stable facts: what services are running, what infrastructure is in use, what technologies are present, and how they relate to each other. Refer to [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md).
-2. **Generating and running detection rules**: Based on KIs, Nightshift generates ES|QL detection rules and runs them continuously. When rule firing patterns change, it detects the change. See [How Significant Events works](../streams/significant-events/how-it-works.md).
-3. **Surfacing Significant Events**: When detections correlate into something meaningful, Nightshift promotes a Significant Event with a concise summary of what's happening, with severity, evidence, and suggested next steps.
-4. **Investigating automatically**: For `critical` and `high` severity Significant Events, Nightshift triggers an automatic [investigation](./investigations.md) where it reads your system memory, runs targeted queries, and produces a root cause hypothesis with remediation options.
-5. **Learning over time**: The [memory](./memory.md) system captures knowledge from each incident so future investigations are faster and more precise.
+1. **Context engine**: Nightshift extracts knowledge about your systems from your data: which services are running, what infrastructure they use, and how they depend on each other. This knowledge is stored as [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md). You can review and correct what Nightshift knows at any time, and add knowledge of your own for investigations to use.
+2. **Detection engine**: Nightshift generates detection rules from its knowledge of your systems and runs them continuously. When it finds something meaningful, it surfaces a significant event as an alert, so you can manage and route it like any other Elastic alert.
+3. **Investigation engine**: When an alert fires — whether it's one of your existing alert rules or a significant event Nightshift detected — it can trigger an [investigation](./investigations.md). The investigation gathers evidence, determines the likely root cause, and reports its findings. You can also trigger investigations manually.
+
+Nightshift doesn't take remediation actions on your systems. Investigation findings and suggested next steps are informational only.
 
 ## Requirements [nightshift-requirements]
 
-- **Enterprise license**: Nightshift requires an active Elastic Enterprise license or trial on {{serverless-full}}.
-- **Streams**: Your data must be organized in [Streams](/solutions/observability/streams/streams.md). Nightshift attaches to streams and runs the KI extraction and detection pipeline per stream.
-- **Generative AI connector**: A [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md) is required to run KI extraction, rule generation, and investigations.
+- **An {{obs-serverless}} project**: Nightshift runs on {{serverless-full}} during the private preview. It isn't available on self-managed or {{ech}} deployments.
+- **Private preview access**: Nightshift must be enabled for your project. Contact your Elastic account team to request access.
+- **Data to monitor**: You select the data Nightshift watches with an {{esql}} query when you set it up. Local project data and data in remote serverless projects are supported.
+
+Nightshift uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). You don't need to configure an LLM connector or select a model.
+
+### Private preview limitations [nightshift-preview-limitations]
+
+- Signals and alerts from remote {{ech}} clusters aren't supported.
+- Connecting external knowledge sources, such as GitHub, isn't available yet.
+- The Nightshift Slack app isn't available yet. You can still send notifications about completed investigations to a Slack channel from your alert rules. Refer to [Get results in Slack](./investigations.md#nightshift-investigations-slack).
 
 ## Nightshift UI [nightshift-landing-page]
 
-The Nightshift UI is your central hub for active Significant Events. It shows `critical` and `high` severity Significant Events detected across your streams, [investigations](./investigations.md) that are running and resolved, and what needs your attention.
+The Nightshift home page is your central view of your Nightshift investigations. It shows your [investigations](./investigations.md) grouped by severity, so you can see what's being investigated and what needs your attention.
 
-### Access the Nightshift UI [nightshift-landing-page-access]
+From the home page you can:
 
-From your {{observability}} project, select **Streams** → **Significant Events** → **Nightshift** to open the Nightshift UI. If you don't see any Significant Events, Nightshift might still be running its initial KI extraction and rule generation. If your streams have sufficient data, Significant Events surface automatically.
+- Select an investigation and see more details about its findings.
+- Trigger a manual investigation.
+- Review and edit what Nightshift knows about your systems.
 
-### Significant Events list [nightshift-events-list]
+## Chat with Nightshift [nightshift-chat]
 
-Nightshift is divided into the following:
-
-- **Needs action** and **Resolved** panels: These panels show the count of events that need action and resolved events. Select the panel to go to the list of active or resolved significant events.
-- **Blast radius**: This panel shows the most affected services. Select a service to filter Significant Events related to it.
-
-### View all events [nightshift-events-view-all]
-
-Click **View all Significant Events** to open the full list of Significant Events. Here you can review Significant Events with severity ratings below `critical` and `high` and investigate them.
-
-### Significant Event flyout [nightshift-event-detail]
-
-Click any event in the **Needs action** or **Resolved** list to open the event flyout.
-
-The top of the flyout shows the event title, triage status (**Needs action** or **Resolved**), investigation status (**Investigating** or **Investigated**), timestamp, and a plain-language summary of what Nightshift detected.
-
-#### Detections [nightshift-event-detail-detections]
-
-**Detections** lists the individual signals that contributed to this Significant Event. Each detection shows the rule that fired, the change point type (for example, spike or distribution change), the stream it came from, and the detection pattern. Select any detection to open more details.
-
-#### Investigations [nightshift-event-detail-investigations]
-
-**Investigations** shows the investigation Nightshift ran for this event.
-
-For more on what investigations produce and how they work, see [Investigations](./investigations.md).
-
-## Chat with an AI Agent about a Significant Event [nightshift-chat]
-
-Every Significant Event has an **Open in chat** button. Select it to open a conversation with the AI Agent. You can:
-
-- Ask for more detail about what happened and why.
-- Request remediation options.
-- Ask about affected services or dependencies.
-- Explore hypotheses the investigation didn't fully cover.
-
-The AI Agent has access to the event's detections, associated KIs, and [memory](./memory.md) pages about your system.
+You can ask the Nightshift agent about a specific investigation from chat — to get more detail, request alternative explanations, or steer the investigation. Refer to [Investigations](./investigations.md).
 
 ## Give feedback [nightshift-feedback]
 
@@ -78,8 +54,10 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-landing-page-nav]
 
-- [Investigations](./investigations.md): Learn how Nightshift investigates Significant Events and produces root cause hypotheses
+- [Get started with Nightshift](./get-started.md): Set up Nightshift and run your first investigation
+- [Investigations](./investigations.md): Learn how Nightshift investigates problems and how to read the results
 - [Memory](./memory.md): Learn how Nightshift stores and uses system knowledge to improve investigation quality over time
+- [Significant Events](../streams/significant-events/index.md): Get an overview of how Nightshift detects significant events in your data
 - [How Significant Events works](../streams/significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
 - [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
 - [Operator guide](../streams/significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
