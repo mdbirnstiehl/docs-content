@@ -12,15 +12,15 @@ products:
 
 Nightshift is an AI SRE built into Elastic {{observability}}. It helps monitor your systems, watches your alerts and significant events, investigates likely causes, and helps remediate incidents.
 
-Nightshift is made up of the following engines, which work together to learn your systems, detect problems, and investigate them:
+Nightshift is made up of the following engines, which work together to detect problems in your systems and investigate them:
 
-1. **Context engine**: Nightshift extracts knowledge about your systems from your data: which services are running, what infrastructure they use, and how they depend on each other. This knowledge is stored as [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md). Through [Memory](./memory.md), you can review and correct what Nightshift knows at any time, and add knowledge of your own for investigations to use.
-2. **Detection engine**: Nightshift generates detection rules from its knowledge of your systems and runs them continuously. When it finds something meaningful, it surfaces a significant event as an alert, so you can manage and route it like any other Elastic alert.
-3. **Investigation engine**: When an alert fires or Nightshift detects a [Significant Event](../streams/significant-events/index.md), it can trigger an [investigation](./investigations.md). The investigation gathers evidence, determines the likely root cause, and reports its findings. You can also trigger investigations manually.
+1. **Detection engine**: Learns your systems, then tells you when something worth knowing has happened. Nightshift extracts [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md) from your data, such as which services are running, what infrastructure they use, and how they depend on each other. It generates detection rules from them and runs those rules continuously. When rule firings add up to something meaningful, Nightshift surfaces a [significant event](../streams/significant-events/index.md) as an alert, so you can manage and route it like any other Elastic alert.
+2. **Investigation engine**: Works out what's behind an alert. You can start an [investigation](./investigations.md) from an alert or a significant event by selecting **Investigate**, or from the Nightshift home page. The investigation gathers evidence from your data and from what Nightshift knows about your systems, determines the likely cause, and reports its findings with proposed actions.
+3. **Context engine**: The shared memory layer the other engines draw on. It stores what Nightshift knows about your systems, including the Knowledge Indicators that detection produces, and makes that knowledge available when an investigation starts. Through [Memory](./memory.md), you can review and correct what Nightshift knows at any time, and add knowledge of your own for investigations to use.
 
 ## Requirements [nightshift-requirements]
 
-- **An {{obs-serverless}} project**: Nightshift runs on {{serverless-full}} during the private preview. It isn't available on self-managed or {{ech}} deployments.
+- **An {{obs-serverless}} Complete project**: Nightshift runs on {{serverless-full}} during the private preview. It isn't available on self-managed or {{ech}} deployments.
 - **Private preview access**: Nightshift must be enabled for your project. Contact your Elastic account team to request access.
 - **Data to monitor**: Nightshift works with the data you already have in your local project or in remote serverless projects connected through {{cps}}.
 
