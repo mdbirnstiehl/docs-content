@@ -54,7 +54,6 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-landing-page-nav]
 
-- [Get started with Nightshift](./get-started.md): Set up Nightshift and run your first investigation
 - [Investigations](./investigations.md): Learn how Nightshift investigates problems and how to read the results
 - [Memory](./memory.md): Learn how Nightshift stores and uses system knowledge to improve investigation quality over time
 - [Significant Events](../streams/significant-events/index.md): Get an overview of how Nightshift detects significant events in your data

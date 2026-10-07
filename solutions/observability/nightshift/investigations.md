@@ -69,6 +69,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 ## Learn more [nightshift-investigations-nav]
 
 - [Nightshift overview](./nightshift.md): Get an overview of Nightshift, requirements, and how to get started
-- [Get started with Nightshift](./get-started.md): Set up Nightshift and run your first investigation
 - [Memory](./memory.md): Learn how Nightshift stores and uses system knowledge to improve investigation quality over time
-- [Significant Events](../streams/significant-events/index.md): Get an overview of how Nightshift detects significant events in your data
+- [How Significant Events works](../streams/significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
+- [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
+- [Operator guide](../streams/significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
