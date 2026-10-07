@@ -17,7 +17,7 @@ Use this guide to understand how Significant Events affects your cluster and how
 - [What runs where](#sig-events-op-components): Which components run on {{kib}}, {{es}}, and Workflows
 - [System impact](#sig-events-op-impact): Query load, pipeline lag, memory, and storage growth
 - [Cost drivers](#sig-events-op-costs): LLM call sites and token usage by phase
-- [Pause and turn off](#sig-events-op-disable): How to pause engines, turn them off, or stop Knowledge Indicator (KI) refresh
+- [Pause and resume](#sig-events-op-disable): How to pause Significant Events activity or stop Knowledge Indicator (KI) refresh
 - [Recovery procedures](#sig-events-op-recovery): Symptoms and actions for common degraded states
 
 ## What runs where [sig-events-op-components]
@@ -83,35 +83,28 @@ LLM costs scale with the number of streams, the number of promoted rules, and wh
 
 Continuous extraction is the largest cost multiplier. When enabled, feature identification runs on a recurring schedule across all eligible streams. Enabling it on a large number of streams significantly increases token consumption.
 
-### Cost limits [sig-events-op-cost-limits]
+### Daily run limits [sig-events-op-cost-limits]
 
-<!-- DRAFT NOTE: The "Control cost & access" section of the PM availability matrix is marked NEEDS UPDATING with no confirmed externally-available controls. Confirm which limits ship before publishing specifics. -->
-Nightshift limits how many investigations can run, so investigations can't consume an unbounded token budget, and you control which data detection runs on so tokens aren't spent on data you don't care about.
+Deployment-wide daily run limits cap how many scheduled runs each activity — discovery, investigation, and knowledge indicator extraction — can start per UTC day, so scheduled automation can't consume an unbounded token budget. When a limit is reached, new scheduled runs in that category can be denied until the UTC day resets. The limits apply only to scheduled automation: manual runs are never limited.
 
 <!-- Billing policy still needs to be defined/documented -->
 
-## Pause and turn off [sig-events-op-disable]
+## Pause and resume [sig-events-op-disable]
 
-You control engine state from the Nightshift settings page. Managing engine state requires the manage engines privilege.
+You can pause all Significant Events activity from the settings page. Managing these settings requires the manage engines privilege.
 
-Each engine can be in one of the following states:
+Select **Pause Significant Events activity** to stop scheduled discovery, continuous onboarding, detections, investigations, and the alerting rules backing knowledge indicator queries. The pause applies across the entire deployment — every {{kib}} space — not only the current space. Existing data is kept.
 
-- **On**: The engine runs automated work in the background.
-- **Paused**: Automated activity stops, but manual interactions keep working — for example, you can still trigger an investigation manually while the investigation engine is paused.
-- **Off**: The engine is disabled and its data is cleaned up.
-
-### Turn Nightshift off and clean up
-
-Turning Nightshift off stops the engines and wipes the data Nightshift has generated. Use pause instead if you want to stop automated activity temporarily without losing what Nightshift has learned.
+Resuming restores the managed workflows and rules that pause disabled, and turns scheduled discovery and continuous onboarding back on only if they were enabled before the pause.
 
 ### Stop background KI refresh only
 
-To stop continuous extraction without disabling Significant Events:
+To stop continuous onboarding without pausing Significant Events:
 
-1. Select **Significant Events** → **Settings**.
-2. Under **Continuous KI extraction**, turn off **Enable continuous KI extraction**.
+1. Go to the Significant Events settings.
+2. Under **Continuous KI onboarding**, turn off **Enable continuous KI onboarding**.
 
-Turning off continuous extraction cancels all in-flight feature identification tasks and turns off the continuous extraction workflow. Already-extracted KIs are not deleted. Manually-triggered extractions continue to work.
+Already-extracted KIs are not deleted, and manually-triggered extractions continue to work.
 
 
 ## Recovery procedures [sig-events-op-recovery]
@@ -120,7 +113,7 @@ Turning off continuous extraction cancels all in-flight feature identification t
 
 **Symptom**: Continuous extraction appears to be running continuously or processing streams more frequently than expected.
 
-**Action**: Check the continuous extraction setting. If enabled, check the number of streams eligible for extraction — more streams means more runs per cycle.
+**Action**: Check the **Continuous KI onboarding** setting. If enabled, check the number of streams eligible for extraction — more streams means more runs per cycle.
 
 ### High LLM cost
 
@@ -128,7 +121,7 @@ Turning off continuous extraction cancels all in-flight feature identification t
 
 **Action**:
 
-1. Disable continuous extraction first — this is the primary cost multiplier.
+1. Turn off **Enable continuous KI onboarding** first — this is the primary cost multiplier.
 2. Check how many streams are eligible for continuous extraction.
 
 ### Incidents not clearing
