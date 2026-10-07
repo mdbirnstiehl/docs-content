@@ -28,7 +28,7 @@ Investigations start in the following ways:
 
 Each investigation runs as an agentic process in the background:
 
-- **Context first**: The investigation agent starts from what Nightshift already knows about your systems like the services involved, their dependencies, and the knowledge you've added, instead of starting from raw telemetry each time. Refer to [Memory](./memory.md).
+- **Context first**: The investigation agent starts from what Nightshift knows about your systems like the services involved, their dependencies, and any other knowledge you've added. Refer to [Memory](./memory.md) for more information on adding context about your system and processes.
 - **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects.
 - **Findings**: The agent synthesizes what it found into a conclusion about the likely root cause.
 
@@ -36,18 +36,18 @@ Each investigation runs as an agentic process in the background:
 
 A completed investigation shows:
 
-- **Summary**: The observed issue and what the investigation found.
-- **Subject**: What was being investigated, for example, the alerts or significant events that triggered it.
-- **Hypotheses**: The explanations the investigation considered and tested, so you can validate its conclusions.
-- **Conclusion**: The best-supported explanation of why the issue occurred, with visualizations of the findings.
-- **Impact**: What the issue affects, so you can prioritize it, involve the right teams, and explain it to the business.
-- **Proposed actions**: Recommended next steps. Nightshift doesn't take remediation actions on your systems.
+- **What happened**: A short factual summary of the observed issue and what the investigation found.
+- **Impact**: What the issue affects, including a chart of the affected activity, so you can prioritize it and involve the right teams.
+- **Subject**: What was being investigated, for example, the alert or signficiant event that triggered it.
+- **Investigation**: The hypotheses the investigation tested, each with a confidence score and the evidence and charts that support it, so you can validate its conclusions.
+- **Conclusion**: The best-supported explanation of why the issue occurred.
+- **Proposed actions**: Recommended next steps, with the most direct fix tagged **Recommended**. Select an action to see why it's suggested and copy any commands it includes.
 
 Each investigation has a severity (critical, high, medium, or low), which is used to group investigations on the Nightshift home page and in notifications.
 
 ## Manage investigations [nightshift-investigations-lifecycle]
 
-Investigations are listed on the [Nightshift home page](./nightshift.md), grouped by severity, so you can see what's running and filter for the investigations that matter to you.
+Investigations are listed on the [Nightshift home page](./nightshift.md), grouped by severity, with sections for in-progress and failed or canceled runs, so you can see what's running and find the investigations that matter to you. Each investigation shows its status, such as **Running** or **Completed**.
 
 ## Ask questions about an investigation [nightshift-investigations-chat]
 

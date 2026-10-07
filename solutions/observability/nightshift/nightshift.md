@@ -32,7 +32,7 @@ Nightshift uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elast
 
 - Signals and alerts from remote {{ech}} clusters aren't supported.
 - Connecting external knowledge sources, such as GitHub, isn't available yet.
-- The Nightshift Slack app isn't available yet. You can still send notifications about completed investigations to a Slack channel from your alert rules. Refer to [Get results in Slack](./investigations.md#nightshift-investigations-slack).
+- The Nightshift Slack app isn't available yet.
 
 ## Nightshift UI [nightshift-landing-page]
 
@@ -41,7 +41,8 @@ The Nightshift home page is your central view of your Nightshift investigations.
 From the home page you can:
 
 - Select an investigation and see more details about its findings.
-- Trigger a manual investigation.
+- Select **Start investigation** to trigger a manual investigation.
+- Select **Show all events** to view significant events.
 - Review and edit what Nightshift knows about your systems.
 
 ## Chat with Nightshift [nightshift-chat]

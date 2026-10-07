@@ -26,6 +26,8 @@ You can also add information about your systems and processes that Nightshift mi
 
 When an [investigation](./investigations.md) starts, the investigation agent reads the knowledge relevant to the affected services before querying your telemetry. This means the agent starts with an understanding of your environment, and investigations produce more accurate conclusions than they would from raw data alone.
 
+Investigation can't currently update or create memory pages.
+
 ## Give feedback [nightshift-memory-feedback]
 
 Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
