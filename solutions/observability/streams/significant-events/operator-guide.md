@@ -87,8 +87,6 @@ Continuous extraction is the largest cost multiplier. When enabled, feature iden
 
 Deployment-wide daily run limits cap how many scheduled runs each activity can start per UTC day, so scheduled automation can't consume an unbounded token budget. When a limit is reached, new scheduled runs in that category can be denied until the UTC day resets. The limits apply only to scheduled automation: manual runs are never limited.
 
-<!-- Billing policy needs to be defined/documented -->
-
 ## Pause and resume [sig-events-op-disable]
 
 You can pause all Significant Events activity from the settings page. Managing these settings requires the manage engines privilege.
@@ -133,6 +131,6 @@ Already-extracted KIs are not deleted, and manually-triggered extractions contin
 ## Learn more [sig-events-operator-learn-more]
 
 - [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
-- [Elastic Nightshift AI SRE overview](../../nightshift/nightshift.md): Get an overview of Elastic Nightshift AI SRE, requirements, and how to get started
+- [Elastic Nightshift AI SRE](../../nightshift/nightshift.md): Get an overview of the AI SRE and its requirements
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
