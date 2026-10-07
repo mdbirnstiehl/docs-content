@@ -24,7 +24,7 @@ Nightshift doesn't take remediation actions on your systems. Investigation findi
 
 - **An {{obs-serverless}} project**: Nightshift runs on {{serverless-full}} during the private preview. It isn't available on self-managed or {{ech}} deployments.
 - **Private preview access**: Nightshift must be enabled for your project. Contact your Elastic account team to request access.
-- **Data to monitor**: You select the data Nightshift watches with an {{esql}} query when you set it up. Local project data and data in remote serverless projects are supported.
+- **Data to monitor**: Nightshift works with the data you already have — in your local project, or in remote serverless projects connected through cross-project search. You don't need to select data or set anything up to start investigating.
 
 Nightshift uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md). You don't need to configure an LLM connector or select a model.
 

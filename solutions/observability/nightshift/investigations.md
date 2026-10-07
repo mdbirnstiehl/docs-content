@@ -10,7 +10,7 @@ products:
 
 # Investigations [nightshift-investigations]
 
-An investigation is an automated analysis of a problem in your systems. When an investigation runs, Nightshift agents gather evidence from your data and what Nightshift already knows about your systems, then report what happened, what likely caused it, and what to look at next.
+An investigation is an automated analysis of an issue in your systems. When an investigation runs, Nightshift agents gather evidence from your data and what Nightshift already knows about your systems, then report what happened, what likely caused it, and what to look at next.
 
 :::{note}
 Nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
@@ -21,13 +21,14 @@ Nightshift is in private preview and isn't enabled by default. To request access
 Investigations start in the following ways:
 
 - **From an alert**: Select **Investigate** on an alert, from the alert details or the alerts table, to start an ad hoc investigation into it. If the alert already has one, select **View investigation** to open it. Triggering investigations this way isn't supported for alerts created by v2 rules yet. After you trigger an investigation, you can also find and track it from the [Nightshift home page](./nightshift.md).
-- **From the Nightshift home page**: Select **Start investigation** from the Nightshift homepage to start a manual investigation.
+- **From a significant event**: Open a significant event's details and select **Run investigation** start an investigation manually.
+- **From the Nightshift home page**: Select **Start investigation** from the Nightshift home page to start a manual investigation.
 
 ## How investigations work [nightshift-investigations-how]
 
 Each investigation runs as an agentic process in the background:
 
-- **Context first**: The investigation agent starts from what Nightshift already knows about your systems — the services involved, their dependencies, and the knowledge you've added — instead of rebuilding that understanding from raw telemetry each time. Refer to [Memory](./memory.md).
+- **Context first**: The investigation agent starts from what Nightshift already knows about your systems like the services involved, their dependencies, and the knowledge you've added, instead of starting from raw telemetry each time. Refer to [Memory](./memory.md).
 - **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects.
 - **Findings**: The agent synthesizes what it found into a conclusion about the likely root cause.
 
@@ -55,12 +56,6 @@ You can ask the Nightshift agent about a specific investigation from chat — to
 ## Add custom context [nightshift-investigations-custom-context]
 
 You can save short notes about your environment like team conventions, service ownership, known quirks, and Nightshift applies them to every investigation and every chat with the Nightshift agent. Select {icon}`boxes_vertical` → **Custom context** to add, edit, and delete context.
-
-## Get results in Slack [nightshift-investigations-slack]
-
-You can get notified in Slack when an investigation completes, so your on-call team receives results where they already work. Add the Nightshift investigation workflow as an action on your alert rules and choose the Slack channel to send notifications to.
-
-<!-- DRAFT NOTE: The interim mechanism is copying a workflow template (nightshift_investigate_alert_slack_template.yaml, currently a GitHub attachment) and adding it as an action on v1 alert rules. The template needs a public home before this can be documented as a full how-to. -->
 
 ## Give feedback [nightshift-investigations-feedback]
 

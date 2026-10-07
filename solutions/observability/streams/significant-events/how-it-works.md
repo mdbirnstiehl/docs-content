@@ -62,7 +62,7 @@ The 7-minute lookback on a 5-minute cadence means adjacent runs cover the same m
 Discovery converts raw alert signals into confirmed Significant Events in two stages:
 
 - [Detection Workflow](#sig-events-hiw-detection): Change point aggregation per alerting rule, written to the detections index
-- [Discovery Workflow](#sig-events-hiw-discovery-agent): Discovery agent generates hypotheses, triages them, and promotes confirmed Significant Events
+- [Discovery Workflow](#sig-events-hiw-discovery-agent): Discovery agent generates hypotheses, performs triage, and promotes confirmed Significant Events
 
 ### Detection [sig-events-hiw-detection]
 
@@ -72,7 +72,7 @@ Change point detection is per-rule. A stream can have many independent rules, an
 
 ### Discovery agent [sig-events-hiw-discovery-agent]
 
-A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and triages its own findings: it verifies each hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). Status transitions are written as new documents to the events index.
+A Discovery workflow reads unhandled detection documents and calls the Discovery agent. The Discovery agent reads detection signals, produces structured discovery documents describing what is happening, and performs triage on its own findings: it verifies each hypothesis and sets the event status to open (page on-call), closed (confirmed settled), or dismissed (low severity and low confidence). Status transitions are written as new documents to the events index.
 
 Significant Events are also written as alerts, so they can be managed, routed, and acted on like any other Elastic alert.
 
