@@ -2,31 +2,31 @@
 applies_to:
   serverless:
     observability: preview
-description: Elastic nightshift memory is a knowledge base of facts about your systems that investigations use to produce better results.
+description: Elastic nightshift context is a knowledge base of facts about your systems that investigations use to produce better results.
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Memory [nightshift-memory]
+# Context [nightshift-memory]
 
-In Elastic nightshift AI SRE, **Memory** is a knowledge base of facts about your systems that agents read when investigating incidents. Rather than rebuilding an understanding of your environment from raw telemetry on every [investigation](./investigations.md), Elastic nightshift keeps knowledge about your services, infrastructure, dependencies, and known failure patterns, and uses it as a starting point.
+The Elastic nightshift AI SRE uses a knowledge base of facts about your systems that agents read when investigating incidents. Rather than rebuilding an understanding of your environment from raw telemetry on every [investigation](./investigations.md), Elastic nightshift keeps knowledge about your services, infrastructure, dependencies, and known failure patterns, and uses it as a starting point.
 
 :::{note}
 Elastic nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
 :::
 
-## View and edit memory [nightshift-memory-manage]
+## View and edit context [nightshift-memory-manage]
 
 To see what Elastic nightshift knows about your systems, go to **Elastic nightshift** → **Management** → **Cortex**. Review the existing pages to confirm the information is correct for your environment. To update a page, select it, then select **Edit**.
 
 You can also add information about your systems and processes that Elastic nightshift might not discover from your data, such as team conventions, deployment processes, or known issues. To add a page, select **New page** {icon}`plus` and enter the information you want investigations to use.
 
-## How investigations use memory [nightshift-memory-usage]
+## How investigations use context [nightshift-memory-usage]
 
 When an [investigation](./investigations.md) starts, the investigation agent reads the knowledge relevant to the affected services before querying your telemetry. This means the agent starts with an understanding of your environment, and investigations produce more accurate conclusions than they would from raw data alone.
 
-Investigations can't currently update or create memory pages.
+Investigations can't currently update or create knowledge base pages.
 
 ## Give feedback [nightshift-memory-feedback]
 

@@ -28,7 +28,7 @@ Investigations start in the following ways:
 
 Each investigation runs as an agentic process in the background:
 
-- **Context first**: The investigation agent starts from what Elastic nightshift knows about your systems, such as the services involved, their dependencies, and any knowledge you've added. Refer to [Memory](./memory.md) for more information on adding context about your systems and processes.
+- **Context first**: The investigation agent starts from what Elastic nightshift knows about your systems, such as the services involved, their dependencies, and any knowledge you've added. Refer to [Context](./memory.md) for more information on adding context about your systems and processes.
 - **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects.
 - **Findings**: The agent synthesizes what it found into a conclusion about the likely root cause.
 
@@ -60,7 +60,7 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 ## Learn more [nightshift-investigations-nav]
 
 - [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
-- [Memory](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
+- [Context](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
 - [How Significant Events works](../streams/significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
 - [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
 - [Operator guide](../streams/significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
