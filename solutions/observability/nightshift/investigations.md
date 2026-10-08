@@ -2,7 +2,7 @@
 applies_to:
   serverless:
     observability: preview
-description: Investigations in Elastic Nightshift AI SRE analyze a problem in your systems, determine its likely cause, and report their findings with proposed actions.
+description: Investigations in Elastic nightshift analyze a problem in your systems, determine its likely cause, and report their findings with proposed actions.
 products:
   - id: observability
   - id: cloud-serverless
@@ -10,10 +10,10 @@ products:
 
 # Investigations [nightshift-investigations]
 
-An investigation is an automated analysis of an issue in your systems. When an investigation runs, Elastic Nightshift AI SRE gathers evidence from your data and from what it already knows about your systems, then reports what happened, what likely caused it, and what to look at next.
+An investigation is an automated analysis of an issue in your systems. When an investigation runs, Elastic nightshift AI SRE gathers evidence from your data and from what it already knows about your systems, then reports what happened, what likely caused it, and what to look at next.
 
 :::{note}
-Elastic Nightshift AI SRE is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
+Elastic nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
 :::
 
 ## What triggers an investigation [nightshift-investigations-triggers]
@@ -28,7 +28,7 @@ Investigations start in the following ways:
 
 Each investigation runs as an agentic process in the background:
 
-- **Context first**: The investigation agent starts from what the AI SRE knows about your systems, such as the services involved, their dependencies, and any knowledge you've added. Refer to [Memory](./memory.md) for more information on adding context about your systems and processes.
+- **Context first**: The investigation agent starts from what Elastic nightshift knows about your systems, such as the services involved, their dependencies, and any knowledge you've added. Refer to [Memory](./memory.md) for more information on adding context about your systems and processes.
 - **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects.
 - **Findings**: The agent synthesizes what it found into a conclusion about the likely root cause.
 
@@ -51,7 +51,7 @@ Investigations are listed on the [home page](./nightshift.md), grouped by severi
 
 ## Add custom context [nightshift-investigations-custom-context]
 
-You can save short notes about your environment, such as team conventions, service ownership, and known quirks. The AI SRE applies them to every investigation and every chat with the agent. Select {icon}`boxes_vertical` → **Custom context** to add, edit, and delete context.
+You can save short notes about your environment, such as team conventions, service ownership, and known quirks. Elastic nightshift applies them to every investigation and every chat with the agent. Select {icon}`boxes_vertical` → **Custom context** to add, edit, and delete context.
 
 ## Give feedback [nightshift-investigations-feedback]
 
@@ -59,8 +59,8 @@ Use the **Submit feedback** {icon}`comment` button at the top of the page to sha
 
 ## Learn more [nightshift-investigations-nav]
 
-- [Elastic Nightshift AI SRE](./nightshift.md): Get an overview of the AI SRE and its requirements
-- [Memory](./memory.md): Learn how the AI SRE stores and uses system knowledge to improve investigation quality over time
+- [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
+- [Memory](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
 - [How Significant Events works](../streams/significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
 - [Knowledge Indicators](../streams/significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
 - [Operator guide](../streams/significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures

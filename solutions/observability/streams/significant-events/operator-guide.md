@@ -24,13 +24,15 @@ Use this guide to understand how Significant Events affects your cluster and how
 
 The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
 
+<!-- DRAFT NOTE: It seems nothing defines or writes to `.significant_events-discoveries`. Need to verify if it was retired. -->
+
 | Component | Uses | Trigger | Reads | Writes |
 |---|---|---|---|---|
 | KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
 | KI query generation | Workflow | On-demand | Features + existing queries | Query KI assets |
 | Alerting rule execution | {{kib}} alerting → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
 | Detection Workflow | Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
-| Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries`, `.significant_events-events` |
+| Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries`, `.rule-events` |
 
 ## System impact [sig-events-op-impact]
 
@@ -67,9 +69,10 @@ Significant Events writes to the following data streams:
 |---|---|---|
 | `.significant_events-detections` | Detection Workflow | Append-only; one document per observed state transition per rule |
 | `.significant_events-discoveries` | Discovery agent | Append-only; one document per discovery state change |
-| `.significant_events-events` | Discovery agent | Append-only; one document per Significant Event state change |
 
-The `.significant_events-detections` and `.significant_events-discoveries` data streams use DSL with a default 90-day retention (the events data stream currently has no default retention configured). You can override retention per stream using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
+The Discovery agent writes Significant Events as alert documents to `.rule-events`, the same index that holds rule execution results, so you can manage and route them like any other alert.
+
+The `.significant_events-detections` data stream uses DSL with a default 90-day retention. You can override retention using the DSL API. See [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability) for the full index layout and traceability guidance.
 
 ## Cost drivers [sig-events-op-costs]
 
@@ -131,6 +134,6 @@ Already-extracted KIs are not deleted, and manually-triggered extractions contin
 ## Learn more [sig-events-operator-learn-more]
 
 - [Significant Events overview](./index.md): Get an overview and prerequisites for Significant Events
-- [Elastic Nightshift AI SRE](../../nightshift/nightshift.md): Get an overview of the AI SRE and its requirements
+- [Elastic nightshift](../../nightshift/nightshift.md): Get an overview of Elastic nightshift and its requirements
 - [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](./knowledge-indicators.md): Get an in-depth overview of how KIs work
