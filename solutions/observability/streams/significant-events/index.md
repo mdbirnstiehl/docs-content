@@ -18,7 +18,7 @@ For example: you onboard a stream, Significant Events extracts what's in it ("th
 
 ## Before you get started [sig-events-prerequisites]
 
-Significant Events requires an **Enterprise license** or an active Enterprise trial.
+Significant Events requires an {{obs-serverless}} project on the Complete tier. Elastic nightshift runs on {{serverless-full}} during the private preview.
 
 Significant Events uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) for LLM calls. You don't need to configure an LLM connector or select a model.
 
