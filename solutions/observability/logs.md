@@ -1,10 +1,7 @@
 ---
 navigation_title: Logs
-description: Collect, process, explore, and store logs in Elastic Observability, with the recommended path for each step and the alternatives that fit specific constraints.
-applies_to:
-  stack: ga
-  serverless:
-    observability: ga
+meta_title: Log management and monitoring with Elastic
+description: Collect, manage, search, and analyze logs with Elastic Observability. Compare ingestion options, configure log data, detect anomalies, and create threshold alerts.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/logs-checklist.html
   - https://www.elastic.co/guide/en/serverless/current/observability-log-monitoring.html
@@ -14,7 +11,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Logs [logs-checklist]
+# Log monitoring with Elastic Observability [logs-checklist]
 
 Elastic lets you collect logs from hosts, containers, cloud services, and applications, give them structure, search them at any scale, and alert on what matters. Use this page to find what you need to set up your logs in Elastic, whether you're starting from new, working with existing data in {{es}}, or migrating an existing logging stack. If you ship logs from a service you own, start with [Application logs](/solutions/observability/logs/ingest.md#logs-ingest-application).
 

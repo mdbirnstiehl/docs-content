@@ -140,4 +140,7 @@ Many {{observability}} integrations are available to collect and process your da
 * [What's Elastic {{observability}}](/solutions/observability.md)
 * [What’s new in Elastic Stack](/release-notes/elastic-observability/index.md)
 * [{{obs-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
-* [Logs](/solutions/observability/logs.md)
+* [Log monitoring](/solutions/observability/logs.md)
+
+:::{related-learning} logs-essentials
+:::
