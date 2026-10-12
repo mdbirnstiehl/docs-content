@@ -88,7 +88,7 @@ Try the following to get an understanding of how you can work with your data in 
 
 :::::
 
-## Plan your full setup [logs-get-started-next]
+## Next steps [logs-get-started-next]
 
 The quickstart chose defaults for you: one collector, one field naming schema (OpenTelemetry semantic conventions, or Elastic Common Schema if you used an integration), and the default retention, which is 30 days on {{serverless-full}}. Before you add more sources, make those choices once, because they decide your field names, which prebuilt dashboards work, and how you parse. Changing them later means reworking queries, dashboards, and alerts.
 
