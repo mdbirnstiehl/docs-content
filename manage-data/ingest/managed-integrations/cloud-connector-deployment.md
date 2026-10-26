@@ -14,9 +14,6 @@ products:
 
 # Authenticate {{managed-integrations}} using a federated identity
 
-% VERIFY (GA version): Federated identity for CSPM and Asset Discovery is GA, and for AWS integrations it's
-% technical preview in 9.6. The GA version 9.5 is assumed because agentless reached GA in 9.5. Confirm it.
-
 Federated identity authentication lets {{managed-integrations}} connect to your {{aws}}, Azure, or {{gcp}} account without long-lived credentials such as access keys, client secrets, or service account keys. You create an identity in your cloud account (an IAM role on {{aws}}, a managed identity on Azure, or a service account on {{gcp}}) that trusts Elastic, and Elastic uses it to get short-lived credentials when it collects data.
 
 {{managed-integrations}}, and therefore federated identities, are available on {{ech}} deployments and {{serverless-full}} projects.
@@ -39,14 +36,6 @@ You can use federated identity authentication with these {{managed-integrations}
   In the [AWS](integration-docs://reference/aws.md) integration, federated identity works with most data streams, but not with these: Amazon API Gateway logs and metrics, Amazon CloudFront logs, AWS CloudTrail, Amazon EMR logs and metrics, AWS Network Firewall logs, Amazon MSK metrics, Amazon Kinesis Data Streams, NAT gateway, Amazon Redshift, Amazon Route 53 Resolver logs, Amazon S3 Storage Lens, Amazon S3 server access logs, AWS usage, Amazon VPC Flow Logs, AWS VPN, and AWS WAF.
 
   Federated identity isn't available for the AWS CloudWatch (OpenTelemetry) integration, which the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md) uses for metrics when you choose the **OTel-native** data format.
-
-% VERIFY (GCP): The CSPM and Asset Discovery packages added GCP cloud connector support before 9.6. Engineering
-% says GCP and Azure onboarding changes aren't part of the 9.6 delivery. Confirm the Stack version GCP support
-% started in, then add an applies_to tag for it.
-% VERIFY (AWS data streams): From the integrations repo (main, Oct 22 2026): the six packages offer the
-% `identity_federation` option, and in the `aws` package the 18 data streams listed have no
-% `supports_identity_federation` check in their stream templates. `aws_cloudwatch_input_otel` has no
-% `identity_federation` option. Confirm the list and that it applies to 9.6.
 
 ::::{important}
 :applies_to: stack: preview =9.2
@@ -97,9 +86,6 @@ To set up federated identity authentication for an {{aws}} integration, you need
    - To reuse an identity, select the **Existing Identity** tab, then select the identity from the **Federated Identity Name** list. If the identity doesn't have the permissions the integration needs, update its stack as described in [Update a federated identity's stack](#federated-identity-aws-update).
 4. Configure the rest of the integration, then save it.
 
-% VERIFY (generic path): The demo videos show these identity steps in the guided AWS onboarding flow only. The
-% integration policy path (Setup Access) uses the same Kibana component, but it hasn't been checked in the UI.
-
 ### Update a federated identity's stack [federated-identity-aws-update]
 
 An identity's IAM role only has the permissions for the integrations it was set up for. If you select an existing identity for an integration that needs more permissions, {{kib}} asks you to update the identity's CloudFormation stack before you can complete setup. {{kib}} can also show **CloudFormation stack upgrade available** on an identity when Elastic has updated the IAM role template.
@@ -109,13 +95,6 @@ To update the stack:
 1. In {{kib}}, select **Update CloudFormation stack**. The {{aws}} CloudFormation console opens the stack update with **Replace existing template** selected and the new template filled in.
 2. Go through the update steps in the {{aws}} console, then select **Submit**.
 3. Return to {{kib}} and continue setting up the integration. Data from the new integrations starts arriving after the stack update completes.
-
-% VERIFY (update flow): The demo shows the "CloudFormation stack update opened" callout after selecting
-% **Update CloudFormation stack**. The code also has a "CloudFormation stack update required" callout shown
-% before that, and a message saying Kibana can't open the update when the identity's stack ARN isn't recorded.
-% In the demo, the update opened even though no stack ARN was entered. Confirm when a stack ARN is required,
-% whether the update callout appears in the integration policy flow or only in guided onboarding, and where
-% users add a stack ARN to an existing identity.
 
 ## Federated identity names
 

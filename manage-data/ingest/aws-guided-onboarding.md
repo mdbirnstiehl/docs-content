@@ -42,11 +42,6 @@ Some services don't support {{managed-integrations}} and can only be collected w
 
 The **Data format** setting controls which services the step lists. **ECS-compatible** is the default and has the broadest content coverage. **OTel-native** lists services that use OpenTelemetry semantic conventions. Identity Federation is only available for ECS-compatible services. With **OTel-native**, {{managed-integrations}} authenticate with access keys, and log services are deployed with the Elastic Cloud Forwarder.
 
-% VERIFY (data format and federation): From the Kibana code (main, Oct 2026): the service list is filtered by
-% data format, and the OTel-native metrics services use the AWS CloudWatch (OpenTelemetry) input package
-% (`aws_cloudwatch_input_otel`), which has no Identity Federation option. Confirm with engineering whether
-% federation support for OTel-native services is planned.
-
 ## Configure service settings [aws-onboarding-settings]
 
 1. In the **Service Settings** step, select a **Global AWS region**. This is required and applies to all services. You can't change it after the services are deployed. To use a different region, start a new session.
@@ -89,10 +84,6 @@ In the **Elastic Cloud Forwarder** section, select **Launch CloudFormation**. Th
 
 When the stack is created, the section shows **Done**.
 
-% VERIFY (services): Confirm which services use the forwarder and whether the list differs by data format.
-% The code routes CloudTrail, VPC Flow Logs, WAF, S3 access logs, and ELB (OTel only) to it, plus
-% CrowdStrike FDR with a dedicated template.
-
 ### Deploy with an {{agent}} [aws-onboarding-deploy-agent]
 
 If you chose **Agent-based**, the **Where to add this integration?** section appears:
@@ -102,8 +93,6 @@ If you chose **Agent-based**, the **Where to add this integration?** section app
 3. Select **Add agent**, then follow the steps to install and enroll {{agent}} on a host that has access to your AWS environment. For more information, refer to [Install {{agent}}s](/reference/fleet/install-elastic-agents.md).
 
 Credentials you enter for agent-based deployments aren't saved between sessions, so you have to enter them again if you return later.
-
-% VERIFY: Confirm the full list of agent-based authentication methods, and that the install link is the right target.
 
 ## Detect data and review content [aws-onboarding-detect]
 
@@ -115,11 +104,6 @@ After you deploy, the **Detect & Review** step checks in the background whether 
 For agent-based deployments, data appears only after an {{agent}} is enrolled. You can continue without one and add an agent later from {{fleet}}.
 
 Select **Finish** to close the flow, or **Take me to my data** to open the data.
-
-% VERIFY: Confirm where **Take me to my data** leads, and the status values a service can have.
-% VERIFY (resume or change a deployment, not yet documented): The code saves a deployment record and supports
-% reopening a deployment with a `deploymentId` URL parameter to edit it. Confirm how users get back to a saved
-% deployment from the UI, what can be edited after deployment, and how removing services cleans up policies.
 
 ## Related pages [aws-onboarding-related]
 
