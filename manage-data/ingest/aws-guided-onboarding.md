@@ -72,10 +72,11 @@ You don't choose between these sections. Each service appears in the section tha
 
    **Identity Federation** is available only when every service in the **Managed Integrations** section supports it. If any selected service doesn't, only **Access Keys** is available. For the integrations and data streams that support Identity Federation, refer to [Integrations that support federated identity authentication](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md#federated-identity-supported-integrations).
 2. If you chose **Identity Federation**, create a new federated identity or select an existing one:
-   - To create a new identity, on the **New Identity** tab, enter a **Federated Identity Name**, then select **Launch CloudFormation** and create the stack in the AWS console. Paste the `RoleArn` stack output into **Role ARN**, optionally paste the `StackId` output into **CloudFormation stack ARN**, then select **Create Identity**.
-   - To reuse an identity, select the **Existing Identity** tab, then select the identity from the **Federated Identity Name** list. If the identity needs permissions for the services you selected, select **Update CloudFormation stack** and apply the update in the AWS console.
 
-   For the detailed steps, what the stack creates, and how stack updates work, refer to [Set up federated identity for an AWS integration](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md#federated-identity-aws-setup).
+   :::{include} /manage-data/_snippets/aws-federated-identity-steps.md
+   :::
+
+   For what the stack creates and how stack updates work, refer to [Set up federated identity for an AWS integration](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md#federated-identity-aws-setup).
 3. Select **Deploy integrations**. When the deployment finishes, the **Managed Integrations** section shows **Done**. Select **Next**.
 
 ### Deploy with the Elastic Cloud Forwarder [aws-onboarding-deploy-ecf]
