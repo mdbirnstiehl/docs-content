@@ -66,7 +66,7 @@ Because the role can only be assumed by the deployment or project it was created
 
 To set up federated identity authentication for an {{aws}} integration, you need:
 
-- An {{ech}} deployment or a {{serverless-full}} project.
+- An {{ech}} deployment or an {{serverless-full}} project.
 - Administrator access to the {{aws}} account you want to onboard.
 
 ### Create or select a federated identity [federated-identity-aws-steps]
