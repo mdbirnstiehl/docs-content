@@ -201,7 +201,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 ## 9.4.9 [elastic-observability-9.4.9-release-notes]
 
 ### Fixes [elastic-observability-9.4.9-fixes]
-* Fixes the {{product.apm}} environment filter and dropdown not recognizing OpenTelemetry data that uses `deployment.environment.name [#297170]({{kib-pull}}297170).
+* Fixes the {{product.apm}} environment filter and dropdown not recognizing OpenTelemetry data that uses `deployment.environment.name` [#297170]({{kib-pull}}297170).
 * Fixes the Synthetics private location clean up timing out on large private locations by bumping each affected agent policy once after all deletions [#295492]({{kib-pull}}295492).
 * Fixes {{product.apm}} trace waterfall auto-refresh disrupting an open span or transaction details flyout by pausing auto-refresh while a flyout is open [#295429]({{kib-pull}}295429).
 
