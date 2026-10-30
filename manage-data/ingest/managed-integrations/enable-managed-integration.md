@@ -75,8 +75,8 @@ For integrations that authenticate to a cloud provider, you can use [federated i
 ## Set up several AWS services at once [enable-managed-integration-aws]
 
 ```{applies_to}
-stack: preview 9.6+
 serverless: preview
+stack: unavailable
 ```
 
 To set up several AWS services together instead of adding each integration one at a time, use the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md).

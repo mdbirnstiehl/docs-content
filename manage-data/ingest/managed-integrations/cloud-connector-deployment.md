@@ -1,6 +1,6 @@
 ---
 navigation_title: Federated identity authentication
-description: Use federated identity authentication, formerly cloud connectors, to connect Managed integrations to AWS, Azure, and Google Cloud without long-lived credentials.
+description: Use federated identity authentication, formerly cloud connectors, to connect Elastic Managed integrations to AWS, Azure, and Google Cloud without long-lived credentials.
 applies_to:
   stack: ga 9.5+, preview 9.2-9.4
   serverless: ga
@@ -16,6 +16,8 @@ products:
 
 Federated identity authentication lets {{managed-integrations}} connect to your {{aws}}, Azure, or {{gcp}} account without long-lived credentials such as access keys, client secrets, or service account keys. You create an identity in your cloud account (an IAM role on {{aws}}, a managed identity on Azure, or a service account on {{gcp}}) that trusts Elastic, and Elastic uses it to get short-lived credentials when it collects data.
 
+On Azure and {{gcp}}, federated identity is available for CSPM and Cloud Asset Discovery. On {{aws}}, it's also available for several other integrations. For details, refer to [Integrations that support federated identity authentication](#federated-identity-supported-integrations).
+
 {{managed-integrations}}, and therefore federated identities, are available on {{ech}} deployments and {{serverless-full}} projects.
 
 :::{note}
@@ -28,14 +30,12 @@ In {{stack}} versions 9.2 and 9.3, federated identities are called cloud connect
 
 You can use federated identity authentication with these {{managed-integrations}}:
 
-- **Cloud Security Posture Management (CSPM) and Asset Discovery** on {{aws}}, Azure, and {{gcp}}. For deployment instructions, refer to:
-  - Asset Discovery: [Asset Discovery on Azure](/solutions/security/cloud/asset-disc-azure.md); [Asset Discovery on AWS](/solutions/security/cloud/asset-disc-aws.md)
+- **Cloud Security Posture Management (CSPM)** and **Cloud Asset Discovery** on {{aws}}, Azure, and {{gcp}}. For deployment instructions, refer to:
+  - Cloud Asset Discovery: [Asset Discovery on Azure](/solutions/security/cloud/asset-disc-azure.md); [Asset Discovery on AWS](/solutions/security/cloud/asset-disc-aws.md)
   - CSPM: [CSPM on Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md); [CSPM on AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md)
-- {applies_to}`{serverless: preview, stack: preview 9.6+}` **{{aws}} integrations** that offer the **Identity Federation** setup option: [AWS](integration-docs://reference/aws.md), [Amazon Bedrock](integration-docs://reference/aws_bedrock.md), [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md), [Amazon MQ](integration-docs://reference/aws_mq.md), [AWS Security Hub](integration-docs://reference/aws_securityhub.md), and [Custom AWS Logs](integration-docs://reference/aws_logs.md). To set one up, refer to [Set up federated identity for an AWS integration](#federated-identity-aws-setup).
+- {applies_to}`{serverless: preview, stack: unavailable}` **{{aws}} integrations** that offer the **Identity Federation** setup option: [AWS](integration-docs://reference/aws.md), [Amazon Bedrock](integration-docs://reference/aws_bedrock.md), [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md), [Amazon MQ](integration-docs://reference/aws_mq.md), [AWS Security Hub](integration-docs://reference/aws_securityhub.md), and [Custom AWS Logs](integration-docs://reference/aws_logs.md). To set one up, refer to [Set up federated identity for an AWS integration](#federated-identity-aws-setup).
 
   In the [AWS](integration-docs://reference/aws.md) integration, federated identity works with most, but not all, data streams. For example, it isn’t available for AWS CloudTrail, Amazon VPC Flow Logs, or AWS WAF. Check the integration’s documentation for the data streams you need.
-
-  Federated identity isn't available for the AWS CloudWatch (OpenTelemetry) integration, which the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md) uses for metrics when you choose the **OTel-native** data format.
 
 ::::{important}
 :applies_to: stack: preview =9.2
@@ -45,28 +45,29 @@ In this version, to use cloud connector authentication for an AWS integration, y
 ## Set up federated identity for an AWS integration [federated-identity-aws-setup]
 
 ```{applies_to}
-stack: preview 9.6+
 serverless: preview
+stack: unavailable
 ```
 
 
-Use these steps for the {{aws}} integrations listed in [Integrations that support federated identity authentication](#federated-identity-supported-integrations). For CSPM and Asset Discovery, follow the deployment instructions for those integrations instead. To set up several AWS services at once, use the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md), which includes these steps.
+Use these steps for the {{aws}} integrations listed in [Integrations that support federated identity authentication](#federated-identity-supported-integrations). For CSPM and Cloud Asset Discovery, follow the deployment instructions for those integrations instead. To set up several AWS services at once, use the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md), which includes these steps.
 
 ### How it works [federated-identity-aws-how-it-works]
 
-When you create a federated identity, {{kib}} generates an AWS CloudFormation template for the integrations you're setting up and opens it in the AWS console with the stack parameters that identify your Elastic organization and deployment or project already filled in. The stack creates:
+When you create a federated identity, {{kib}} generates an AWS CloudFormation template for the integrations you're setting up and opens it in the AWS console with the stack parameters that identify your Elastic organization and project already filled in. The stack creates:
 
 - An IAM OpenID Connect (OIDC) identity provider for Elastic, if your AWS account doesn't have one yet. Every stack in the account that uses the same provider shares it.
-- An IAM role that only your Elastic deployment or project can assume.
+- A Lambda function, with its execution role and a CloudWatch log group, that checks whether your account already has the OIDC provider and creates it if needed.
+- An IAM role that only your Elastic project can assume.
 - IAM policies that grant the role the permissions required by the integrations you enabled.
 
-Because the role can only be assumed by the deployment or project it was created for, you can reuse a federated identity across integrations in the same deployment or project, but not across deployments or projects. When you add an integration that needs more permissions, you update the stack to add them. For details, refer to [Update a federated identity's stack](#federated-identity-aws-update).
+Because the role can only be assumed by the project it was created for, you can reuse a federated identity across integrations in the same project, but not across projects. When you add an integration that needs more permissions, you update the stack to add them. For details, refer to [Update a federated identity's stack](#federated-identity-aws-update).
 
 ### Before you begin [federated-identity-aws-prerequisites]
 
 To set up federated identity authentication for an {{aws}} integration, you need:
 
-- An {{ech}} deployment or an {{serverless-full}} project.
+- An {{serverless-full}} project.
 - Administrator access to the {{aws}} account you want to onboard.
 
 ### Create or select a federated identity [federated-identity-aws-steps]
@@ -82,11 +83,11 @@ To set up federated identity authentication for an {{aws}} integration, you need
 
 ### Update a federated identity's stack [federated-identity-aws-update]
 
-An identity's IAM role only has the permissions for the integrations it was set up for. If you select an existing identity for an integration that needs more permissions, {{kib}} asks you to update the identity's CloudFormation stack before you can complete setup. {{kib}} can also show **CloudFormation stack upgrade available** on an identity when Elastic has updated the IAM role template.
+An identity's IAM role only has the permissions for the integrations it was set up for. When you select an identity on the **Existing Identity** tab and it doesn't have the permissions the integrations need, a **CloudFormation stack update required** callout appears, and you need to update the stack before you can complete setup. When Elastic updates the IAM role template, a **CloudFormation stack upgrade available** callout appears in the identity's details.
 
 To update the stack:
 
-1. In {{kib}}, select **Update CloudFormation stack**. The {{aws}} CloudFormation console opens the stack update with **Replace existing template** selected and the new template filled in.
+1. In the callout, select **Update CloudFormation stack**. The {{aws}} CloudFormation console opens the stack update with **Replace existing template** selected and the new template filled in.
 2. Go through the update steps in the {{aws}} console, then select **Submit**.
 3. Return to {{kib}} and continue setting up the integration. Data from the new integrations starts arriving after the stack update completes.
 

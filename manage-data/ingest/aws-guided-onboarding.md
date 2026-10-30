@@ -2,7 +2,6 @@
 navigation_title: AWS guided onboarding
 description: Use the guided AWS onboarding flow in Kibana to select AWS services, choose how Elastic collects their data, deploy, and confirm that data arrives.
 applies_to:
-  stack: preview 9.6+
   serverless: preview
 products:
   - id: fleet
@@ -29,7 +28,7 @@ The flow has four steps: [Services](#aws-onboarding-services), [Service Settings
 
 To use the guided AWS onboarding flow, you need:
 
-- Administrator access to the AWS account you want to collect data from. The flow opens AWS CloudFormation to create IAM resources and, for some services, the Elastic Cloud Forwarder.
+- Administrator access to the AWS account you want to collect data from. The flow uses AWS CloudFormation to create IAM roles and policies, an OIDC identity provider, a Lambda function, a CloudWatch log group, and, for some services, the Elastic Cloud Forwarder.
 - The `Fleet: All` and `Integrations: All` [{{kib}} privileges](/reference/fleet/fleet-roles-privileges.md).
 
 ## Select services [aws-onboarding-services]
@@ -40,7 +39,7 @@ To use the guided AWS onboarding flow, you need:
 
 Some services don't support {{managed-integrations}} and can only be collected with a self-managed {{agent}}. If you select any of these, the step lists them and tells you that you configure {{agent}} in the later steps.
 
-The **Data format** setting controls which services the step lists. **ECS-compatible** is the default and has the broadest content coverage. **OTel-native** lists services that use OpenTelemetry semantic conventions. Identity Federation is only available for ECS-compatible services. With **OTel-native**, {{managed-integrations}} authenticate with access keys, and log services are deployed with the Elastic Cloud Forwarder.
+The **Data format** setting controls which services the step lists. **ECS-compatible** is the default and has the broadest content coverage. **OTel-native** lists services that use OpenTelemetry semantic conventions.
 
 ## Configure service settings [aws-onboarding-settings]
 
